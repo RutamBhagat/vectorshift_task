@@ -9,4 +9,11 @@ export type InputNode = Node<
   },
   "input"
 >;
-export type AppNode = BuiltInNode | PositionLoggerNode | InputNode;
+
+export type LLMNode = Node<{
+  label: string;
+  systemPrompt?: string;
+  userPrompt?: string;
+}, 'llm'>;
+
+export type AppNode = BuiltInNode | PositionLoggerNode | InputNode | LLMNode;

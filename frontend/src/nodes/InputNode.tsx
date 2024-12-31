@@ -5,7 +5,6 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { FileInput, Type, File } from "lucide-react";
 import { Card, CardHeader, CardContent } from "@/components/ui/card";
-import { cn } from "@/lib/utils";
 import {
   Select,
   SelectContent,
@@ -23,9 +22,9 @@ export function InputNode({ id, data }: NodeProps<InputNode>) {
   );
 
   return (
-    <Card className="w-72 bg-white shadow-lg border-2 border-primary/20 transition-all duration-300 ease-in-out hover:shadow-xl hover:border-primary/40">
+    <Card className="w-72 relative bg-white shadow-lg border-2 border-primary/20 transition-all duration-300 ease-in-out hover:shadow-xl hover:border-primary/40">
       <CardHeader className="pb-2">
-        <div className="flex items-center gap-3">
+        <div className="flex items-center justify-center gap-3">
           <div className="rounded-full w-10 h-10 flex justify-center items-center bg-primary/10">
             <FileInput className="h-5 w-5 text-primary" />
           </div>
@@ -87,8 +86,6 @@ export function InputNode({ id, data }: NodeProps<InputNode>) {
         className="w-3 h-3 rounded-full !bg-primary transition-all duration-200 ease-in-out hover:scale-110"
         id={`${id}-value`}
       />
-
-      <div className="absolute -right-0.5 top-1/2 transform -translate-y-1/2 w-1 h-8 bg-primary/20 rounded-l-md" />
     </Card>
   );
 }
