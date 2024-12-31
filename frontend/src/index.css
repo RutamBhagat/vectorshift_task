@@ -79,3 +79,7 @@ body,
     @apply bg-background text-foreground;
   }
 }
+
+.react-flow__node {
+  @apply rounded-xl border-none p-0 shadow w-auto
+}
