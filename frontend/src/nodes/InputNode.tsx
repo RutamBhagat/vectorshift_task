@@ -6,7 +6,13 @@ import { Label } from "@/components/ui/label";
 import { FileInput, Type, File } from "lucide-react";
 import { Card, CardHeader, CardContent } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
-import { Button } from "@/components/ui/button";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 export function InputNode({ id, data }: NodeProps<InputNode>) {
   const [currName, setCurrName] = useState(
@@ -28,7 +34,10 @@ export function InputNode({ id, data }: NodeProps<InputNode>) {
       </CardHeader>
       <CardContent className="space-y-4">
         <div className="space-y-2">
-          <Label htmlFor="name" className="text-sm text-start font-medium text-foreground">
+          <Label
+            htmlFor="name"
+            className="text-sm text-start font-medium text-foreground"
+          >
             Name
           </Label>
           <Input
@@ -41,42 +50,41 @@ export function InputNode({ id, data }: NodeProps<InputNode>) {
         </div>
 
         <div className="space-y-2">
-          <Label className="text-sm text-start font-medium text-foreground">Type</Label>
-          <div className="flex gap-2">
-            <Button
-              onClick={() => setInputType("Text")}
-              variant="outline"
-              size="sm"
-              className={cn(
-                "flex-1 transition-all duration-200 ease-in-out",
-                inputType === "Text" &&
-                  "bg-black hover:bg-gray-800 text-white hover:text-white"
-              )}
-            >
-              <Type className="w-4 h-4 mr-2" />
-              Text
-            </Button>
-            <Button
-              onClick={() => setInputType("File")}
-              variant="outline"
-              size="sm"
-              className={cn(
-                "flex-1 transition-all duration-200 ease-in-out",
-                inputType === "File" &&
-                  ""
-              )}
-            >
-              <File className="w-4 h-4 mr-2" />
-              File
-            </Button>
-          </div>
+          <Label
+            htmlFor="inputType"
+            className="text-sm text-start font-medium text-foreground"
+          >
+            Type
+          </Label>
+          <Select
+            value={inputType}
+            onValueChange={(value: "Text" | "File") => setInputType(value)}
+          >
+            <SelectTrigger id="inputType" className="w-full">
+              <SelectValue placeholder="Select input type" />
+            </SelectTrigger>
+            <SelectContent className="bg-white">
+              <SelectItem value="Text">
+                <div className="flex items-center">
+                  <Type className="w-4 h-4 mr-2" />
+                  Text
+                </div>
+              </SelectItem>
+              <SelectItem value="File">
+                <div className="flex items-center">
+                  <File className="w-4 h-4 mr-2" />
+                  File
+                </div>
+              </SelectItem>
+            </SelectContent>
+          </Select>
         </div>
       </CardContent>
 
       <Handle
         type="source"
         position={Position.Right}
-        className="w-3 h-3 !bg-primary transition-all duration-200 ease-in-out hover:scale-110"
+        className="w-3 h-3 rounded-full !bg-primary transition-all duration-200 ease-in-out hover:scale-110"
         id={`${id}-value`}
       />
 
