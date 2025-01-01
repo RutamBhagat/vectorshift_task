@@ -1,6 +1,7 @@
+import { cn } from "../lib/utils";
 import { Button } from "./ui/button";
 
-export const DraggableNode = ({ type, label }) => {
+export const DraggableNode = ({ type, label, className }) => {
   const onDragStart = (event, nodeType) => {
     const appData = { nodeType };
     event.target.style.cursor = "grabbing";
@@ -14,7 +15,7 @@ export const DraggableNode = ({ type, label }) => {
   return (
     <Button
       variant="secondary"
-      className="w-full text-sm md:block"
+      className={cn(className, "w-full text-sm md:block")}
       onDragStart={(event) => onDragStart(event, type)}
       onDragEnd={(event) => (event.target.style.cursor = "grab")}
       draggable

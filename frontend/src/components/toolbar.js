@@ -8,6 +8,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "./ui/dropdown-menu";
+import { SubmitButton } from "./submit";
 
 const nodes = [
   { type: "customInput", label: "Input" },
@@ -23,7 +24,7 @@ const nodes = [
 
 export const PipelineToolbar = () => {
   return (
-    <Card className="bg-card py-3 px-4 border-0 flex items-center justify-between gap-6 rounded-2xl">
+    <Card className="bg-card rounded-none py-3 px-4 border-0 flex items-center justify-between gap-6">
       <div className="text-primary cursor-pointer rounded-full">
         <svg
           version="1.1"
@@ -56,12 +57,14 @@ export const PipelineToolbar = () => {
       </div>
 
       <div className="flex items-center">
-        <div className="hidden md:flex gap-5">
-          {nodes.map((node) => (
-            <DraggableNode type={node.type} label={node.label} />
-          ))}
-        </div>
-        <Button className="hidden md:block mx-5">Get Started</Button>
+        {nodes.map((node) => (
+          <DraggableNode
+            className="hidden md:block mx-2.5"
+            type={node.type}
+            label={node.label}
+          />
+        ))}
+        <SubmitButton className="hidden md:block mx-2.5" />
 
         <div className="flex md:hidden mr-2 items-center gap-2">
           <DropdownMenu>
@@ -78,7 +81,7 @@ export const PipelineToolbar = () => {
                 </DropdownMenuItem>
               ))}
               <DropdownMenuItem>
-                <Button className="w-full text-sm">Get Started</Button>
+                <SubmitButton className="w-full text-sm" />
               </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>

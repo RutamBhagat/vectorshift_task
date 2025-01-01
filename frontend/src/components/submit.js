@@ -1,9 +1,10 @@
+import { cn } from "../lib/utils";
 import { Button } from "./ui/button";
 
-export const SubmitButton = () => {
+export const SubmitButton = ({className}) => {
   return (
-    <div className="flex items-center justify-center">
-      <Button type="submit">Submit</Button>
-    </div>
+    <Button className={cn(className, "w-full text-sm")} type="submit">
+      Submit
+    </Button>
   );
 };
