@@ -1,32 +1,30 @@
 import { useState } from "react";
-import { Handle, Position } from "reactflow";
+import { Position } from "reactflow";
 import { Input } from "../ui/input";
+import { NodeWrapper } from "./NodeWrapper";
 
 export const TextNode = ({ id, data }) => {
   const [currText, setCurrText] = useState(data?.text || "{{input}}");
 
-  const handleTextChange = (e) => {
-    setCurrText(e.target.value);
-  };
+  const handles = [
+    {
+      type: "source",
+      position: Position.Right,
+      id: `${id}-output`
+    }
+  ];
 
   return (
-    <div className="w-[250px] p-5 rounded-xl border-2 border-[#818CF8] bg-white shadow-[0_4px_20px_rgba(129,140,248,0.15)] hover:shadow-[0_4px_20px_rgba(129,140,248,0.25)] transition-shadow">
-      <div className="mb-3 text-sm font-semibold text-gray-900">Text Node</div>
+    <NodeWrapper title="Text Node" handles={handles}>
       <div className="space-y-3">
         <Input
           type="text"
           value={currText}
-          onChange={handleTextChange}
+          onChange={(e) => setCurrText(e.target.value)}
           className="w-full border-[#818CF8] focus:ring-2 focus:ring-[#818CF8]"
           placeholder="Enter text..."
         />
       </div>
-      <Handle
-        type="source"
-        position={Position.Right}
-        id={`${id}-output`}
-        className="w-3 h-3 !bg-[#FF6B6B] border-2 border-[#E55959] hover:!bg-[#E55959] transition-colors"
-      />
-    </div>
+    </NodeWrapper>
   );
 };

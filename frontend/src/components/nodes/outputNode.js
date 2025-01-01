@@ -1,13 +1,8 @@
 import { useState } from "react";
-import { Handle, Position } from "reactflow";
+import { Position } from "reactflow";
 import { Input } from "../ui/input";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "../ui/select";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../ui/select";
+import { NodeWrapper } from "./NodeWrapper";
 
 export const OutputNode = ({ id, data }) => {
   const [currName, setCurrName] = useState(
@@ -15,26 +10,21 @@ export const OutputNode = ({ id, data }) => {
   );
   const [outputType, setOutputType] = useState(data.outputType || "Text");
 
-  const handleNameChange = (e) => {
-    setCurrName(e.target.value);
-  };
+  const handles = [
+    {
+      type: "target",
+      position: Position.Left,
+      id: `${id}-value`
+    }
+  ];
 
   return (
-    <div className="w-[250px] p-5 rounded-xl border-2 border-[#818CF8] bg-white shadow-[0_4px_20px_rgba(129,140,248,0.15)] hover:shadow-[0_4px_20px_rgba(129,140,248,0.25)] transition-shadow">
-      <Handle
-        type="target"
-        position={Position.Left}
-        id={`${id}-value`}
-        className="w-3 h-3 !bg-[#FF6B6B] border-2 border-[#E55959] hover:!bg-[#E55959] transition-colors"
-      />
-      <div className="mb-3 text-sm font-semibold text-gray-900">
-        Output Node
-      </div>
+    <NodeWrapper title="Output Node" handles={handles}>
       <div className="space-y-3">
         <Input
           type="text"
           value={currName}
-          onChange={handleNameChange}
+          onChange={(e) => setCurrName(e.target.value)}
           className="w-full border-[#818CF8] focus:ring-2 focus:ring-[#818CF8]"
           placeholder="Output name..."
         />
@@ -48,6 +38,6 @@ export const OutputNode = ({ id, data }) => {
           </SelectContent>
         </Select>
       </div>
-    </div>
+    </NodeWrapper>
   );
 };
