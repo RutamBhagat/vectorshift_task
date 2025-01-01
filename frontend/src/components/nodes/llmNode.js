@@ -1,33 +1,31 @@
-// llmNode.js
-
 import { Handle, Position } from 'reactflow';
 
 export const LLMNode = ({ id, data }) => {
-
   return (
-    <div style={{width: 200, height: 80, border: '1px solid black'}}>
+    <div className="w-[200px] p-4 rounded-lg border border-indigo-200 bg-white shadow-sm">
       <Handle
         type="target"
         position={Position.Left}
         id={`${id}-system`}
-        style={{top: `${100/3}%`}}
+        className="w-3 h-3 bg-indigo-400 border-2 border-indigo-600"
+        style={{top: '33%'}}
       />
       <Handle
         type="target"
         position={Position.Left}
         id={`${id}-prompt`}
-        style={{top: `${200/3}%`}}
+        className="w-3 h-3 bg-indigo-400 border-2 border-indigo-600"
+        style={{top: '66%'}}
       />
-      <div>
-        <span>LLM</span>
-      </div>
-      <div>
-        <span>This is a LLM.</span>
+      <div className="mb-2 text-sm font-medium text-gray-700">LLM Node</div>
+      <div className="text-sm text-gray-500">
+        Large Language Model
       </div>
       <Handle
         type="source"
         position={Position.Right}
         id={`${id}-response`}
+        className="w-3 h-3 bg-indigo-400 border-2 border-indigo-600"
       />
     </div>
   );

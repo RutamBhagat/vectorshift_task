@@ -1,7 +1,13 @@
-// inputNode.js
-
 import { useState } from 'react';
 import { Handle, Position } from 'reactflow';
+import { Input } from "../ui/input";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "../ui/select";
 
 export const InputNode = ({ id, data }) => {
   const [currName, setCurrName] = useState(data?.inputName || id.replace('customInput-', 'input_'));
@@ -16,31 +22,31 @@ export const InputNode = ({ id, data }) => {
   };
 
   return (
-    <div style={{width: 200, height: 80, border: '1px solid black'}}>
-      <div>
-        <span>Input</span>
-      </div>
-      <div>
-        <label>
-          Name:
-          <input 
-            type="text" 
-            value={currName} 
-            onChange={handleNameChange} 
-          />
-        </label>
-        <label>
-          Type:
-          <select value={inputType} onChange={handleTypeChange}>
-            <option value="Text">Text</option>
-            <option value="File">File</option>
-          </select>
-        </label>
+    <div className="w-[200px] p-4 rounded-lg border border-indigo-200 bg-white shadow-sm">
+      <div className="mb-2 text-sm font-medium text-gray-700">Input Node</div>
+      <div className="space-y-2">
+        <Input 
+          type="text" 
+          value={currName} 
+          onChange={handleNameChange}
+          className="w-full"
+          placeholder="Input name..."
+        />
+        <Select value={inputType} onValueChange={setInputType}>
+          <SelectTrigger>
+            <SelectValue placeholder="Select type" />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectItem value="Text">Text</SelectItem>
+            <SelectItem value="File">File</SelectItem>
+          </SelectContent>
+        </Select>
       </div>
       <Handle
         type="source"
         position={Position.Right}
         id={`${id}-value`}
+        className="w-3 h-3 bg-indigo-400 border-2 border-indigo-600"
       />
     </div>
   );
