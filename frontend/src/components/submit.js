@@ -1,7 +1,9 @@
+import { Button } from "./ui/button";
+
 export const SubmitButton = () => {
   return (
     <div className="flex items-center justify-center">
-      <button type="submit">Submit</button>
+      <Button type="submit">Submit</Button>
     </div>
   );
 };

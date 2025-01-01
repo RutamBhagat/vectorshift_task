@@ -13,6 +13,7 @@ import { DebugNode } from "./nodes/debugNode";
 import { FilterNode } from "./nodes/filterNode";
 import { HttpNode } from "./nodes/httpNode";
 import { TransformNode } from "./nodes/transformNode";
+import { Card } from "./ui/card";
 
 const gridSize = 20;
 const proOptions = { hideAttribution: true };
@@ -97,27 +98,25 @@ export const PipelineUI = () => {
   }, []);
 
   return (
-    <>
-      <div ref={reactFlowWrapper} className="w-screen h-[70vh]">
-        <ReactFlow
-          nodes={nodes}
-          edges={edges}
-          onNodesChange={onNodesChange}
-          onEdgesChange={onEdgesChange}
-          onConnect={onConnect}
-          onDrop={onDrop}
-          onDragOver={onDragOver}
-          onInit={setReactFlowInstance}
-          nodeTypes={nodeTypes}
-          proOptions={proOptions}
-          snapGrid={[gridSize, gridSize]}
-          connectionLineType="smoothstep"
-        >
-          <Background color="#aaa" gap={gridSize} />
-          <Controls />
-          <MiniMap />
-        </ReactFlow>
-      </div>
-    </>
+    <Card ref={reactFlowWrapper} className="w-screen flex-1">
+      <ReactFlow
+        nodes={nodes}
+        edges={edges}
+        onNodesChange={onNodesChange}
+        onEdgesChange={onEdgesChange}
+        onConnect={onConnect}
+        onDrop={onDrop}
+        onDragOver={onDragOver}
+        onInit={setReactFlowInstance}
+        nodeTypes={nodeTypes}
+        proOptions={proOptions}
+        snapGrid={[gridSize, gridSize]}
+        connectionLineType="smoothstep"
+      >
+        <Background color="#aaa" gap={gridSize} />
+        <Controls />
+        <MiniMap />
+      </ReactFlow>
+    </Card>
   );
 };
