@@ -29,7 +29,7 @@ export function LLMNode({ id, data }: NodeProps<LLMNode>) {
               type="target"
               position={Position.Left}
               id={`${id}-system`}
-              className="w-3 h-3 rounded-full -ml-0.5 !bg-yellow-500"
+              className="w-3 h-3 rounded-full -ml-0.5 !bg-black"
             />
             <span className="absolute left-3 top-1/2 -translate-y-1/2 text-xs text-muted-foreground whitespace-nowrap">
               System
@@ -42,7 +42,7 @@ export function LLMNode({ id, data }: NodeProps<LLMNode>) {
               type="target"
               position={Position.Left}
               id={`${id}-prompt`}
-              className="w-3 h-3 rounded-full -ml-0.5 !bg-blue-500"
+              className="w-3 h-3 rounded-full -ml-0.5 !bg-black"
             />
             <span className="absolute left-3 top-1/2 -translate-y-1/2 text-xs text-muted-foreground whitespace-nowrap">
               Prompt
@@ -56,7 +56,7 @@ export function LLMNode({ id, data }: NodeProps<LLMNode>) {
               type="source"
               position={Position.Bottom}
               id={`${id}-response`}
-              className="w-3 h-3 rounded-full -mb-0.5 !bg-green-500"
+              className="w-3 h-3 rounded-full -mb-0.5 !bg-black"
             />
             <span className="absolute bottom-2 left-1/2 -translate-x-1/2 text-xs text-muted-foreground whitespace-nowrap">
               Response

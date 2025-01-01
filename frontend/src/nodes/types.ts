@@ -22,4 +22,9 @@ export type OutputNode = Node<{
   outputType: "Text" | "File";
 }, 'output'>;
 
-export type AppNode = BuiltInNode | PositionLoggerNode | InputNode | LLMNode | OutputNode;
+export type TextNode = Node<{
+  label: string;
+  text: string;
+}, 'text'>;
+
+export type AppNode = BuiltInNode | PositionLoggerNode | InputNode | LLMNode | OutputNode | TextNode;
