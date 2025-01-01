@@ -14,7 +14,7 @@ export const DraggableNode = ({ type, label }) => {
   return (
     <Button
       variant="secondary"
-      className={`${type} min-w-[80px] h-[50px] flex items-center justify-center text-white hover:bg-gray-700 flex-col rounded-lg bg-[#1C2536] cursor-grab`}
+      className="w-full text-sm md:block"
       onDragStart={(event) => onDragStart(event, type)}
       onDragEnd={(event) => (event.target.style.cursor = "grab")}
       draggable

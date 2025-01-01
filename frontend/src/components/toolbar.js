@@ -9,21 +9,20 @@ import {
   DropdownMenuTrigger,
 } from "./ui/dropdown-menu";
 
+const nodes = [
+  { type: "customInput", label: "Input" },
+  { type: "llm", label: "LLM" },
+  { type: "customOutput", label: "Output" },
+  { type: "text", label: "Text" },
+  { type: "aggeregate", label: "AggregateNode" },
+  { type: "debug", label: "DebugNode" },
+  { type: "filter", label: "FilterNode" },
+  { type: "http", label: "HttpNode" },
+  { type: "transform", label: "TransformNode" },
+];
+
 export const PipelineToolbar = () => {
   return (
-    // <div className="p-2.5">
-    //   <div className="flex flex-wrap gap-2.5">
-    //     <DraggableNode type="customInput" label="Input" />
-    //     <DraggableNode type="llm" label="LLM" />
-    //     <DraggableNode type="customOutput" label="Output" />
-    //     <DraggableNode type="text" label="Text" />
-    //     <DraggableNode type="aggeregate" label="AggregateNode" />
-    //     <DraggableNode type="debug" label="DebugNode" />
-    //     <DraggableNode type="filter" label="FilterNode" />
-    //     <DraggableNode type="http" label="HttpNode" />
-    //     <DraggableNode type="transform" label="TransformNode" />
-    //   </div>
-    // </div>
     <Card className="bg-card py-3 px-4 border-0 flex items-center justify-between gap-6 rounded-2xl">
       <div className="text-primary cursor-pointer rounded-full">
         <svg
@@ -57,10 +56,12 @@ export const PipelineToolbar = () => {
       </div>
 
       <div className="flex items-center">
-        <Button variant="secondary" className="hidden md:block px-2">
-          Login
-        </Button>
-        <Button className="hidden md:block ml-2 mr-2">Get Started</Button>
+        <div className="hidden md:flex gap-5">
+          {nodes.map((node) => (
+            <DraggableNode type={node.type} label={node.label} />
+          ))}
+        </div>
+        <Button className="hidden md:block mx-5">Get Started</Button>
 
         <div className="flex md:hidden mr-2 items-center gap-2">
           <DropdownMenu>
@@ -71,11 +72,11 @@ export const PipelineToolbar = () => {
             </DropdownMenuTrigger>
 
             <DropdownMenuContent align="end">
-              <DropdownMenuItem>
-                <Button variant="secondary" className="w-full text-sm">
-                  Login
-                </Button>
-              </DropdownMenuItem>
+              {nodes.map((node) => (
+                <DropdownMenuItem>
+                  <DraggableNode type={node.type} label={node.label} />
+                </DropdownMenuItem>
+              ))}
               <DropdownMenuItem>
                 <Button className="w-full text-sm">Get Started</Button>
               </DropdownMenuItem>
