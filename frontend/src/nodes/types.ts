@@ -16,4 +16,10 @@ export type LLMNode = Node<{
   userPrompt?: string;
 }, 'llm'>;
 
-export type AppNode = BuiltInNode | PositionLoggerNode | InputNode | LLMNode;
+export type OutputNode = Node<{
+  label: string;
+  outputName: string;
+  outputType: "Text" | "File";
+}, 'output'>;
+
+export type AppNode = BuiltInNode | PositionLoggerNode | InputNode | LLMNode | OutputNode;

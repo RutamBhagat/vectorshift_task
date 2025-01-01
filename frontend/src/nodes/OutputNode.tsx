@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { Handle, Position, type NodeProps } from "@xyflow/react";
-import { type InputNode } from "./types";
+import { type OutputNode } from "./types";
+import { FileOutput } from "lucide-react";
+import { Card, CardHeader, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { FileInput, Type, File } from "lucide-react";
-import { Card, CardHeader, CardContent } from "@/components/ui/card";
 import {
   Select,
   SelectContent,
@@ -12,13 +12,14 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { File, Type } from "lucide-react";
 
-export function InputNode({ id, data }: NodeProps<InputNode>) {
+export function OutputNode({ id, data }: NodeProps<OutputNode>) {
   const [currName, setCurrName] = useState(
-    data?.inputName || id.replace("customInput-", "input_")
+    data?.outputName || id.replace("customOutput-", "output_")
   );
-  const [inputType, setInputType] = useState<"Text" | "File">(
-    data.inputType || "Text"
+  const [outputType, setOutputType] = useState<"Text" | "File">(
+    data.outputType || "Text"
   );
 
   return (
@@ -26,10 +27,10 @@ export function InputNode({ id, data }: NodeProps<InputNode>) {
       <CardHeader className="pb-2">
         <div className="flex items-center justify-center gap-3">
           <div className="rounded-full w-10 h-10 flex justify-center items-center bg-primary/10">
-            <FileInput className="h-5 w-5 text-primary" />
+            <FileOutput className="h-5 w-5 text-primary" />
           </div>
           <h3 className="text-lg font-semibold text-primary">
-            {data.label || "LLM Node"}
+            {data.label || "Output Node"}
           </h3>
         </div>
       </CardHeader>
@@ -52,17 +53,17 @@ export function InputNode({ id, data }: NodeProps<InputNode>) {
 
         <div className="space-y-2">
           <Label
-            htmlFor="inputType"
+            htmlFor="outputType"
             className="text-sm text-start font-medium text-foreground"
           >
             Type
           </Label>
           <Select
-            value={inputType}
-            onValueChange={(value: "Text" | "File") => setInputType(value)}
+            value={outputType}
+            onValueChange={(value: "Text" | "File") => setOutputType(value)}
           >
-            <SelectTrigger id="inputType" className="w-full">
-              <SelectValue placeholder="Select input type" />
+            <SelectTrigger id="outputType" className="w-full">
+              <SelectValue placeholder="Select output type" />
             </SelectTrigger>
             <SelectContent className="bg-white">
               <SelectItem value="Text">
@@ -81,9 +82,10 @@ export function InputNode({ id, data }: NodeProps<InputNode>) {
           </Select>
         </div>
       </CardContent>
+
       <Handle
-        type="source"
-        position={Position.Right}
+        type="target"
+        position={Position.Left}
         className="w-3 h-3 rounded-full !bg-primary transition-all duration-200 ease-in-out hover:scale-110"
         id={`${id}-value`}
       />
