@@ -162,7 +162,7 @@ export const PipelineUI = () => {
         nodeTypes={nodeTypes}
         proOptions={proOptions}
         snapGrid={[gridSize, gridSize]}
-        connectionLineType="bezier"
+        connectionLineType="smoothstep"
         edgeTypes={edgeTypes}
         defaultEdgeOptions={{ 
           type: 'custom',
