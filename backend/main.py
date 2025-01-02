@@ -21,12 +21,14 @@ def read_root():
 
 @app.post('/pipelines/parse', response_model=PipelineResponse)
 async def parse_pipeline(request: PipelineRequest) -> PipelineResponse:
-    is_dag, is_pipeline = validate_graph(request.nodes, request.edges)
+    is_dag, is_pipeline, dag_messages, pipeline_messages = validate_graph(request.nodes, request.edges)
     response = PipelineResponse(
         num_nodes=len(request.nodes),
         num_edges=len(request.edges),
         is_dag=is_dag,
-        is_pipeline=is_pipeline
+        is_pipeline=is_pipeline,
+        dag_validation_messages=dag_messages,
+        pipeline_validation_messages=pipeline_messages
     )
     log_to_markdown(request, response)
     return response

@@ -34,3 +34,5 @@ class PipelineResponse(BaseModel):
     num_edges: int
     is_dag: bool
     is_pipeline: bool
+    dag_validation_messages: List[str]
+    pipeline_validation_messages: List[str]
