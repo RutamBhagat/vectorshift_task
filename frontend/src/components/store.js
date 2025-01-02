@@ -6,9 +6,17 @@ import {
   MarkerType,
 } from "reactflow";
 
+export const getNodes = (state) => state.nodes;
+export const getEdges = (state) => state.edges;
+
 export const useStore = create((set, get) => ({
   nodes: [],
   edges: [],
+  nodeIDs: {},
+  
+  getNodes: () => get().nodes,
+  getEdges: () => get().edges,
+  
   getNodeID: (type) => {
     const newIDs = { ...get().nodeIDs };
     if (newIDs[type] === undefined) {
