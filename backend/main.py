@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
-from typing import List, Dict, Any
+from typing import List, Dict, Any, Optional
 import uvicorn
 
 class NodeData(BaseModel):
@@ -9,14 +9,24 @@ class NodeData(BaseModel):
     type: str
     position: Dict[str, float]
     data: Dict[str, Any]
+    width: int
+    height: int
+
+class EdgeStyle(BaseModel):
+    strokeWidth: int
+    animation: str
 
 class Edge(BaseModel):
     id: str
+    type: str
     source: str
     target: str
-    type: str
+    sourceHandle: str
+    targetHandle: str
     animated: bool
-    markerEnd: Dict[str, Any]
+    style: EdgeStyle
+    deletable: bool
+    markerEnd: Optional[Dict[str, str]] = None
 
 class PipelineRequest(BaseModel):
     nodes: List[NodeData]
@@ -43,12 +53,12 @@ def read_root():
     return {'Ping': 'Pong'}
 
 @app.post('/pipelines/parse', response_model=PipelineResponse)
-async def parse_pipeline(pipeline: PipelineRequest) -> PipelineResponse:
-    # Stub implementation - would normally analyze the pipeline
+async def parse_pipeline(pipeline) -> PipelineResponse:
+    # Add validation logic here if needed
     return PipelineResponse(
         num_nodes=len(pipeline.nodes),
         num_edges=len(pipeline.edges),
-        is_dag=True
+        is_dag=True  # Add actual DAG validation logic here
     )
 
 if __name__ == "__main__":

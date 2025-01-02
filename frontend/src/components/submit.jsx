@@ -14,13 +14,14 @@ export const SubmitButton = ({ className }) => {
   const handleSubmit = async () => {
     setIsLoading(true);
     try {
+      const url = `${process.env.REACT_APP_BACKEND_URL}/pipelines/parse`;
       const response = await axios.post(
-        `${process.env.NEXT_PUBLIC_BACKEND_URL}/pipelines/parse`,
+        url,
         { nodes, edges }
       );
 
       const { num_nodes, num_edges, is_dag } = response.data;
-      
+
       toast("Pipeline Validation Results", {
         description: `Nodes: ${num_nodes}, Edges: ${num_edges}, Is DAG: ${is_dag}`,
         duration: 5000
@@ -28,7 +29,7 @@ export const SubmitButton = ({ className }) => {
     } catch (error) {
       toast.error("Pipeline Validation Failed", {
         description: error.message,
-        duration: 5000
+        duration: 5000,
       });
     } finally {
       setIsLoading(false);
@@ -36,7 +37,7 @@ export const SubmitButton = ({ className }) => {
   };
 
   return (
-    <Button 
+    <Button
       className={cn(className, "text-sm h-16 w-16")}
       onClick={handleSubmit}
       disabled={isLoading}
