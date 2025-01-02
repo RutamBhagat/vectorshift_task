@@ -4,6 +4,8 @@ from pydantic import BaseModel
 from typing import List, Dict, Any, Optional, Tuple, Set
 import uvicorn
 from collections import defaultdict
+from datetime import datetime
+import os
 
 class NodeData(BaseModel):
     id: str
@@ -39,97 +41,67 @@ class PipelineResponse(BaseModel):
     is_dag: bool
     is_pipeline: bool
 
-def get_graph_components(nodes: List[NodeData], edges: List[Edge]) -> Tuple[Dict[str, List[str]], Set[str], Set[str]]:
-    """Helper function to get graph components for analysis"""
-    # Create adjacency list
-    graph = defaultdict(list)
-    # Track incoming and outgoing connections
-    incoming = defaultdict(int)
-    outgoing = defaultdict(int)
-    
-    for edge in edges:
-        graph[edge.source].append(edge.target)
-        incoming[edge.target] += 1
-        outgoing[edge.source] += 1
-    
-    # Find start nodes (no incoming edges) and end nodes (no outgoing edges)
-    node_ids = {node.id for node in nodes}
-    start_nodes = {node for node in node_ids if incoming[node] == 0}
-    end_nodes = {node for node in node_ids if outgoing[node] == 0}
-    
-    return graph, start_nodes, end_nodes
-
-def check_is_dag(nodes: List[NodeData], edges: List[Edge]) -> bool:
-    """Check if the graph is a DAG (no cycles)"""
+def validate_graph(nodes: List[NodeData], edges: List[Edge]) -> Tuple[bool, bool]:
+    """
+    Combined validation for both DAG and Pipeline properties.
+    Returns (is_dag, is_pipeline)
+    """
+    # Empty or single node cases
     if not nodes:
-        return True  # Empty graph is considered a valid DAG
+        return True, False
+    if len(nodes) == 1:
+        return True, False
+    if not edges:
+        return True, False
         
-    graph = defaultdict(list)
+    # Build adjacency graph and track degrees
+    graph: Dict[str, List[str]] = defaultdict(list)
+    in_degree: Dict[str, int] = defaultdict(int)
+    node_ids = {node.id for node in nodes}
+    
     for edge in edges:
         graph[edge.source].append(edge.target)
-    
-    visited = set()
-    recursion_stack = set()
-    
-    def has_cycle(node: str) -> bool:
-        visited.add(node)
-        recursion_stack.add(node)
-        
-        for neighbor in graph[node]:
-            if neighbor not in visited:
-                if has_cycle(neighbor):
-                    return True
-            elif neighbor in recursion_stack:
-                return True
-        
-        recursion_stack.remove(node)
-        return False
-    
-    # Check for cycles starting from each unvisited node
-    for node in [node.id for node in nodes]:
-        if node not in visited:
-            if has_cycle(node):
-                return False  # Found a cycle, not a DAG
-    
-    return True
+        in_degree[edge.target] += 1
 
-def check_is_pipeline(nodes: List[NodeData], edges: List[Edge]) -> bool:
-    """
-    Check if the graph is a valid pipeline:
-    - Must have 2+ nodes
-    - Must have edges connecting nodes
-    - Must be a DAG (no cycles)
-    - Must have valid start and end nodes
-    - All nodes must be connected
-    """
-    # Basic checks
-    if len(nodes) < 2 or len(edges) == 0:  # Added explicit check for edges
-        return False
-    if not check_is_dag(nodes, edges):
-        return False
-        
-    graph, start_nodes, end_nodes = get_graph_components(nodes, edges)
+    # Check for cycles using Kahn's algorithm
+    zero_in_degree = [node for node in node_ids if in_degree[node] == 0]
+    visited_count = 0
     
-    # Must have at least one start and one end node
-    if not start_nodes or not end_nodes:
-        return False
+    while zero_in_degree:
+        current = zero_in_degree.pop(0)
+        visited_count += 1
         
-    # Check if all nodes are reachable from start nodes
-    reachable = set()
+        for neighbor in graph[current]:
+            in_degree[neighbor] -= 1
+            if in_degree[neighbor] == 0:
+                zero_in_degree.append(neighbor)
     
-    def dfs(node: str):
-        reachable.add(node)
+    is_dag = visited_count == len(nodes)
+    if not is_dag:
+        return False, False
+
+    # Pipeline validation
+    if len(nodes) < 2:
+        return True, False
+        
+    # Check connectivity
+    connected_nodes: Set[str] = set()
+    def dfs(node: str) -> None:
+        connected_nodes.add(node)
         for neighbor in graph[node]:
-            if neighbor not in reachable:
+            if neighbor not in connected_nodes:
                 dfs(neighbor)
     
-    # Run DFS from all start nodes
+    # Start DFS from nodes with no incoming edges
+    start_nodes = {node for node in node_ids if node not in in_degree}
     for start in start_nodes:
-        dfs(start)
+        if start not in connected_nodes:
+            dfs(start)
     
-    # All nodes must be reachable
-    return len(reachable) == len(nodes)
-
+    # Pipeline requires all nodes to be connected
+    is_pipeline = len(connected_nodes) == len(nodes)
+    
+    return is_dag, is_pipeline
 
 app = FastAPI()
 
@@ -145,14 +117,38 @@ app.add_middleware(
 def read_root():
     return {'Ping': 'Pong'}
 
+def log_to_markdown(request: PipelineRequest, response: PipelineResponse):
+    """Log request and response to markdown file"""
+    timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    log_entry = f"""
+## Request at {timestamp}
+
+### Pipeline Request
+```
+{request.json()}
+```
+
+### Pipeline Response
+```
+{response.json()}
+```
+
+---
+"""
+    with open("pipeline_logs.md", "a") as log_file:
+        log_file.write(log_entry)
+
 @app.post('/pipelines/parse', response_model=PipelineResponse)
 async def parse_pipeline(request: PipelineRequest) -> PipelineResponse:
-    return PipelineResponse(
+    is_dag, is_pipeline = validate_graph(request.nodes, request.edges)
+    response = PipelineResponse(
         num_nodes=len(request.nodes),
         num_edges=len(request.edges),
-        is_dag=check_is_dag(request.nodes, request.edges),
-        is_pipeline=check_is_pipeline(request.nodes, request.edges)
+        is_dag=is_dag,
+        is_pipeline=is_pipeline
     )
+    log_to_markdown(request, response)
+    return response
 
 if __name__ == "__main__":
     uvicorn.run(app, host="0.0.0.0", port=8000)
