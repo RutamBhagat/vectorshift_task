@@ -1,6 +1,6 @@
+import uvicorn
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-import uvicorn
 from models import PipelineRequest, PipelineResponse
 from validation import validate_graph
 from logger import log_to_markdown
