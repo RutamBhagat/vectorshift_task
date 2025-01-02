@@ -391,3 +391,204 @@
 ```
 
 ---
+
+## Request at 2025-01-03 00:07:43
+
+### Pipeline Request
+```json
+{
+  "nodes": [
+    {
+      "id": "customInput-1",
+      "type": "customInput",
+      "position": {
+        "x": 173.12499618530273,
+        "y": 231.74999618530273
+      },
+      "data": {
+        "id": "customInput-1",
+        "nodeType": "customInput"
+      },
+      "width": 250,
+      "height": 171
+    }
+  ],
+  "edges": []
+}
+```
+
+### Pipeline Response
+```json
+{
+  "num_nodes": 1,
+  "num_edges": 0,
+  "is_dag": true,
+  "is_pipeline": false,
+  "dag_validation_messages": [],
+  "pipeline_validation_messages": [
+    "Invalid pipeline: contains only a single node"
+  ]
+}
+```
+
+---
+
+## Request at 2025-01-03 00:13:54
+
+### Pipeline Request
+```json
+{
+  "nodes": [
+    {
+      "id": "customInput-1",
+      "type": "customInput",
+      "position": {
+        "x": 312.1999969482422,
+        "y": 190.1999969482422
+      },
+      "data": {
+        "id": "customInput-1",
+        "nodeType": "customInput"
+      },
+      "width": 250,
+      "height": 171
+    }
+  ],
+  "edges": []
+}
+```
+
+### Pipeline Response
+```json
+{
+  "num_nodes": 1,
+  "num_edges": 0,
+  "is_dag": true,
+  "is_pipeline": false,
+  "dag_validation_messages": [],
+  "pipeline_validation_messages": [
+    "Invalid pipeline: contains only a single node"
+  ]
+}
+```
+
+---
+
+## Request at 2025-01-03 00:15:20
+
+### Pipeline Request
+```json
+{
+  "nodes": [],
+  "edges": []
+}
+```
+
+### Pipeline Response
+```json
+{
+  "num_nodes": 0,
+  "num_edges": 0,
+  "is_dag": true,
+  "is_pipeline": false,
+  "dag_validation_messages": [],
+  "pipeline_validation_messages": [
+    "Empty graph (no nodes)"
+  ]
+}
+```
+
+---
+
+## Request at 2025-01-03 00:15:33
+
+### Pipeline Request
+```json
+{
+  "nodes": [
+    {
+      "id": "customInput-1",
+      "type": "customInput",
+      "position": {
+        "x": 560.1999969482422,
+        "y": 251.1999969482422
+      },
+      "data": {
+        "id": "customInput-1",
+        "nodeType": "customInput"
+      },
+      "width": 250,
+      "height": 171
+    }
+  ],
+  "edges": []
+}
+```
+
+### Pipeline Response
+```json
+{
+  "num_nodes": 1,
+  "num_edges": 0,
+  "is_dag": true,
+  "is_pipeline": false,
+  "dag_validation_messages": [],
+  "pipeline_validation_messages": [
+    "Invalid pipeline: contains only a single node"
+  ]
+}
+```
+
+---
+
+## Request at 2025-01-03 00:15:39
+
+### Pipeline Request
+```json
+{
+  "nodes": [],
+  "edges": []
+}
+```
+
+### Pipeline Response
+```json
+{
+  "num_nodes": 0,
+  "num_edges": 0,
+  "is_dag": true,
+  "is_pipeline": false,
+  "dag_validation_messages": [],
+  "pipeline_validation_messages": [
+    "Empty graph (no nodes)"
+  ]
+}
+```
+
+---
+
+## Request at 2025-01-03 00:15:49
+
+### Pipeline Request
+```json
+{
+  "nodes": [],
+  "edges": []
+}
+```
+
+### Pipeline Response
+```json
+{
+  "num_nodes": 0,
+  "num_edges": 0,
+  "is_dag": true,
+  "is_pipeline": false,
+  "dag_validation_messages": [],
+  "pipeline_validation_messages": [
+    "Empty graph (no nodes)"
+  ]
+}
+```
+
+---
