@@ -1,5 +1,5 @@
 import { useState, useRef, useCallback } from "react";
-import ReactFlow, { Controls, Background, MiniMap, BaseEdge, getSmoothStepPath } from "reactflow";
+import ReactFlow, { Controls, Background, MiniMap, getSmoothStepPath } from "reactflow";
 import { XCircle } from "lucide-react";
 import { useStore } from "./store";
 import { shallow } from "zustand/shallow";
@@ -46,6 +46,11 @@ const EdgeWithDelete = ({ id, sourceX, sourceY, targetX, targetY }) => {
     sourceY,
     targetX,
     targetY,
+    borderRadius: 8,
+    offset: 0,
+    centerX: (sourceX + targetX) / 2,
+    centerY: (sourceY + targetY) / 2,
+    smoothStep: true,
   });
 
   const { removeEdge } = useStore(state => ({ removeEdge: state.removeEdge }));
@@ -58,6 +63,9 @@ const EdgeWithDelete = ({ id, sourceX, sourceY, targetX, targetY }) => {
         d={edgePath}
         strokeWidth={2}
         stroke="#b1b1b7"
+        style={{ 
+          pointerEvents: 'all'
+        }}
       />
       <foreignObject
         width={20}
@@ -154,9 +162,21 @@ export const PipelineUI = () => {
         nodeTypes={nodeTypes}
         proOptions={proOptions}
         snapGrid={[gridSize, gridSize]}
-        connectionLineType="smoothstep"
+        connectionLineType="bezier"
         edgeTypes={edgeTypes}
-        defaultEdgeOptions={{ type: 'custom' }}
+        defaultEdgeOptions={{ 
+          type: 'custom',
+          deletable: true,
+          style: { 
+            strokeWidth: 2,
+            animation: 'none'
+          },
+          animated: false
+        }}
+        fitView
+        minZoom={0.2}
+        maxZoom={4}
+        defaultViewport={{ x: 0, y: 0, zoom: 1 }}
       >
         <Background color="#aaa" gap={gridSize} />
         <Controls />
