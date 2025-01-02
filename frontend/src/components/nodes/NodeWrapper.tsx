@@ -22,7 +22,7 @@ export const NodeWrapper = ({ title, children, handles, id }: NodeWrapperProps) 
   const removeNode = useStore((state) => state.removeNode);
 
   return (
-    <div className="relative w-[250px] p-5 rounded-xl border-2 border-[#818CF8] bg-white shadow-[0_4px_20px_rgba(129,140,248,0.15)] hover:shadow-[0_4px_20px_rgba(129,140,248,0.25)] transition-shadow">
+    <div className="group relative w-[250px] p-5 rounded-xl border-2 border-[#a2aaf8] bg-white transition-all hover:shadow-[0_0_0_2px_#818CF8]">
       <button
         onClick={() => removeNode(id)}
         className="absolute top-2 right-2 text-gray-400 hover:text-gray-600 transition-colors"
