@@ -1,6 +1,6 @@
 import { useState, useRef, useCallback } from "react";
-import ReactFlow, { Controls, Background, MiniMap, getSmoothStepPath } from "reactflow";
-import { XCircle } from "lucide-react";
+import ReactFlow, { Controls, Background, MiniMap } from "reactflow";
+import EdgeWithDelete from "./EdgeWithDelete"
 import { useStore } from "./store";
 import { shallow } from "zustand/shallow";
 import { InputNode } from "./nodes/inputNode";
@@ -40,51 +40,7 @@ const selector = (state) => ({
   onConnect: state.onConnect,
 });
 
-const EdgeWithDelete = ({ id, sourceX, sourceY, targetX, targetY }) => {
-  const [edgePath, labelX, labelY] = getSmoothStepPath({
-    sourceX,
-    sourceY,
-    targetX,
-    targetY,
-    borderRadius: 8,
-    offset: 0,
-    centerX: (sourceX + targetX) / 2,
-    centerY: (sourceY + targetY) / 2,
-    smoothStep: true,
-  });
 
-  const { removeEdge } = useStore(state => ({ removeEdge: state.removeEdge }));
-
-  return (
-    <>
-      <path
-        id={id}
-        className="react-flow__edge-path"
-        d={edgePath}
-        strokeWidth={2}
-        stroke="#b1b1b7"
-        style={{ 
-          pointerEvents: 'all'
-        }}
-      />
-      <foreignObject
-        width={20}
-        height={20}
-        x={labelX - 10}
-        y={labelY - 10}
-        className="cursor-pointer flex items-center justify-center"
-        onClick={(e) => {
-          e.stopPropagation();
-          removeEdge(id);
-        }}
-      >
-        <div className="bg-white rounded-full p-[2px]">
-          <XCircle className="h-4 w-4 bg-white text-muted-foreground hover:text-destructive" />
-        </div>
-      </foreignObject>
-    </>
-  );
-};
 
 const edgeTypes = {
   custom: EdgeWithDelete,
