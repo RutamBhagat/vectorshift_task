@@ -38,7 +38,7 @@ export const useStore = create((set, get) => ({
       edges: addEdge(
         {
           ...connection,
-          type: "smoothstep",
+          type: "custom", // Changed from 'smoothstep' to 'custom'
           animated: true,
           markerEnd: { type: MarkerType.Arrow, height: "20px", width: "20px" },
         },
@@ -63,6 +63,11 @@ export const useStore = create((set, get) => ({
       edges: get().edges.filter(
         (edge) => edge.source !== nodeId && edge.target !== nodeId
       ),
+    });
+  },
+  removeEdge: (edgeId) => {
+    set({
+      edges: get().edges.filter((edge) => edge.id !== edgeId),
     });
   },
 }));
