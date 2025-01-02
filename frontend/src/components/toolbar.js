@@ -22,7 +22,7 @@ export const PipelineToolbar = () => {
         <img
           src="./logo.svg"
           alt="VectorShift Logo"
-          className="w-[50px] h-[50px] rounded-lg"
+          className="w-16 h-16 rounded-lg object-contain"
         />
 
         <div className="grid grid-flow-col auto-cols-[minmax(60px,1fr)] gap-2 items-center overflow-x-auto">
