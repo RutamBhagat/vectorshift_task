@@ -13,6 +13,8 @@ export const useStore = create((set, get) => ({
   nodes: [],
   edges: [],
   nodeIDs: {},
+  pipelineStats: null,
+  isStatsDialogOpen: false,
 
   // Getters
   getNodes: () => get().nodes,
@@ -81,4 +83,6 @@ export const useStore = create((set, get) => ({
       edges: get().edges.filter((edge) => edge.id !== edgeId),
     });
   },
+  setPipelineStats: (stats) => set({ pipelineStats: stats }),
+  setStatsDialogOpen: (isOpen) => set({ isStatsDialogOpen: isOpen }),
 }));

@@ -1,3 +1,4 @@
+import PipelineStats from './components/PipelineStats';
 import { PipelineToolbar } from './components/toolbar';
 import { PipelineUI } from './components/ui';
 import { Card } from './components/ui/card';
@@ -11,6 +12,7 @@ function App() {
         <PipelineUI />
       </Card>
       <Toaster />
+      <PipelineStats/>
     </div>
   );
 }

@@ -10,27 +10,24 @@ export const SubmitButton = ({ className }) => {
   const [isLoading, setIsLoading] = useState(false);
   const nodes = useStore((state) => state.getNodes());
   const edges = useStore((state) => state.getEdges());
+  const setPipelineStats = useStore((state) => state.setPipelineStats);
+  const setStatsDialogOpen = useStore((state) => state.setStatsDialogOpen);
 
   const handleSubmit = async () => {
     setIsLoading(true);
     try {
       const url = `${process.env.REACT_APP_BACKEND_URL}/pipelines/parse`;
-      const response = await axios.post(
-        url,
-        { nodes, edges }
-      );
+      const response = await axios.post(url, { nodes, edges });
       
-      const { num_nodes, num_edges, is_dag, is_pipeline } = response.data;
-
-      toast("Pipeline Validation Results", {
-        description: `Nodes: ${num_nodes}, Edges: ${num_edges}, Is Valid DAG: ${is_dag} Is Valid Pipeline: ${is_pipeline}`,
-        duration: 5000,
-      });
+      setPipelineStats(response.data);
+      setStatsDialogOpen(true);
+      
     } catch (error) {
       toast.error("Pipeline Validation Failed", {
         description: error.message,
         duration: 5000,
       });
+      setPipelineStats(null);
     } finally {
       setIsLoading(false);
     }
