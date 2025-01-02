@@ -3,9 +3,9 @@ import { NodeWrapper } from "./NodeWrapper";
 
 export const AggregateNode = ({ id }) => {
   const handles = [
-    { type: "target", position: Position.Left, id: `${id}-input1`, style: { top: "25%" } },
-    { type: "target", position: Position.Left, id: `${id}-input2`, style: { top: "75%" } },
-    { type: "source", position: Position.Right, id: `${id}-output` }
+    { type: "target", position: Position.Left, id: `${id}-input1`, style: { top: "25%" }, label: "Source 1" },
+    { type: "target", position: Position.Left, id: `${id}-input2`, style: { top: "75%" }, label: "Source 2" },
+    { type: "source", position: Position.Right, id: `${id}-output`, label: "Combined" }
   ];
 
   return (

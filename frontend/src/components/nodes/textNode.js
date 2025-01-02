@@ -10,7 +10,8 @@ export const TextNode = ({ id, data }) => {
     {
       type: "source",
       position: Position.Right,
-      id: `${id}-output`
+      id: `${id}-output`,
+      label: "Text"
     }
   ];
 

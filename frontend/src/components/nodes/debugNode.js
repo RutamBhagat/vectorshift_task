@@ -3,8 +3,8 @@ import { NodeWrapper } from "./NodeWrapper";
 
 export const DebugNode = ({ id }) => {
   const handles = [
-    { type: "target", position: Position.Left, id: `${id}-input` },
-    { type: "source", position: Position.Right, id: `${id}-output` }
+    { type: "target", position: Position.Left, id: `${id}-input`, label: "Debug In" },
+    { type: "source", position: Position.Right, id: `${id}-output`, label: "Debug Out" }
   ];
 
   return (

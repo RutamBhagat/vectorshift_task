@@ -14,7 +14,8 @@ export const InputNode = ({ id, data }) => {
     {
       type: "source",
       position: Position.Right,
-      id: `${id}-value`
+      id: `${id}-value`,
+      label: "Output"
     }
   ];
 

@@ -7,18 +7,21 @@ export const LLMNode = ({ id, data }) => {
       type: "target",
       position: Position.Left,
       id: `${id}-system`,
-      style: { top: "33%" }
+      style: { top: "33%" },
+      label: "System"
     },
     {
       type: "target",
       position: Position.Left,
       id: `${id}-prompt`,
-      style: { top: "66%" }
+      style: { top: "66%" },
+      label: "Prompt"
     },
     {
       type: "source",
       position: Position.Right,
-      id: `${id}-response`
+      id: `${id}-response`,
+      label: "Response"
     }
   ];
 

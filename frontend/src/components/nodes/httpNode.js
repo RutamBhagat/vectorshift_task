@@ -8,8 +8,8 @@ export const HttpNode = ({ id }) => {
   const [method, setMethod] = useState("GET");
   
   const handles = [
-    { type: "target", position: Position.Left, id: `${id}-input` },
-    { type: "source", position: Position.Right, id: `${id}-output` }
+    { type: "target", position: Position.Left, id: `${id}-input`, label: "Request" },
+    { type: "source", position: Position.Right, id: `${id}-output`, label: "Response" }
   ];
 
   return (

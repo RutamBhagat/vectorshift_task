@@ -4,8 +4,18 @@ import { Textarea } from "../ui/textarea";
 
 export const TransformNode = ({ id }) => {
   const handles = [
-    { type: "target", position: Position.Left, id: `${id}-input` },
-    { type: "source", position: Position.Right, id: `${id}-output` }
+    { 
+      type: "target", 
+      position: Position.Left, 
+      id: `${id}-input`,
+      label: "Input"
+    },
+    { 
+      type: "source", 
+      position: Position.Right, 
+      id: `${id}-output`,
+      label: "Transformed"
+    }
   ];
 
   return (
