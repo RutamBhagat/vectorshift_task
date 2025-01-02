@@ -98,7 +98,7 @@ export const PipelineUI = () => {
   }, []);
 
   return (
-    <Card ref={reactFlowWrapper} className="w-screen flex-1 rounded-none">
+    <Card ref={reactFlowWrapper} className="flex-1 rounded-none">
       <ReactFlow
         nodes={nodes}
         edges={edges}

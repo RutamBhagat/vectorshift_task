@@ -17,7 +17,7 @@ const nodes = [
 
 export const PipelineToolbar = () => {
   return (
-    <Card className="bg-card rounded-none py-3 px-4 border-0 flex items-center justify-between gap-6">
+    <Card className="bg-card rounded-b-none py-3 px-4 border-0 flex items-center justify-between gap-6">
       <div className="flex gap-5 items-center">
         <img
           src="./logo.svg"
