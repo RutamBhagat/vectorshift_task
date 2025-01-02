@@ -17,7 +17,7 @@ export const DraggableNode = ({ type, label, icon: Icon, className }) => {
       variant="secondary"
       className={cn(
         className,
-        "flex flex-col items-center h-20 justify-center gap-2 aspect-square p-2 border hover:bg-secondary/80"
+        "flex flex-col items-center h-16 w-16 justify-center gap-2 aspect-square p-2 border bg-white"
       )}
       onDragStart={(event) => onDragStart(event, type)}
       onDragEnd={(event) => (event.target.style.cursor = "grab")}

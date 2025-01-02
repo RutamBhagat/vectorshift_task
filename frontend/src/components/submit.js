@@ -3,7 +3,7 @@ import { Button } from "./ui/button";
 
 export const SubmitButton = ({className}) => {
   return (
-    <Button className={cn(className, "w-full text-sm h-20")} type="submit">
+    <Button className={cn(className, "text-sm h-16 w-16")} type="submit">
       Submit
     </Button>
   );

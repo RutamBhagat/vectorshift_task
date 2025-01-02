@@ -1,37 +1,40 @@
-import { ArrowRight, Bug, FileText, Filter, Globe, Layers, LogIn, Menu, MessageSquare, Wand2 } from "lucide-react";
-import { DraggableNode } from "./draggableNode";
-import { Button } from "./ui/button";
-import { Card } from "./ui/card";
 import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "./ui/dropdown-menu";
+  ArrowRight,
+  Bug,
+  FileText,
+  Filter,
+  Globe,
+  Layers,
+  LogIn,
+  MessageSquare,
+  Wand2,
+} from "lucide-react";
+import { DraggableNode } from "./draggableNode";
+import { Card } from "./ui/card";
 import { SubmitButton } from "./submit";
 
 const nodes = [
   { type: "customInput", label: "Input", icon: LogIn },
-  { type: "llm", label: "LLM", icon: MessageSquare},
+  { type: "llm", label: "LLM", icon: MessageSquare },
   { type: "customOutput", label: "Output", icon: ArrowRight },
   { type: "text", label: "Text", icon: FileText },
-  { type: "aggeregate", label: "AggregateNode", icon: Layers },
-  { type: "debug", label: "DebugNode", icon: Bug },
-  { type: "filter", label: "FilterNode", icon: Filter },
-  { type: "http", label: "HttpNode", icon: Globe },
-  { type: "transform", label: "TransformNode", icon: Wand2 },
+  { type: "aggeregate", label: "Aggregate", icon: Layers },
+  { type: "debug", label: "Debug", icon: Bug },
+  { type: "filter", label: "Filter", icon: Filter },
+  { type: "http", label: "Http", icon: Globe },
+  { type: "transform", label: "Transform", icon: Wand2 },
 ];
 
 export const PipelineToolbar = () => {
   return (
     <Card className="bg-card rounded-none py-3 px-4 border-0 flex items-center justify-between gap-6">
-      <div className="text-primary cursor-pointer rounded-full">
+      <div className="text-primary cursor-pointer rounded-full flex gap-2 items-center">
         <svg
           version="1.1"
           xmlns="http://www.w3.org/2000/svg"
           width="50"
           height="50"
-          className="rounded-lg"
+          className="rounded-lg mr-5"
         >
           <path
             d="M0 0 C16.5 0 33 0 50 0 C50 16.5 50 33 50 50 C33.5 50 17 50 0 50 C0 33.5 0 17 0 0 Z "
@@ -54,20 +57,20 @@ export const PipelineToolbar = () => {
             transform="translate(34,14)"
           />
         </svg>
+        <div className="grid grid-flow-col auto-cols-[minmax(60px,1fr)] gap-2 items-center overflow-x-auto">
+          {nodes.map((node) => (
+            <DraggableNode
+              key={node.type}
+              className="w-full"
+              type={node.type}
+              label={node.label}
+              icon={node.icon}
+            />
+          ))}
+        </div>
       </div>
 
-      <div className="grid grid-flow-col auto-cols-[minmax(100px,1fr)] gap-2 items-center overflow-x-auto">
-        {nodes.map((node) => (
-          <DraggableNode
-            key={node.type}
-            className="w-full"
-            type={node.type}
-            label={node.label}
-            icon={node.icon}
-          />
-        ))}
-        <SubmitButton className="w-full aspect-square" />
-      </div>
+      <SubmitButton className="w-full aspect-square" />
     </Card>
   );
 };
