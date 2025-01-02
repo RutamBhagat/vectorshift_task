@@ -6,9 +6,6 @@ import {
   MarkerType,
 } from "reactflow";
 
-export const getNodes = (state) => state.nodes;
-export const getEdges = (state) => state.edges;
-
 export const useStore = create((set, get) => ({
   nodes: [],
   edges: [],
