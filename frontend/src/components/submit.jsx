@@ -26,6 +26,13 @@ export const SubmitButton = ({ className }) => {
         description: `Nodes: ${num_nodes}, Edges: ${num_edges}, Is DAG: ${is_dag}`,
         duration: 5000
       });
+
+      // toast("Pipeline Validation Results", {
+      //   description: `nodes: ${JSON.stringify(
+      //     nodes
+      //   )}\n edges: ${JSON.stringify(edges)}`,
+      //   duration: 5000,
+      // });
     } catch (error) {
       toast.error("Pipeline Validation Failed", {
         description: error.message,

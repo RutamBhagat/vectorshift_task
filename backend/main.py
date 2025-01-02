@@ -39,10 +39,9 @@ class PipelineResponse(BaseModel):
 
 app = FastAPI()
 
-# Add CORS middleware
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # In production, replace with specific origin
+    allow_origins=["*"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -53,12 +52,11 @@ def read_root():
     return {'Ping': 'Pong'}
 
 @app.post('/pipelines/parse', response_model=PipelineResponse)
-async def parse_pipeline(pipeline) -> PipelineResponse:
-    # Add validation logic here if needed
+async def parse_pipeline(request: PipelineRequest) -> PipelineResponse:  # Changed parameter name to request
     return PipelineResponse(
-        num_nodes=len(pipeline.nodes),
-        num_edges=len(pipeline.edges),
-        is_dag=True  # Add actual DAG validation logic here
+        num_nodes=len(request.nodes),
+        num_edges=len(request.edges),
+        is_dag=True
     )
 
 if __name__ == "__main__":
