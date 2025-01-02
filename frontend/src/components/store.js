@@ -38,8 +38,8 @@ export const useStore = create((set, get) => ({
       edges: addEdge(
         {
           ...connection,
-          type: "custom", // Changed from 'smoothstep' to 'custom'
-          animated: true,
+          type: "custom",
+          animated: false,
           markerEnd: { type: MarkerType.Arrow, height: "20px", width: "20px" },
         },
         get().edges
