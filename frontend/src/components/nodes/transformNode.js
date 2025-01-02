@@ -9,7 +9,7 @@ export const TransformNode = ({ id }) => {
   ];
 
   return (
-    <NodeWrapper title="Transform Node" handles={handles}>
+    <NodeWrapper id={id} title="Transform Node" handles={handles}>
       <Textarea
         placeholder="Enter transformation logic..."
         className="h-20 border-[#818CF8]"

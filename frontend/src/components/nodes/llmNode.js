@@ -23,7 +23,7 @@ export const LLMNode = ({ id, data }) => {
   ];
 
   return (
-    <NodeWrapper title="LLM Node" handles={handles}>
+    <NodeWrapper id={id} title="LLM Node" handles={handles}>
       <div className="text-sm text-gray-600 bg-gray-50 p-3 rounded-lg">
         Large Language Model
       </div>

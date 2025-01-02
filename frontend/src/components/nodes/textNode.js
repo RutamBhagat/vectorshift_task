@@ -15,7 +15,7 @@ export const TextNode = ({ id, data }) => {
   ];
 
   return (
-    <NodeWrapper title="Text Node" handles={handles}>
+    <NodeWrapper id={id} title="Text Node" handles={handles}>
       <div className="space-y-3">
         <Input
           type="text"

@@ -8,7 +8,7 @@ export const DebugNode = ({ id }) => {
   ];
 
   return (
-    <NodeWrapper title="Debug Node" handles={handles}>
+    <NodeWrapper id={id} title="Debug Node" handles={handles}>
       <div className="bg-gray-50 p-3 rounded">
         <pre className="text-xs">Console output here...</pre>
       </div>

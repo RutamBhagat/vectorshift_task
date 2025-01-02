@@ -13,7 +13,7 @@ export const FilterNode = ({ id }) => {
   ];
 
   return (
-    <NodeWrapper title="Filter Node" handles={handles}>
+    <NodeWrapper id={id} title="Filter Node" handles={handles}>
       <Input
         placeholder="Enter condition..."
         value={condition}

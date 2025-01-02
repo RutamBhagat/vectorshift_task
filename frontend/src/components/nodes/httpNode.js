@@ -13,15 +13,17 @@ export const HttpNode = ({ id }) => {
   ];
 
   return (
-    <NodeWrapper title="HTTP Node" handles={handles}>
+    <NodeWrapper id={id} title="HTTP Node" handles={handles}>
       <div className="space-y-3">
         <Select value={method} onValueChange={setMethod}>
           <SelectTrigger>
             <SelectValue placeholder="HTTP Method" />
           </SelectTrigger>
           <SelectContent>
-            {["GET", "POST", "PUT", "DELETE"].map(m => (
-              <SelectItem key={m} value={m}>{m}</SelectItem>
+            {["GET", "POST", "PUT", "DELETE"].map((m) => (
+              <SelectItem key={m} value={m}>
+                {m}
+              </SelectItem>
             ))}
           </SelectContent>
         </Select>

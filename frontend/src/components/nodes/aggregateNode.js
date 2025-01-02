@@ -9,7 +9,7 @@ export const AggregateNode = ({ id }) => {
   ];
 
   return (
-    <NodeWrapper title="Aggregate Node" handles={handles}>
+    <NodeWrapper id={id} title="Aggregate Node" handles={handles}>
       <div className="bg-gray-50 p-3 rounded text-sm text-gray-600">
         Combines multiple inputs into a single output
       </div>
