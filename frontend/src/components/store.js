@@ -15,6 +15,7 @@ export const useStore = create((set, get) => ({
   nodeIDs: {},
   pipelineStats: null,
   isStatsDialogOpen: false,
+  validationMessages: [],
 
   // Getters
   getNodes: () => get().nodes,

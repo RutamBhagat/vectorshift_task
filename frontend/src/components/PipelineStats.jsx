@@ -16,7 +16,14 @@ export default function PipelineStats() {
 
   if (!pipelineStats) return null;
 
-  const { num_nodes, num_edges, is_dag, is_pipeline } = pipelineStats;
+  const { 
+    num_nodes, 
+    num_edges, 
+    is_dag, 
+    is_pipeline,
+    dag_validation_messages,
+    pipeline_validation_messages 
+  } = pipelineStats;
 
   return (
     <AlertDialog open={isDialogOpen} onOpenChange={setDialogOpen}>
@@ -45,6 +52,26 @@ export default function PipelineStats() {
                   {is_pipeline ? '✓' : '✗'}
                 </span>
               </div>
+              {dag_validation_messages.length > 0 && (
+                <div className="mt-4">
+                  <h4 className="font-medium mb-2">DAG Validation Messages:</h4>
+                  <ul className="list-disc list-inside text-red-600">
+                    {dag_validation_messages.map((msg, idx) => (
+                      <li key={idx}>{msg}</li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+              {pipeline_validation_messages.length > 0 && (
+                <div className="mt-4">
+                  <h4 className="font-medium mb-2">Pipeline Validation Messages:</h4>
+                  <ul className="list-disc list-inside text-red-600">
+                    {pipeline_validation_messages.map((msg, idx) => (
+                      <li key={idx}>{msg}</li>
+                    ))}
+                  </ul>
+                </div>
+              )}
             </div>
           </AlertDialogDescription>
         </AlertDialogHeader>
