@@ -41,20 +41,8 @@ class PipelineResponse(BaseModel):
     is_dag: bool
     is_pipeline: bool
 
-def validate_graph(nodes: List[NodeData], edges: List[Edge]) -> Tuple[bool, bool]:
-    """
-    Combined validation for both DAG and Pipeline properties.
-    Returns (is_dag, is_pipeline)
-    """
-    # Empty or single node cases
-    if not nodes:
-        return True, False
-    if len(nodes) == 1:
-        return True, False
-    if not edges:
-        return True, False
-        
-    # Build adjacency graph and track degrees
+def build_graph(nodes: List[NodeData], edges: List[Edge]) -> Tuple[Dict[str, List[str]], Dict[str, int], Set[str]]:
+    """Build adjacency graph and track in-degrees"""
     graph: Dict[str, List[str]] = defaultdict(list)
     in_degree: Dict[str, int] = defaultdict(int)
     node_ids = {node.id for node in nodes}
@@ -62,29 +50,34 @@ def validate_graph(nodes: List[NodeData], edges: List[Edge]) -> Tuple[bool, bool
     for edge in edges:
         graph[edge.source].append(edge.target)
         in_degree[edge.target] += 1
+        
+    return graph, in_degree, node_ids
 
-    # Check for cycles using Kahn's algorithm
+def validate_dag(graph: Dict[str, List[str]], in_degree: Dict[str, int], node_ids: Set[str]) -> bool:
+    """Check if the graph is a DAG using Kahn's algorithm"""
+    if not node_ids:
+        return True
+        
     zero_in_degree = [node for node in node_ids if in_degree[node] == 0]
     visited_count = 0
+    temp_in_degree = in_degree.copy()
     
     while zero_in_degree:
         current = zero_in_degree.pop(0)
         visited_count += 1
         
         for neighbor in graph[current]:
-            in_degree[neighbor] -= 1
-            if in_degree[neighbor] == 0:
+            temp_in_degree[neighbor] -= 1
+            if temp_in_degree[neighbor] == 0:
                 zero_in_degree.append(neighbor)
     
-    is_dag = visited_count == len(nodes)
-    if not is_dag:
-        return False, False
+    return visited_count == len(node_ids)
 
-    # Pipeline validation
-    if len(nodes) < 2:
-        return True, False
+def validate_pipeline(graph: Dict[str, List[str]], in_degree: Dict[str, int], node_ids: Set[str]) -> bool:
+    """Check if the graph forms a valid pipeline"""
+    if len(node_ids) < 2:
+        return False
         
-    # Check connectivity
     connected_nodes: Set[str] = set()
     def dfs(node: str) -> None:
         connected_nodes.add(node)
@@ -98,9 +91,23 @@ def validate_graph(nodes: List[NodeData], edges: List[Edge]) -> Tuple[bool, bool
         if start not in connected_nodes:
             dfs(start)
     
-    # Pipeline requires all nodes to be connected
-    is_pipeline = len(connected_nodes) == len(nodes)
+    return len(connected_nodes) == len(node_ids)
+
+def validate_graph(nodes: List[NodeData], edges: List[Edge]) -> Tuple[bool, bool]:
+    """Combined validation for both DAG and Pipeline properties"""
+    # Empty or single node cases
+    if not nodes:
+        return True, False
+    if not edges:
+        return True, False
+        
+    graph, in_degree, node_ids = build_graph(nodes, edges)
     
+    is_dag = validate_dag(graph, in_degree, node_ids)
+    if not is_dag:
+        return False, False
+        
+    is_pipeline = validate_pipeline(graph, in_degree, node_ids)
     return is_dag, is_pipeline
 
 app = FastAPI()
