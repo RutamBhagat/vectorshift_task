@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Position } from "reactflow";
 import { NodeWrapper } from "./NodeWrapper";
 import { AutosizeTextarea } from "../ui/autosize-textarea";
+import { FileText } from "lucide-react";
 
 export const TextNode = ({ id, data }) => {
   const [currText, setCurrText] = useState(data?.text || "{{input}}");
@@ -16,7 +17,7 @@ export const TextNode = ({ id, data }) => {
   ];
 
   return (
-    <NodeWrapper id={id} title="Text Node" handles={handles}>
+    <NodeWrapper id={id} title="Text Node" handles={handles} icon={FileText}>
       <div className="space-y-3">
         <AutosizeTextarea
           type="text"

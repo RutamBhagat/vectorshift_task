@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Position } from "reactflow";
 import { Input } from "../ui/input";
 import { NodeWrapper } from "./NodeWrapper";
+import { Filter } from "lucide-react";
 
 export const FilterNode = ({ id }) => {
   const [condition, setCondition] = useState("");
@@ -13,7 +14,7 @@ export const FilterNode = ({ id }) => {
   ];
 
   return (
-    <NodeWrapper id={id} title="Filter Node" handles={handles}>
+    <NodeWrapper id={id} title="Filter Node" handles={handles} icon={Filter}>
       <Input
         placeholder="Enter condition..."
         value={condition}

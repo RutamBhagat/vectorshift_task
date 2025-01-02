@@ -1,5 +1,6 @@
 import { Position } from "reactflow";
 import { NodeWrapper } from "./NodeWrapper";
+import { Layers } from "lucide-react";
 
 export const AggregateNode = ({ id }) => {
   const handles = [
@@ -9,7 +10,7 @@ export const AggregateNode = ({ id }) => {
   ];
 
   return (
-    <NodeWrapper id={id} title="Aggregate Node" handles={handles}>
+    <NodeWrapper id={id} title="Aggregate Node" handles={handles} icon={Layers}>
       <div className="bg-gray-50 p-3 rounded text-sm text-gray-600">
         Combines multiple inputs into a single output
       </div>

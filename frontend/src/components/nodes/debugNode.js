@@ -1,5 +1,6 @@
 import { Position } from "reactflow";
 import { NodeWrapper } from "./NodeWrapper";
+import { Bug } from "lucide-react";
 
 export const DebugNode = ({ id }) => {
   const handles = [
@@ -8,7 +9,7 @@ export const DebugNode = ({ id }) => {
   ];
 
   return (
-    <NodeWrapper id={id} title="Debug Node" handles={handles}>
+    <NodeWrapper id={id} title="Debug Node" handles={handles} icon={Bug}>
       <div className="bg-gray-50 p-3 rounded">
         <pre className="text-xs">Console output here...</pre>
       </div>

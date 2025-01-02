@@ -17,6 +17,7 @@ interface NodeWrapperProps {
   children: ReactNode;
   handles: HandleConfig[];
   id: string;
+  icon: React.ElementType;
 }
 
 export const NodeWrapper = ({
@@ -24,6 +25,7 @@ export const NodeWrapper = ({
   children,
   handles,
   id,
+  icon: Icon,
 }: NodeWrapperProps) => {
   const removeNode = useStore((state) => state.removeNode);
 
@@ -66,7 +68,12 @@ export const NodeWrapper = ({
           )}
         </Handle>
       ))}
-      <div className="mb-3 text-sm font-semibold text-gray-900">{title}</div>
+      <div className="mb-3 text-sm font-semibold text-gray-900 flex items-center gap-2">
+        <div className="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center">
+          <Icon className="w-4 h-4" />
+        </div>
+        {title}
+      </div>
       {children}
     </div>
   );

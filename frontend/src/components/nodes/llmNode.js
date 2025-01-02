@@ -1,5 +1,6 @@
 import { Position } from "reactflow";
 import { NodeWrapper } from "./NodeWrapper";
+import { MessageSquare } from "lucide-react";
 
 export const LLMNode = ({ id, data }) => {
   const handles = [
@@ -26,7 +27,7 @@ export const LLMNode = ({ id, data }) => {
   ];
 
   return (
-    <NodeWrapper id={id} title="LLM Node" handles={handles}>
+    <NodeWrapper id={id} title="LLM Node" handles={handles} icon={MessageSquare}>
       <div className="text-sm text-gray-600 bg-gray-50 p-3 rounded-lg">
         Large Language Model
       </div>

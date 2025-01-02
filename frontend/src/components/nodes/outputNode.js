@@ -3,6 +3,7 @@ import { Position } from "reactflow";
 import { Input } from "../ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../ui/select";
 import { NodeWrapper } from "./NodeWrapper";
+import { ArrowRight } from "lucide-react";
 
 export const OutputNode = ({ id, data }) => {
   const [currName, setCurrName] = useState(
@@ -20,7 +21,7 @@ export const OutputNode = ({ id, data }) => {
   ];
 
   return (
-    <NodeWrapper id={id} title="Output Node" handles={handles}>
+    <NodeWrapper id={id} title="Output Node" handles={handles} icon={ArrowRight}>
       <div className="space-y-3">
         <Input
           type="text"

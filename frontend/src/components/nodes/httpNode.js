@@ -3,6 +3,7 @@ import { Position } from "reactflow";
 import { Input } from "../ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../ui/select";
 import { NodeWrapper } from "./NodeWrapper";
+import { Globe } from "lucide-react";
 
 export const HttpNode = ({ id }) => {
   const [method, setMethod] = useState("GET");
@@ -13,7 +14,7 @@ export const HttpNode = ({ id }) => {
   ];
 
   return (
-    <NodeWrapper id={id} title="HTTP Node" handles={handles}>
+    <NodeWrapper id={id} title="HTTP Node" handles={handles} icon={Globe}>
       <div className="space-y-3">
         <Select value={method} onValueChange={setMethod}>
           <SelectTrigger>
