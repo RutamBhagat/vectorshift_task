@@ -32,13 +32,13 @@ export const NodeWrapper = ({
   const getLabelStyle = (position: Position) => {
     switch (position) {
       case Position.Left:
-        return "absolute transform -translate-x-[calc(100%+8px)] top-2";
+        return "absolute transform -translate-x-[calc(100%+8px)] top-1";
       case Position.Right:
-        return "absolute transform translate-x-[8px] top-2";
+        return "absolute transform translate-x-[8px] top-1";
       case Position.Top:
-        return "absolute transform left-2 -translate-y-[calc(100%+4px)]";
+        return "absolute transform left-1 -translate-y-[calc(100%+4px)]";
       case Position.Bottom:
-        return "absolute transform left-2 translate-y-[4px]";
+        return "absolute transform left-1 translate-y-[4px]";
       default:
         return "";
     }
