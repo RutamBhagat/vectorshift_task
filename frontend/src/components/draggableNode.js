@@ -1,7 +1,7 @@
 import { cn } from "../lib/utils";
 import { Button } from "./ui/button";
 
-export const DraggableNode = ({ type, label, className }) => {
+export const DraggableNode = ({ type, label, icon: Icon, className }) => {
   const onDragStart = (event, nodeType) => {
     const appData = { nodeType };
     event.target.style.cursor = "grabbing";
@@ -15,12 +15,17 @@ export const DraggableNode = ({ type, label, className }) => {
   return (
     <Button
       variant="secondary"
-      className={cn(className, "w-full text-sm md:block")}
+      className={cn(
+        className,
+        "flex flex-col items-center h-20 justify-center gap-2 aspect-square p-2 border hover:bg-secondary/80"
+      )}
       onDragStart={(event) => onDragStart(event, type)}
       onDragEnd={(event) => (event.target.style.cursor = "grab")}
       draggable
     >
-      {label}
+      <Icon className="h-6 w-6" />
+      <span className="text-xs">{label}</span>
     </Button>
   );
 };
+

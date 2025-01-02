@@ -1,4 +1,4 @@
-import { Menu } from "lucide-react";
+import { ArrowRight, Bug, FileText, Filter, Globe, Layers, LogIn, Menu, MessageSquare, Wand2 } from "lucide-react";
 import { DraggableNode } from "./draggableNode";
 import { Button } from "./ui/button";
 import { Card } from "./ui/card";
@@ -11,15 +11,15 @@ import {
 import { SubmitButton } from "./submit";
 
 const nodes = [
-  { type: "customInput", label: "Input" },
-  { type: "llm", label: "LLM" },
-  { type: "customOutput", label: "Output" },
-  { type: "text", label: "Text" },
-  { type: "aggeregate", label: "AggregateNode" },
-  { type: "debug", label: "DebugNode" },
-  { type: "filter", label: "FilterNode" },
-  { type: "http", label: "HttpNode" },
-  { type: "transform", label: "TransformNode" },
+  { type: "customInput", label: "Input", icon: LogIn },
+  { type: "llm", label: "LLM", icon: MessageSquare},
+  { type: "customOutput", label: "Output", icon: ArrowRight },
+  { type: "text", label: "Text", icon: FileText },
+  { type: "aggeregate", label: "AggregateNode", icon: Layers },
+  { type: "debug", label: "DebugNode", icon: Bug },
+  { type: "filter", label: "FilterNode", icon: Filter },
+  { type: "http", label: "HttpNode", icon: Globe },
+  { type: "transform", label: "TransformNode", icon: Wand2 },
 ];
 
 export const PipelineToolbar = () => {
@@ -56,36 +56,17 @@ export const PipelineToolbar = () => {
         </svg>
       </div>
 
-      <div className="flex items-center">
+      <div className="grid grid-flow-col auto-cols-[minmax(100px,1fr)] gap-2 items-center overflow-x-auto">
         {nodes.map((node) => (
           <DraggableNode
-            className="hidden md:block mx-2.5"
+            key={node.type}
+            className="w-full"
             type={node.type}
             label={node.label}
+            icon={node.icon}
           />
         ))}
-        <SubmitButton className="hidden md:block mx-2.5" />
-
-        <div className="flex md:hidden mr-2 items-center gap-2">
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <Button variant="outline" size="icon">
-                <Menu className="h-5 w-5 rotate-0 scale-100" />
-              </Button>
-            </DropdownMenuTrigger>
-
-            <DropdownMenuContent align="end">
-              {nodes.map((node) => (
-                <DropdownMenuItem>
-                  <DraggableNode type={node.type} label={node.label} />
-                </DropdownMenuItem>
-              ))}
-              <DropdownMenuItem>
-                <SubmitButton className="w-full text-sm" />
-              </DropdownMenuItem>
-            </DropdownMenuContent>
-          </DropdownMenu>
-        </div>
+        <SubmitButton className="w-full aspect-square" />
       </div>
     </Card>
   );
