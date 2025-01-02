@@ -11,9 +11,9 @@ import {
   CheckCircle,
   XCircle,
   AlertCircle,
-  GitBranch,
   GitCommit,
   X,
+  Link,
 } from "lucide-react";
 
 export default function PipelineStats() {
@@ -51,7 +51,7 @@ export default function PipelineStats() {
         <div className="space-y-6 mt-4">
           <div className="grid grid-cols-2 gap-4">
             <StatCard title="Nodes" value={num_nodes} icon={GitCommit} />
-            <StatCard title="Edges" value={num_edges} icon={GitBranch} />
+            <StatCard title="Edges" value={num_edges} icon={Link} />
           </div>
           <div className="grid grid-cols-2 gap-4">
             <ValidationStatus title="DAG Structure" isValid={is_dag} />
