@@ -4,9 +4,20 @@ import { useStore } from "./store";
 const EdgeWithDelete = ({ id, sourceX, sourceY, targetX, targetY }) => {
   // Calculate the middle point for the step
   const midX = (sourceX + targetX) / 2;
+  const radius = 8; // Corner radius
 
-  // Create a custom path with a single step in the middle
-  const path = `M${sourceX},${sourceY} H${midX} V${targetY} H${targetX}`;
+  // Create path with rounded corners using quadratic bezier curves
+  // Move to start -> Line to first corner -> Curve -> Vertical -> Curve -> Line to end
+  const path = `
+    M${sourceX},${sourceY}
+    H${midX - radius}
+    Q${midX},${sourceY} ${midX},${
+    sourceY + Math.sign(targetY - sourceY) * radius
+  }
+    V${targetY - Math.sign(targetY - sourceY) * radius}
+    Q${midX},${targetY} ${midX + radius},${targetY}
+    H${targetX}
+  `.trim();
 
   // Calculate label position at the middle of the path
   const labelX = midX;
