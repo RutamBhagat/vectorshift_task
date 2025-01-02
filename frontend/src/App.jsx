@@ -4,10 +4,12 @@ import { Card } from './components/ui/card';
 
 function App() {
   return (
-    <Card className="h-dvh flex flex-col m-2 rounded-xl">
-      <PipelineToolbar />
-      <PipelineUI />
-    </Card>
+    <div className='h-dvh'>
+      <Card className="h-full flex flex-col m-2 rounded-xl">
+        <PipelineToolbar />
+        <PipelineUI />
+      </Card>
+    </div>
   );
 }
 

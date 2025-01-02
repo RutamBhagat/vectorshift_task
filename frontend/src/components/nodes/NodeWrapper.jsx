@@ -1,24 +1,7 @@
-import { type ReactNode } from "react";
-//@ts-ignore
 import { Handle, Position } from "reactflow";
 import { XCircle } from "lucide-react";
 import { useStore } from "../store";
 
-interface HandleConfig {
-  type: "source" | "target";
-  position: Position;
-  id: string;
-  style?: React.CSSProperties;
-  label?: string;
-}
-
-interface NodeWrapperProps {
-  title: string;
-  children: ReactNode;
-  handles: HandleConfig[];
-  id: string;
-  icon: React.ElementType;
-}
 
 export const NodeWrapper = ({
   title,
@@ -26,10 +9,10 @@ export const NodeWrapper = ({
   handles,
   id,
   icon: Icon,
-}: NodeWrapperProps) => {
+}) => {
   const removeNode = useStore((state) => state.removeNode);
 
-  const getLabelStyle = (position: Position) => {
+  const getLabelStyle = (position) => {
     switch (position) {
       case Position.Left:
         return "absolute transform -translate-x-[calc(100%+8px)] top-1";
