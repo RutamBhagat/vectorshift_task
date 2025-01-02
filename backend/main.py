@@ -78,20 +78,25 @@ def validate_pipeline(graph: Dict[str, List[str]], in_degree: Dict[str, int], no
     if len(node_ids) < 2:
         return False
         
-    connected_nodes: Set[str] = set()
-    def dfs(node: str) -> None:
-        connected_nodes.add(node)
+    # Build undirected graph for connectivity check
+    undirected = defaultdict(set)
+    for node in node_ids:
         for neighbor in graph[node]:
-            if neighbor not in connected_nodes:
+            undirected[node].add(neighbor)
+            undirected[neighbor].add(node)
+            
+    # Check if all nodes are connected
+    connected = set()
+    def dfs(node: str):
+        connected.add(node)
+        for neighbor in undirected[node]:
+            if neighbor not in connected:
                 dfs(neighbor)
+                
+    start = next(iter(node_ids))
+    dfs(start)
     
-    # Start DFS from nodes with no incoming edges
-    start_nodes = {node for node in node_ids if node not in in_degree}
-    for start in start_nodes:
-        if start not in connected_nodes:
-            dfs(start)
-    
-    return len(connected_nodes) == len(node_ids)
+    return len(connected) == len(node_ids)
 
 def validate_graph(nodes: List[NodeData], edges: List[Edge]) -> Tuple[bool, bool]:
     """Combined validation for both DAG and Pipeline properties"""

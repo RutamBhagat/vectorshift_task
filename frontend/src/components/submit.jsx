@@ -19,12 +19,12 @@ export const SubmitButton = ({ className }) => {
         url,
         { nodes, edges }
       );
-
-      const { num_nodes, num_edges, is_dag } = response.data;
+      
+      const { num_nodes, num_edges, is_dag, is_pipeline } = response.data;
 
       toast("Pipeline Validation Results", {
-        description: `Nodes: ${num_nodes}, Edges: ${num_edges}, Is Valid DAG: ${is_dag} Is Valid Pipeline: ${is_dag}`,
-        duration: 5000
+        description: `Nodes: ${num_nodes}, Edges: ${num_edges}, Is Valid DAG: ${is_dag} Is Valid Pipeline: ${is_pipeline}`,
+        duration: 5000,
       });
     } catch (error) {
       toast.error("Pipeline Validation Failed", {
