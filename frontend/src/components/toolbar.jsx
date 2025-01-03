@@ -19,11 +19,9 @@ export const PipelineToolbar = () => {
   return (
     <Card className="bg-card rounded-b-none py-3 px-4 border-0 flex items-center justify-between gap-6">
       <div className="flex gap-5 items-center">
-        <img
-          src="./logo.svg"
-          alt="VectorShift Logo"
-          className="w-16 h-16 rounded-lg object-contain"
-        />
+        <div className="w-16 h-16 text-white flex justify-center items-center font-semibold bg-indigo-800 text-4xl rounded-lg">
+          <span>VS</span>
+        </div>
 
         <div className="grid grid-flow-col auto-cols-[minmax(60px,1fr)] gap-2 items-center overflow-x-auto">
           {nodes.map((node) => (
