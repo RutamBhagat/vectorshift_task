@@ -1,3 +1,5 @@
+import ReactConfetti from 'react-confetti';
+import { useEffect, useState } from 'react';
 import { useStore } from "./store";
 import {
   AlertDialog,
@@ -16,10 +18,33 @@ import {
   Link,
 } from "lucide-react";
 
+function useWindowSize() {
+  const [size, setSize] = useState({
+    width: window.innerWidth,
+    height: window.innerHeight,
+  });
+
+  useEffect(() => {
+    function handleResize() {
+      setSize({
+        width: window.innerWidth,
+        height: window.innerHeight,
+      });
+    }
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  return size;
+}
+
 export default function PipelineStats() {
   const pipelineStats = useStore((state) => state.pipelineStats);
   const isDialogOpen = useStore((state) => state.isStatsDialogOpen);
   const setDialogOpen = useStore((state) => state.setStatsDialogOpen);
+  const showConfetti = useStore((state) => state.showConfetti);
+  const { width, height } = useWindowSize();
 
   if (!pipelineStats) return null;
 
@@ -33,41 +58,57 @@ export default function PipelineStats() {
   } = pipelineStats;
 
   return (
-    <AlertDialog open={isDialogOpen} onOpenChange={setDialogOpen}>
-      <AlertDialogContent className="max-w-3xl">
-        <AlertDialogHeader className="relative">
-          <AlertDialogTitle className="text-2xl font-bold text-indigo-700">
-            Pipeline Validation Results
-          </AlertDialogTitle>
-          <Button
-            onClick={() => setDialogOpen(false)}
-            className="absolute right-0 top-0 rounded-full p-2 text-gray-500 hover:text-gray-700 border border-gray-300"
-            size="icon"
-            variant="ghost"
-          >
-            <X className="h-4 w-4" />
-          </Button>
-        </AlertDialogHeader>
-        <div className="space-y-6 mt-4">
-          <div className="grid grid-cols-2 gap-4">
-            <StatCard title="Nodes" value={num_nodes} icon={GitCommit} />
-            <StatCard title="Edges" value={num_edges} icon={Link} />
-          </div>
-          <div className="grid grid-cols-2 gap-4">
-            <ValidationStatus title="DAG Structure" isValid={is_dag} />
-            <ValidationStatus title="Pipeline" isValid={is_pipeline} />
-          </div>
-          <ValidationMessages
-            title="DAG Validation"
-            messages={dag_validation_messages}
-          />
-          <ValidationMessages
-            title="Pipeline Validation"
-            messages={pipeline_validation_messages}
+    <>
+      {showConfetti && (
+        <div className="fixed inset-0 pointer-events-none z-[60]">
+          <ReactConfetti
+            width={width}
+            height={height}
+            numberOfPieces={200}
+            recycle={false}
+            run={true}
+            onConfettiComplete={() => {
+              useStore.setState({ showConfetti: false });
+            }}
           />
         </div>
-      </AlertDialogContent>
-    </AlertDialog>
+      )}
+      <AlertDialog open={isDialogOpen} onOpenChange={setDialogOpen}>
+        <AlertDialogContent className="max-w-3xl">
+          <AlertDialogHeader className="relative">
+            <AlertDialogTitle className="text-2xl font-bold text-indigo-700">
+              Pipeline Validation Results
+            </AlertDialogTitle>
+            <Button
+              onClick={() => setDialogOpen(false)}
+              className="absolute right-0 top-0 rounded-full p-2 text-gray-500 hover:text-gray-700 border border-gray-300"
+              size="icon"
+              variant="ghost"
+            >
+              <X className="h-4 w-4" />
+            </Button>
+          </AlertDialogHeader>
+          <div className="space-y-6 mt-4">
+            <div className="grid grid-cols-2 gap-4">
+              <StatCard title="Nodes" value={num_nodes} icon={GitCommit} />
+              <StatCard title="Edges" value={num_edges} icon={Link} />
+            </div>
+            <div className="grid grid-cols-2 gap-4">
+              <ValidationStatus title="DAG Structure" isValid={is_dag} />
+              <ValidationStatus title="Pipeline" isValid={is_pipeline} />
+            </div>
+            <ValidationMessages
+              title="DAG Validation"
+              messages={dag_validation_messages}
+            />
+            <ValidationMessages
+              title="Pipeline Validation"
+              messages={pipeline_validation_messages}
+            />
+          </div>
+        </AlertDialogContent>
+      </AlertDialog>
+    </>
   );
 }
 

@@ -7,7 +7,6 @@ import {
 } from "reactflow";
 
 
-// Store creation with organized actions
 export const useStore = create((set, get) => ({
   // State
   nodes: [],
@@ -16,6 +15,7 @@ export const useStore = create((set, get) => ({
   pipelineStats: null,
   isStatsDialogOpen: false,
   validationMessages: [],
+  showConfetti: false,
 
   // Getters
   getNodes: () => get().nodes,
@@ -84,6 +84,13 @@ export const useStore = create((set, get) => ({
       edges: get().edges.filter((edge) => edge.id !== edgeId),
     });
   },
-  setPipelineStats: (stats) => set({ pipelineStats: stats }),
-  setStatsDialogOpen: (isOpen) => set({ isStatsDialogOpen: isOpen }),
+  setPipelineStats: (stats) => set({ 
+    pipelineStats: stats,
+    showConfetti: stats?.is_dag && stats?.is_pipeline,
+  }),
+  setStatsDialogOpen: (isOpen) => set(state => ({ 
+    isStatsDialogOpen: isOpen,
+    pipelineStats: isOpen ? state.pipelineStats : null,
+    showConfetti: isOpen ? state.showConfetti : false,
+  })),
 }));

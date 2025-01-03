@@ -592,3 +592,441 @@
 ```
 
 ---
+
+## Request at 2025-01-03 15:02:30
+
+### Pipeline Request
+```json
+{
+  "nodes": [
+    {
+      "id": "customInput-1",
+      "type": "customInput",
+      "position": {
+        "x": 277.19999980926514,
+        "y": 223.1999969482422
+      },
+      "data": {
+        "id": "customInput-1",
+        "nodeType": "customInput"
+      },
+      "width": 250,
+      "height": 171
+    },
+    {
+      "id": "text-1",
+      "type": "text",
+      "position": {
+        "x": 818.4388943806425,
+        "y": 125.43134111679635
+      },
+      "data": {
+        "id": "text-1",
+        "nodeType": "text"
+      },
+      "width": 250,
+      "height": 149
+    }
+  ],
+  "edges": [
+    {
+      "id": "reactflow__edge-customInput-1customInput-1-value-text-1text-1-input-char",
+      "type": "custom",
+      "source": "customInput-1",
+      "target": "text-1",
+      "sourceHandle": "customInput-1-value",
+      "targetHandle": "text-1-input-char",
+      "animated": false,
+      "style": {
+        "strokeWidth": 2,
+        "animation": "none"
+      },
+      "deletable": true,
+      "markerEnd": {
+        "type": "arrow",
+        "height": "20px",
+        "width": "20px"
+      }
+    }
+  ]
+}
+```
+
+### Pipeline Response
+```json
+{
+  "num_nodes": 2,
+  "num_edges": 1,
+  "is_dag": true,
+  "is_pipeline": true,
+  "dag_validation_messages": [],
+  "pipeline_validation_messages": []
+}
+```
+
+---
+
+## Request at 2025-01-03 15:02:39
+
+### Pipeline Request
+```json
+{
+  "nodes": [
+    {
+      "id": "customInput-1",
+      "type": "customInput",
+      "position": {
+        "x": 277.19999980926514,
+        "y": 223.1999969482422
+      },
+      "data": {
+        "id": "customInput-1",
+        "nodeType": "customInput"
+      },
+      "width": 250,
+      "height": 171
+    },
+    {
+      "id": "text-1",
+      "type": "text",
+      "position": {
+        "x": 818.4388943806425,
+        "y": 125.43134111679635
+      },
+      "data": {
+        "id": "text-1",
+        "nodeType": "text"
+      },
+      "width": 250,
+      "height": 149
+    }
+  ],
+  "edges": [
+    {
+      "id": "reactflow__edge-customInput-1customInput-1-value-text-1text-1-input-char",
+      "type": "custom",
+      "source": "customInput-1",
+      "target": "text-1",
+      "sourceHandle": "customInput-1-value",
+      "targetHandle": "text-1-input-char",
+      "animated": false,
+      "style": {
+        "strokeWidth": 2,
+        "animation": "none"
+      },
+      "deletable": true,
+      "markerEnd": {
+        "type": "arrow",
+        "height": "20px",
+        "width": "20px"
+      }
+    }
+  ]
+}
+```
+
+### Pipeline Response
+```json
+{
+  "num_nodes": 2,
+  "num_edges": 1,
+  "is_dag": true,
+  "is_pipeline": true,
+  "dag_validation_messages": [],
+  "pipeline_validation_messages": []
+}
+```
+
+---
+
+## Request at 2025-01-03 15:02:41
+
+### Pipeline Request
+```json
+{
+  "nodes": [
+    {
+      "id": "customInput-1",
+      "type": "customInput",
+      "position": {
+        "x": 277.19999980926514,
+        "y": 223.1999969482422
+      },
+      "data": {
+        "id": "customInput-1",
+        "nodeType": "customInput"
+      },
+      "width": 250,
+      "height": 171
+    },
+    {
+      "id": "text-1",
+      "type": "text",
+      "position": {
+        "x": 818.4388943806425,
+        "y": 125.43134111679635
+      },
+      "data": {
+        "id": "text-1",
+        "nodeType": "text"
+      },
+      "width": 250,
+      "height": 149
+    }
+  ],
+  "edges": [
+    {
+      "id": "reactflow__edge-customInput-1customInput-1-value-text-1text-1-input-char",
+      "type": "custom",
+      "source": "customInput-1",
+      "target": "text-1",
+      "sourceHandle": "customInput-1-value",
+      "targetHandle": "text-1-input-char",
+      "animated": false,
+      "style": {
+        "strokeWidth": 2,
+        "animation": "none"
+      },
+      "deletable": true,
+      "markerEnd": {
+        "type": "arrow",
+        "height": "20px",
+        "width": "20px"
+      }
+    }
+  ]
+}
+```
+
+### Pipeline Response
+```json
+{
+  "num_nodes": 2,
+  "num_edges": 1,
+  "is_dag": true,
+  "is_pipeline": true,
+  "dag_validation_messages": [],
+  "pipeline_validation_messages": []
+}
+```
+
+---
+
+## Request at 2025-01-03 15:02:50
+
+### Pipeline Request
+```json
+{
+  "nodes": [
+    {
+      "id": "customInput-1",
+      "type": "customInput",
+      "position": {
+        "x": 277.19999980926514,
+        "y": 223.1999969482422
+      },
+      "data": {
+        "id": "customInput-1",
+        "nodeType": "customInput"
+      },
+      "width": 250,
+      "height": 171
+    },
+    {
+      "id": "text-1",
+      "type": "text",
+      "position": {
+        "x": 818.4388943806425,
+        "y": 125.43134111679635
+      },
+      "data": {
+        "id": "text-1",
+        "nodeType": "text"
+      },
+      "width": 250,
+      "height": 149
+    }
+  ],
+  "edges": [
+    {
+      "id": "reactflow__edge-customInput-1customInput-1-value-text-1text-1-input-user",
+      "type": "custom",
+      "source": "customInput-1",
+      "target": "text-1",
+      "sourceHandle": "customInput-1-value",
+      "targetHandle": "text-1-input-user",
+      "animated": false,
+      "style": {
+        "strokeWidth": 2,
+        "animation": "none"
+      },
+      "deletable": true,
+      "markerEnd": {
+        "type": "arrow",
+        "height": "20px",
+        "width": "20px"
+      }
+    }
+  ]
+}
+```
+
+### Pipeline Response
+```json
+{
+  "num_nodes": 2,
+  "num_edges": 1,
+  "is_dag": true,
+  "is_pipeline": true,
+  "dag_validation_messages": [],
+  "pipeline_validation_messages": []
+}
+```
+
+---
+
+## Request at 2025-01-03 15:06:03
+
+### Pipeline Request
+```json
+{
+  "nodes": [
+    {
+      "id": "customInput-1",
+      "type": "customInput",
+      "position": {
+        "x": 330.88072135005797,
+        "y": 182.82993523541728
+      },
+      "data": {
+        "id": "customInput-1",
+        "nodeType": "customInput"
+      },
+      "width": 250,
+      "height": 171
+    },
+    {
+      "id": "text-1",
+      "type": "text",
+      "position": {
+        "x": 856.04486983767,
+        "y": 274.53573503413344
+      },
+      "data": {
+        "id": "text-1",
+        "nodeType": "text"
+      },
+      "width": 250,
+      "height": 149
+    }
+  ],
+  "edges": [
+    {
+      "id": "reactflow__edge-customInput-1customInput-1-value-text-1text-1-input-narrator",
+      "type": "custom",
+      "source": "customInput-1",
+      "target": "text-1",
+      "sourceHandle": "customInput-1-value",
+      "targetHandle": "text-1-input-narrator",
+      "animated": false,
+      "style": {
+        "strokeWidth": 2,
+        "animation": "none"
+      },
+      "deletable": true,
+      "markerEnd": {
+        "type": "arrow",
+        "height": "20px",
+        "width": "20px"
+      }
+    }
+  ]
+}
+```
+
+### Pipeline Response
+```json
+{
+  "num_nodes": 2,
+  "num_edges": 1,
+  "is_dag": true,
+  "is_pipeline": true,
+  "dag_validation_messages": [],
+  "pipeline_validation_messages": []
+}
+```
+
+---
+
+## Request at 2025-01-03 15:07:53
+
+### Pipeline Request
+```json
+{
+  "nodes": [
+    {
+      "id": "customInput-1",
+      "type": "customInput",
+      "position": {
+        "x": 330.88072135005797,
+        "y": 182.82993523541728
+      },
+      "data": {
+        "id": "customInput-1",
+        "nodeType": "customInput"
+      },
+      "width": 250,
+      "height": 171
+    },
+    {
+      "id": "text-1",
+      "type": "text",
+      "position": {
+        "x": 856.04486983767,
+        "y": 274.53573503413344
+      },
+      "data": {
+        "id": "text-1",
+        "nodeType": "text"
+      },
+      "width": 250,
+      "height": 149
+    }
+  ],
+  "edges": [
+    {
+      "id": "reactflow__edge-customInput-1customInput-1-value-text-1text-1-input-narrator",
+      "type": "custom",
+      "source": "customInput-1",
+      "target": "text-1",
+      "sourceHandle": "customInput-1-value",
+      "targetHandle": "text-1-input-narrator",
+      "animated": false,
+      "style": {
+        "strokeWidth": 2,
+        "animation": "none"
+      },
+      "deletable": true,
+      "markerEnd": {
+        "type": "arrow",
+        "height": "20px",
+        "width": "20px"
+      }
+    }
+  ]
+}
+```
+
+### Pipeline Response
+```json
+{
+  "num_nodes": 2,
+  "num_edges": 1,
+  "is_dag": true,
+  "is_pipeline": true,
+  "dag_validation_messages": [],
+  "pipeline_validation_messages": []
+}
+```
+
+---
