@@ -42,7 +42,7 @@ export const NodeWrapper = ({
           position={handle.position}
           id={handle.id}
           style={handle.style}
-          className="relative w-3 h-3 !bg-[#FF6B6B] border-2 border-[#E55959] hover:!bg-[#E55959] transition-colors"
+          className="relative !w-2 !h-2 !bg-[#FF6B6B] border-2 border-[#E55959] hover:!bg-[#E55959] transition-colors"
         >
           {handle.label && (
             <span
