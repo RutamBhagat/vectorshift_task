@@ -1,5 +1,5 @@
-import ReactConfetti from 'react-confetti';
-import { useEffect, useState } from 'react';
+import confetti from "canvas-confetti";
+import { useEffect } from "react";
 import { useStore } from "./store";
 import {
   AlertDialog,
@@ -14,29 +14,44 @@ import {
   XCircle,
   AlertCircle,
   GitCommit,
-  X,
   Link,
+  X,
 } from "lucide-react";
 
-function useWindowSize() {
-  const [size, setSize] = useState({
-    width: window.innerWidth,
-    height: window.innerHeight,
-  });
+function fireSuccessConfetti() {
+  const duration = 3000;
+  const animationEnd = Date.now() + duration;
 
-  useEffect(() => {
-    function handleResize() {
-      setSize({
-        width: window.innerWidth,
-        height: window.innerHeight,
-      });
+  const defaults = {
+    startVelocity: 30,
+    spread: 360,
+    ticks: 60,
+    zIndex: 100,
+    useWorker: true,
+  };
+
+  const randomInRange = (min, max) => Math.random() * (max - min) + min;
+
+  const interval = setInterval(() => {
+    const timeLeft = animationEnd - Date.now();
+
+    if (timeLeft <= 0) {
+      return clearInterval(interval);
     }
 
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
+    const particleCount = 50 * (timeLeft / duration);
 
-  return size;
+    confetti({
+      ...defaults,
+      particleCount,
+      origin: { x: randomInRange(0.1, 0.9), y: Math.random() - 0.2 },
+    });
+    confetti({
+      ...defaults,
+      particleCount,
+      origin: { x: randomInRange(0.1, 0.9), y: Math.random() - 0.2 },
+    });
+  }, 250);
 }
 
 export default function PipelineStats() {
@@ -44,7 +59,16 @@ export default function PipelineStats() {
   const isDialogOpen = useStore((state) => state.isStatsDialogOpen);
   const setDialogOpen = useStore((state) => state.setStatsDialogOpen);
   const showConfetti = useStore((state) => state.showConfetti);
-  const { width, height } = useWindowSize();
+
+  useEffect(() => {
+    if (showConfetti && pipelineStats) {
+      const isValid = pipelineStats.is_dag && pipelineStats.is_pipeline;
+      if (isValid) {
+        fireSuccessConfetti();
+      }
+      useStore.setState({ showConfetti: false });
+    }
+  }, [showConfetti, pipelineStats]);
 
   if (!pipelineStats) return null;
 
@@ -59,22 +83,8 @@ export default function PipelineStats() {
 
   return (
     <>
-      {showConfetti && (
-        <div className="fixed inset-0 pointer-events-none z-[60]">
-          <ReactConfetti
-            width={width}
-            height={height}
-            numberOfPieces={200}
-            recycle={false}
-            run={true}
-            onConfettiComplete={() => {
-              useStore.setState({ showConfetti: false });
-            }}
-          />
-        </div>
-      )}
       <AlertDialog open={isDialogOpen} onOpenChange={setDialogOpen}>
-        <AlertDialogContent className="max-w-3xl">
+        <AlertDialogContent className="max-w-3xl alertDialog">
           <AlertDialogHeader className="relative">
             <AlertDialogTitle className="text-2xl font-bold text-indigo-700">
               Pipeline Validation Results

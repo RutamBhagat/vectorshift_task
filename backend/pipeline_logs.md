@@ -1030,3 +1030,802 @@
 ```
 
 ---
+
+## Request at 2025-01-03 15:12:27
+
+### Pipeline Request
+```json
+{
+  "nodes": [],
+  "edges": []
+}
+```
+
+### Pipeline Response
+```json
+{
+  "num_nodes": 0,
+  "num_edges": 0,
+  "is_dag": true,
+  "is_pipeline": false,
+  "dag_validation_messages": [],
+  "pipeline_validation_messages": [
+    "Empty graph (no nodes)"
+  ]
+}
+```
+
+---
+
+## Request at 2025-01-03 15:12:37
+
+### Pipeline Request
+```json
+{
+  "nodes": [
+    {
+      "id": "customOutput-1",
+      "type": "customOutput",
+      "position": {
+        "x": 332.44379921936667,
+        "y": 135.94851630400066
+      },
+      "data": {
+        "id": "customOutput-1",
+        "nodeType": "customOutput"
+      },
+      "width": 250,
+      "height": 171
+    }
+  ],
+  "edges": []
+}
+```
+
+### Pipeline Response
+```json
+{
+  "num_nodes": 1,
+  "num_edges": 0,
+  "is_dag": true,
+  "is_pipeline": false,
+  "dag_validation_messages": [],
+  "pipeline_validation_messages": [
+    "Invalid pipeline: contains only a single node"
+  ]
+}
+```
+
+---
+
+## Request at 2025-01-03 15:15:27
+
+### Pipeline Request
+```json
+{
+  "nodes": [
+    {
+      "id": "customInput-1",
+      "type": "customInput",
+      "position": {
+        "x": 247.53201418936783,
+        "y": 175.9133745434428
+      },
+      "data": {
+        "id": "customInput-1",
+        "nodeType": "customInput"
+      },
+      "width": 250,
+      "height": 171
+    },
+    {
+      "id": "llm-1",
+      "type": "llm",
+      "position": {
+        "x": 831.5320141893674,
+        "y": 276.9133745434427
+      },
+      "data": {
+        "id": "llm-1",
+        "nodeType": "llm"
+      },
+      "width": 250,
+      "height": 131
+    }
+  ],
+  "edges": [
+    {
+      "id": "reactflow__edge-customInput-1customInput-1-value-llm-1llm-1-system",
+      "type": "custom",
+      "source": "customInput-1",
+      "target": "llm-1",
+      "sourceHandle": "customInput-1-value",
+      "targetHandle": "llm-1-system",
+      "animated": false,
+      "style": {
+        "strokeWidth": 2,
+        "animation": "none"
+      },
+      "deletable": true,
+      "markerEnd": {
+        "type": "arrow",
+        "height": "20px",
+        "width": "20px"
+      }
+    }
+  ]
+}
+```
+
+### Pipeline Response
+```json
+{
+  "num_nodes": 2,
+  "num_edges": 1,
+  "is_dag": true,
+  "is_pipeline": true,
+  "dag_validation_messages": [],
+  "pipeline_validation_messages": []
+}
+```
+
+---
+
+## Request at 2025-01-03 15:16:15
+
+### Pipeline Request
+```json
+{
+  "nodes": [
+    {
+      "id": "customInput-1",
+      "type": "customInput",
+      "position": {
+        "x": 247.53201418936783,
+        "y": 175.9133745434428
+      },
+      "data": {
+        "id": "customInput-1",
+        "nodeType": "customInput"
+      },
+      "width": 250,
+      "height": 171
+    },
+    {
+      "id": "llm-1",
+      "type": "llm",
+      "position": {
+        "x": 831.5320141893674,
+        "y": 276.9133745434427
+      },
+      "data": {
+        "id": "llm-1",
+        "nodeType": "llm"
+      },
+      "width": 250,
+      "height": 131
+    }
+  ],
+  "edges": [
+    {
+      "id": "reactflow__edge-customInput-1customInput-1-value-llm-1llm-1-system",
+      "type": "custom",
+      "source": "customInput-1",
+      "target": "llm-1",
+      "sourceHandle": "customInput-1-value",
+      "targetHandle": "llm-1-system",
+      "animated": false,
+      "style": {
+        "strokeWidth": 2,
+        "animation": "none"
+      },
+      "deletable": true,
+      "markerEnd": {
+        "type": "arrow",
+        "height": "20px",
+        "width": "20px"
+      }
+    }
+  ]
+}
+```
+
+### Pipeline Response
+```json
+{
+  "num_nodes": 2,
+  "num_edges": 1,
+  "is_dag": true,
+  "is_pipeline": true,
+  "dag_validation_messages": [],
+  "pipeline_validation_messages": []
+}
+```
+
+---
+
+## Request at 2025-01-03 15:16:19
+
+### Pipeline Request
+```json
+{
+  "nodes": [
+    {
+      "id": "customInput-1",
+      "type": "customInput",
+      "position": {
+        "x": 247.53201418936783,
+        "y": 175.9133745434428
+      },
+      "data": {
+        "id": "customInput-1",
+        "nodeType": "customInput"
+      },
+      "width": 250,
+      "height": 171
+    },
+    {
+      "id": "llm-1",
+      "type": "llm",
+      "position": {
+        "x": 831.5320141893674,
+        "y": 276.9133745434427
+      },
+      "data": {
+        "id": "llm-1",
+        "nodeType": "llm"
+      },
+      "width": 250,
+      "height": 131
+    }
+  ],
+  "edges": []
+}
+```
+
+### Pipeline Response
+```json
+{
+  "num_nodes": 2,
+  "num_edges": 0,
+  "is_dag": true,
+  "is_pipeline": false,
+  "dag_validation_messages": [],
+  "pipeline_validation_messages": [
+    "Invalid pipeline: nodes exist but no connections between them"
+  ]
+}
+```
+
+---
+
+## Request at 2025-01-03 15:16:42
+
+### Pipeline Request
+```json
+{
+  "nodes": [
+    {
+      "id": "customInput-1",
+      "type": "customInput",
+      "position": {
+        "x": 247.53201418936783,
+        "y": 175.9133745434428
+      },
+      "data": {
+        "id": "customInput-1",
+        "nodeType": "customInput"
+      },
+      "width": 250,
+      "height": 171
+    },
+    {
+      "id": "llm-1",
+      "type": "llm",
+      "position": {
+        "x": 831.5320141893674,
+        "y": 276.9133745434427
+      },
+      "data": {
+        "id": "llm-1",
+        "nodeType": "llm"
+      },
+      "width": 250,
+      "height": 131
+    }
+  ],
+  "edges": [
+    {
+      "id": "reactflow__edge-customInput-1customInput-1-value-llm-1llm-1-system",
+      "type": "custom",
+      "source": "customInput-1",
+      "target": "llm-1",
+      "sourceHandle": "customInput-1-value",
+      "targetHandle": "llm-1-system",
+      "animated": false,
+      "style": {
+        "strokeWidth": 2,
+        "animation": "none"
+      },
+      "deletable": true,
+      "markerEnd": {
+        "type": "arrow",
+        "height": "20px",
+        "width": "20px"
+      }
+    }
+  ]
+}
+```
+
+### Pipeline Response
+```json
+{
+  "num_nodes": 2,
+  "num_edges": 1,
+  "is_dag": true,
+  "is_pipeline": true,
+  "dag_validation_messages": [],
+  "pipeline_validation_messages": []
+}
+```
+
+---
+
+## Request at 2025-01-03 15:16:47
+
+### Pipeline Request
+```json
+{
+  "nodes": [
+    {
+      "id": "customInput-1",
+      "type": "customInput",
+      "position": {
+        "x": 247.53201418936783,
+        "y": 175.9133745434428
+      },
+      "data": {
+        "id": "customInput-1",
+        "nodeType": "customInput"
+      },
+      "width": 250,
+      "height": 171
+    },
+    {
+      "id": "llm-1",
+      "type": "llm",
+      "position": {
+        "x": 831.5320141893674,
+        "y": 276.9133745434427
+      },
+      "data": {
+        "id": "llm-1",
+        "nodeType": "llm"
+      },
+      "width": 250,
+      "height": 131
+    }
+  ],
+  "edges": [
+    {
+      "id": "reactflow__edge-customInput-1customInput-1-value-llm-1llm-1-system",
+      "type": "custom",
+      "source": "customInput-1",
+      "target": "llm-1",
+      "sourceHandle": "customInput-1-value",
+      "targetHandle": "llm-1-system",
+      "animated": false,
+      "style": {
+        "strokeWidth": 2,
+        "animation": "none"
+      },
+      "deletable": true,
+      "markerEnd": {
+        "type": "arrow",
+        "height": "20px",
+        "width": "20px"
+      }
+    },
+    {
+      "id": "reactflow__edge-customInput-1customInput-1-value-llm-1llm-1-prompt",
+      "type": "custom",
+      "source": "customInput-1",
+      "target": "llm-1",
+      "sourceHandle": "customInput-1-value",
+      "targetHandle": "llm-1-prompt",
+      "animated": false,
+      "style": {
+        "strokeWidth": 2,
+        "animation": "none"
+      },
+      "deletable": true,
+      "markerEnd": {
+        "type": "arrow",
+        "height": "20px",
+        "width": "20px"
+      }
+    }
+  ]
+}
+```
+
+### Pipeline Response
+```json
+{
+  "num_nodes": 2,
+  "num_edges": 2,
+  "is_dag": true,
+  "is_pipeline": true,
+  "dag_validation_messages": [],
+  "pipeline_validation_messages": []
+}
+```
+
+---
+
+## Request at 2025-01-03 15:16:51
+
+### Pipeline Request
+```json
+{
+  "nodes": [
+    {
+      "id": "customInput-1",
+      "type": "customInput",
+      "position": {
+        "x": 247.53201418936783,
+        "y": 175.9133745434428
+      },
+      "data": {
+        "id": "customInput-1",
+        "nodeType": "customInput"
+      },
+      "width": 250,
+      "height": 171
+    },
+    {
+      "id": "llm-1",
+      "type": "llm",
+      "position": {
+        "x": 831.5320141893674,
+        "y": 276.9133745434427
+      },
+      "data": {
+        "id": "llm-1",
+        "nodeType": "llm"
+      },
+      "width": 250,
+      "height": 131
+    }
+  ],
+  "edges": [
+    {
+      "id": "reactflow__edge-customInput-1customInput-1-value-llm-1llm-1-prompt",
+      "type": "custom",
+      "source": "customInput-1",
+      "target": "llm-1",
+      "sourceHandle": "customInput-1-value",
+      "targetHandle": "llm-1-prompt",
+      "animated": false,
+      "style": {
+        "strokeWidth": 2,
+        "animation": "none"
+      },
+      "deletable": true,
+      "markerEnd": {
+        "type": "arrow",
+        "height": "20px",
+        "width": "20px"
+      }
+    }
+  ]
+}
+```
+
+### Pipeline Response
+```json
+{
+  "num_nodes": 2,
+  "num_edges": 1,
+  "is_dag": true,
+  "is_pipeline": true,
+  "dag_validation_messages": [],
+  "pipeline_validation_messages": []
+}
+```
+
+---
+
+## Request at 2025-01-03 15:16:54
+
+### Pipeline Request
+```json
+{
+  "nodes": [
+    {
+      "id": "customInput-1",
+      "type": "customInput",
+      "position": {
+        "x": 247.53201418936783,
+        "y": 175.9133745434428
+      },
+      "data": {
+        "id": "customInput-1",
+        "nodeType": "customInput"
+      },
+      "width": 250,
+      "height": 171
+    },
+    {
+      "id": "llm-1",
+      "type": "llm",
+      "position": {
+        "x": 831.5320141893674,
+        "y": 276.9133745434427
+      },
+      "data": {
+        "id": "llm-1",
+        "nodeType": "llm"
+      },
+      "width": 250,
+      "height": 131
+    }
+  ],
+  "edges": []
+}
+```
+
+### Pipeline Response
+```json
+{
+  "num_nodes": 2,
+  "num_edges": 0,
+  "is_dag": true,
+  "is_pipeline": false,
+  "dag_validation_messages": [],
+  "pipeline_validation_messages": [
+    "Invalid pipeline: nodes exist but no connections between them"
+  ]
+}
+```
+
+---
+
+## Request at 2025-01-03 15:18:20
+
+### Pipeline Request
+```json
+{
+  "nodes": [
+    {
+      "id": "customInput-1",
+      "type": "customInput",
+      "position": {
+        "x": 247.53201418936783,
+        "y": 175.9133745434428
+      },
+      "data": {
+        "id": "customInput-1",
+        "nodeType": "customInput"
+      },
+      "width": 250,
+      "height": 171
+    },
+    {
+      "id": "llm-1",
+      "type": "llm",
+      "position": {
+        "x": 831.5320141893674,
+        "y": 276.9133745434427
+      },
+      "data": {
+        "id": "llm-1",
+        "nodeType": "llm"
+      },
+      "width": 250,
+      "height": 131
+    }
+  ],
+  "edges": []
+}
+```
+
+### Pipeline Response
+```json
+{
+  "num_nodes": 2,
+  "num_edges": 0,
+  "is_dag": true,
+  "is_pipeline": false,
+  "dag_validation_messages": [],
+  "pipeline_validation_messages": [
+    "Invalid pipeline: nodes exist but no connections between them"
+  ]
+}
+```
+
+---
+
+## Request at 2025-01-03 15:20:57
+
+### Pipeline Request
+```json
+{
+  "nodes": [
+    {
+      "id": "customInput-1",
+      "type": "customInput",
+      "position": {
+        "x": 247.53201418936783,
+        "y": 175.9133745434428
+      },
+      "data": {
+        "id": "customInput-1",
+        "nodeType": "customInput"
+      },
+      "width": 250,
+      "height": 171
+    },
+    {
+      "id": "llm-1",
+      "type": "llm",
+      "position": {
+        "x": 831.5320141893674,
+        "y": 276.9133745434427
+      },
+      "data": {
+        "id": "llm-1",
+        "nodeType": "llm"
+      },
+      "width": 250,
+      "height": 131
+    }
+  ],
+  "edges": []
+}
+```
+
+### Pipeline Response
+```json
+{
+  "num_nodes": 2,
+  "num_edges": 0,
+  "is_dag": true,
+  "is_pipeline": false,
+  "dag_validation_messages": [],
+  "pipeline_validation_messages": [
+    "Invalid pipeline: nodes exist but no connections between them"
+  ]
+}
+```
+
+---
+
+## Request at 2025-01-03 15:22:59
+
+### Pipeline Request
+```json
+{
+  "nodes": [
+    {
+      "id": "customInput-1",
+      "type": "customInput",
+      "position": {
+        "x": 247.53201418936783,
+        "y": 175.9133745434428
+      },
+      "data": {
+        "id": "customInput-1",
+        "nodeType": "customInput"
+      },
+      "width": 250,
+      "height": 171
+    },
+    {
+      "id": "llm-1",
+      "type": "llm",
+      "position": {
+        "x": 831.5320141893674,
+        "y": 276.9133745434427
+      },
+      "data": {
+        "id": "llm-1",
+        "nodeType": "llm"
+      },
+      "width": 250,
+      "height": 131
+    }
+  ],
+  "edges": []
+}
+```
+
+### Pipeline Response
+```json
+{
+  "num_nodes": 2,
+  "num_edges": 0,
+  "is_dag": true,
+  "is_pipeline": false,
+  "dag_validation_messages": [],
+  "pipeline_validation_messages": [
+    "Invalid pipeline: nodes exist but no connections between them"
+  ]
+}
+```
+
+---
+
+## Request at 2025-01-03 15:23:16
+
+### Pipeline Request
+```json
+{
+  "nodes": [
+    {
+      "id": "customInput-1",
+      "type": "customInput",
+      "position": {
+        "x": 247.53201418936783,
+        "y": 175.9133745434428
+      },
+      "data": {
+        "id": "customInput-1",
+        "nodeType": "customInput"
+      },
+      "width": 250,
+      "height": 171
+    },
+    {
+      "id": "llm-1",
+      "type": "llm",
+      "position": {
+        "x": 831.5320141893674,
+        "y": 276.9133745434427
+      },
+      "data": {
+        "id": "llm-1",
+        "nodeType": "llm"
+      },
+      "width": 250,
+      "height": 131
+    }
+  ],
+  "edges": [
+    {
+      "id": "reactflow__edge-customInput-1customInput-1-value-llm-1llm-1-system",
+      "type": "custom",
+      "source": "customInput-1",
+      "target": "llm-1",
+      "sourceHandle": "customInput-1-value",
+      "targetHandle": "llm-1-system",
+      "animated": false,
+      "style": {
+        "strokeWidth": 2,
+        "animation": "none"
+      },
+      "deletable": true,
+      "markerEnd": {
+        "type": "arrow",
+        "height": "20px",
+        "width": "20px"
+      }
+    }
+  ]
+}
+```
+
+### Pipeline Response
+```json
+{
+  "num_nodes": 2,
+  "num_edges": 1,
+  "is_dag": true,
+  "is_pipeline": true,
+  "dag_validation_messages": [],
+  "pipeline_validation_messages": []
+}
+```
+
+---
