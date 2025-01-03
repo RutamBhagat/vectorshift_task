@@ -15,13 +15,13 @@ export const NodeWrapper = ({
   const getLabelStyle = (position) => {
     switch (position) {
       case Position.Left:
-        return "absolute transform -translate-x-[calc(100%+8px)] top-1";
+        return "absolute transform -translate-x-[calc(100%+8px)] top-2";
       case Position.Right:
-        return "absolute transform translate-x-[8px] top-1";
+        return "absolute transform translate-x-[8px] top-2";
       case Position.Top:
-        return "absolute transform left-1 -translate-y-[calc(100%+4px)]";
+        return "absolute transform left-3 -translate-y-[calc(100%+8px)]";
       case Position.Bottom:
-        return "absolute transform left-1 translate-y-[4px]";
+        return "absolute transform left-3 translate-y-[8px]";
       default:
         return "";
     }
@@ -45,7 +45,11 @@ export const NodeWrapper = ({
           className="relative w-3 h-3 !bg-[#FF6B6B] border-2 border-[#E55959] hover:!bg-[#E55959] transition-colors"
         >
           {handle.label && (
-            <span className={`${getLabelStyle(handle.position)} text-xs text-gray-500 whitespace-nowrap pointer-events-none`}>
+            <span
+              className={`${getLabelStyle(
+                handle.position
+              )} text-xs text-gray-500 whitespace-nowrap pointer-events-none`}
+            >
               {handle.label}
             </span>
           )}
