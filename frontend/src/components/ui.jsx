@@ -135,7 +135,7 @@ export const PipelineUI = () => {
   }, [setEdges]);
 
   return (
-    <Card ref={reactFlowWrapper} className="flex-1 rounded-none">
+    <Card ref={reactFlowWrapper} className="flex-1 rounded-none h-full">
       <ReactFlow
         nodes={nodes}
         edges={edges}
@@ -172,6 +172,7 @@ export const PipelineUI = () => {
         onReconnect={onReconnect}
         onReconnectStart={onReconnectStart}
         onReconnectEnd={onReconnectEnd}
+        className="h-full" // Add this class
       >
         <Background color="#aaa" gap={gridSize} />
         <Controls />
