@@ -184,6 +184,7 @@ app.add_middleware(
 def read_root():
     return {'Ping': 'Pong'}
 
+@app.options('/pipelines/parse')
 @app.post('/pipelines/parse', response_model=PipelineResponse)
 async def parse_pipeline(request: PipelineRequest = None) -> PipelineResponse:
     print(f"Received request with {len(request.nodes)} nodes and {len(request.edges)} edges")
