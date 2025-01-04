@@ -41,6 +41,7 @@ const selector = (state) => ({
   onConnect: state.onConnect,
   setEdges: state.setEdges,
   isCustomEdge: state.isCustomEdge,
+  isAnimated: state.isAnimated,  // Add this
 });
 
 const edgeTypes = {
@@ -62,6 +63,7 @@ export const PipelineUI = () => {
     onConnect,
     setEdges,
     isCustomEdge,
+    isAnimated,  // Add this
   } = useStore(selector, shallow);
 
   const getInitNodeData = (nodeID, type) => {
@@ -161,7 +163,7 @@ export const PipelineUI = () => {
             height: 12,
             color: '#b1b1b7',
           },
-          animated: true
+          animated: isAnimated  // Use the state here
         }}
         fitView
         minZoom={0.2}

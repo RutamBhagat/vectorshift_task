@@ -21,11 +21,13 @@ const nodes = [
 
 const selector = (state) => ({
   isCustomEdge: state.isCustomEdge,
+  isAnimated: state.isAnimated,
   toggleEdgeType: state.toggleEdgeType,
+  toggleAnimation: state.toggleAnimation,
 });
 
 export const PipelineToolbar = () => {
-  const { isCustomEdge, toggleEdgeType } = useStore(selector, shallow);
+  const { isCustomEdge, isAnimated, toggleEdgeType, toggleAnimation } = useStore(selector, shallow);
 
   return (
     <Card className="bg-card rounded-b-none py-3 px-4 border-0 flex items-center justify-between gap-6">
@@ -57,6 +59,17 @@ export const PipelineToolbar = () => {
           />
           <Label htmlFor="edge-type" className="text-xs text-gray-500 text-center w-full px-1">
             Deletable Edges
+          </Label>
+        </div>
+        <div className="flex flex-col items-center space-y-2 w-16">
+          <Switch
+            id="edge-animation"
+            checked={isAnimated}
+            onCheckedChange={toggleAnimation}
+            className="data-[state=checked]:bg-indigo-800"
+          />
+          <Label htmlFor="edge-animation" className="text-xs text-gray-500 text-center w-full px-1">
+            Animated Edges
           </Label>
         </div>
         <SubmitButton className="w-full aspect-square" />

@@ -25,7 +25,8 @@ export const useStore = create(
       isStatsDialogOpen: false,
       validationMessages: [],
       showConfetti: false,
-      isCustomEdge: true,  // Add this state
+      isCustomEdge: true,
+      isAnimated: true,  // Add this state
 
       // Getters
       getNodes: () => get().nodes,
@@ -85,7 +86,7 @@ export const useStore = create(
             {
               ...connection,
               type: get().isCustomEdge ? "custom" : "base",
-              animated: true,
+              animated: get().isAnimated,  // Use the state here
               markerEnd: DEFAULT_MARKER,
             },
             get().edges
@@ -104,6 +105,7 @@ export const useStore = create(
       toggleEdgeType: () => set(state => ({ 
         isCustomEdge: !state.isCustomEdge 
       })),
+      toggleAnimation: () => set(state => ({ isAnimated: !state.isAnimated })),  // Add this function
     }),
     {
       name: 'pipeline-storage', // unique name for localStorage key
@@ -113,6 +115,7 @@ export const useStore = create(
         edges: state.edges,
         nodeIDs: state.nodeIDs,
         isCustomEdge: state.isCustomEdge,
+        isAnimated: state.isAnimated,  // Add this to persisted state
       }),
     }
   )
