@@ -71,3 +71,15 @@ code {
     @apply font-sans antialiased bg-background text-foreground;
   }
 }
+
+.no-edge-animation {
+  stroke-dasharray: none !important;
+  -webkit-animation: none !important;
+  animation: none !important;
+}
+
+.no-edge-animation * {
+  stroke-dasharray: none !important;
+  -webkit-animation: none !important;
+  animation: none !important;
+}

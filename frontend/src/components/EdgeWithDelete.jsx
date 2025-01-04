@@ -40,14 +40,14 @@ const EdgeWithDelete = ({ id, sourceX, sourceY, targetX, targetY, markerEnd }) =
         height={20}
         x={labelX - 10}
         y={labelY - 10}
-        className="cursor-pointer flex items-center justify-center"
+        className="cursor-pointer flex items-center justify-center no-edge-animation"
         onClick={(e) => {
           e.stopPropagation();
           removeEdge(id);
         }}
       >
-        <div className="!bg-white rounded-full p-[2px]">
-          <XCircle className="h-4 w-4 !bg-white !text-muted-foreground hover:!text-destructive" />
+        <div className="bg-white rounded-full p-[2px]">
+          <XCircle className="h-4 w-4 bg-white text-muted-foreground hover:text-destructive" />
         </div>
       </foreignObject>
     </>
