@@ -1,13 +1,14 @@
 "use client";
 
-import { Menu } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { DraggableNode } from "../draggable-node";
 import { SubmitButton } from "../submit";
 import { nodes } from "./nodes-nav";
 import { Button } from "../ui/button";
 import { Label } from "../ui/label";
 import { Switch } from "../ui/switch";
-import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from "../ui/sheet";
+import { useStore } from "../store";
+import { shallow } from "zustand/shallow";
 
 export const HamburgerMenu = ({
   isCustomEdge,
@@ -15,21 +16,43 @@ export const HamburgerMenu = ({
   toggleEdgeType,
   toggleAnimation,
 }) => {
+  const { isMenuOpen, toggleMenu } = useStore(
+    (state) => ({ 
+      isMenuOpen: state.isMenuOpen, 
+      toggleMenu: state.toggleMenu 
+    }),
+    shallow
+  );
+
   return (
-    <Sheet>
-      <SheetTrigger asChild>
-        <Button variant="outline" size="icon" className="lg:hidden">
-          <Menu className="h-4 w-4" />
-        </Button>
-      </SheetTrigger>
-      <SheetContent>
-        <div className="h-full flex flex-col">
-          <SheetHeader className="flex-none">
-            <SheetTitle>Pipeline Toolbar</SheetTitle>
-            <SheetDescription>Customize your pipeline here.</SheetDescription>
-          </SheetHeader>
-          
-          <div className="flex-1 flex flex-col mt-8 min-h-0">
+    <>
+      <Button 
+        variant="outline" 
+        size="icon" 
+        className="lg:hidden"
+        onClick={toggleMenu}
+      >
+        <Menu className="h-4 w-4" />
+      </Button>
+
+      {isMenuOpen && (
+        <div className="absolute top-0 right-0 bottom-0 w-80 bg-background border-l lg:hidden">
+          <div className="p-6 flex flex-col h-full">
+            <div className="mb-6 flex justify-between items-start">
+              <div>
+                <h3 className="font-semibold text-lg">Pipeline Toolbar</h3>
+                <p className="text-sm text-muted-foreground">Customize your pipeline here.</p>
+              </div>
+              <Button
+                variant="ghost"
+                size="icon"
+                className="h-8 w-8 -mr-2"
+                onClick={toggleMenu}
+              >
+                <X className="h-4 w-4" />
+              </Button>
+            </div>
+            
             <div className="flex-1 grid grid-cols-[repeat(auto-fill,minmax(100px,1fr))] gap-4 overflow-y-auto p-1">
               {nodes.map((node) => (
                 <DraggableNode
@@ -42,7 +65,7 @@ export const HamburgerMenu = ({
               ))}
             </div>
 
-            <div className="flex-none space-y-6 pt-8 border-t">
+            <div className="space-y-6 pt-8 border-t">
               <div className="flex items-center justify-between">
                 <Label htmlFor="edge-type-mobile">Deletable Edges</Label>
                 <Switch
@@ -66,7 +89,7 @@ export const HamburgerMenu = ({
             </div>
           </div>
         </div>
-      </SheetContent>
-    </Sheet>
+      )}
+    </>
   );
 };

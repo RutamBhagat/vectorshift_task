@@ -27,6 +27,7 @@ export const useStore = create(
       showConfetti: false,
       isCustomEdge: true,
       isAnimated: true,
+      isMenuOpen: false,
 
       // Getters
       getNodes: () => get().nodes,
@@ -124,6 +125,7 @@ export const useStore = create(
           }))
         };
       }),
+      toggleMenu: () => set((state) => ({ isMenuOpen: !state.isMenuOpen })),
     }),
     {
       name: 'pipeline-storage',
