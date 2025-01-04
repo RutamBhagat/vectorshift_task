@@ -26,7 +26,7 @@ export const useStore = create(
       validationMessages: [],
       showConfetti: false,
       isCustomEdge: true,
-      isAnimated: true,  // Add this state
+      isAnimated: true,
 
       // Getters
       getNodes: () => get().nodes,
@@ -86,7 +86,7 @@ export const useStore = create(
             {
               ...connection,
               type: get().isCustomEdge ? "custom" : "base",
-              animated: get().isAnimated,  // Use the state here
+              animated: get().isAnimated,
               markerEnd: DEFAULT_MARKER,
             },
             get().edges
@@ -102,20 +102,37 @@ export const useStore = create(
         pipelineStats: isOpen ? state.pipelineStats : null,
         showConfetti: isOpen ? state.showConfetti : false,
       })),
-      toggleEdgeType: () => set(state => ({ 
-        isCustomEdge: !state.isCustomEdge 
-      })),
-      toggleAnimation: () => set(state => ({ isAnimated: !state.isAnimated })),  // Add this function
+      toggleEdgeType: () => set(state => {
+        const newIsCustomEdge = !state.isCustomEdge;
+        return { 
+          isCustomEdge: newIsCustomEdge,
+          edges: state.edges.map(edge => ({
+            ...edge,
+            type: newIsCustomEdge ? 'custom' : 'base',
+            deletable: newIsCustomEdge
+          }))
+        };
+      }),
+
+      toggleAnimation: () => set(state => {
+        const newIsAnimated = !state.isAnimated;
+        return { 
+          isAnimated: newIsAnimated,
+          edges: state.edges.map(edge => ({
+            ...edge,
+            animated: newIsAnimated
+          }))
+        };
+      }),
     }),
     {
-      name: 'pipeline-storage', // unique name for localStorage key
+      name: 'pipeline-storage',
       partialize: (state) => ({
-        // only persist these states
         nodes: state.nodes,
         edges: state.edges,
         nodeIDs: state.nodeIDs,
         isCustomEdge: state.isCustomEdge,
-        isAnimated: state.isAnimated,  // Add this to persisted state
+        isAnimated: state.isAnimated,
       }),
     }
   )
