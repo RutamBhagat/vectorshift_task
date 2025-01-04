@@ -135,7 +135,7 @@ export const PipelineUI = () => {
   }, [setEdges]);
 
   return (
-    <Card ref={reactFlowWrapper} className="absolute inset-0">
+    <Card ref={reactFlowWrapper} className="absolute inset-0 rounded-none">
       <ReactFlow
         nodes={nodes}
         edges={edges}
