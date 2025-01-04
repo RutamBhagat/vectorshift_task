@@ -8,7 +8,6 @@ export const CustomBaseEdge = ({
   sourcePosition,
   targetPosition,
   markerEnd,
-  style,
   ...props
 }) => {
   const [edgePath] = getSmoothStepPath({
@@ -18,15 +17,16 @@ export const CustomBaseEdge = ({
     targetX,
     targetY,
     targetPosition,
-    borderRadius: 16,
-    offset: 16,
+    borderRadius: 8,
+    offset: 8,
   });
 
   return (
     <BaseEdge 
       path={edgePath} 
       markerEnd={markerEnd}
-      style={style}
+      className="react-flow__edge-path"
+      style={{ stroke: '#b1b1b7', strokeWidth: 2 }}
       {...props}
     />
   );

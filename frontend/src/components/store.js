@@ -7,6 +7,13 @@ import {
   MarkerType,
 } from "reactflow";
 
+const DEFAULT_MARKER = {
+  type: MarkerType.ArrowClosed,
+  width: 12,
+  height: 12,
+  color: '#b1b1b7',
+};
+
 export const useStore = create(
   persist(
     (set, get) => ({
@@ -79,7 +86,7 @@ export const useStore = create(
               ...connection,
               type: get().isCustomEdge ? "custom" : "base",
               animated: true,
-              markerEnd: { type: MarkerType.Arrow, height: "20px", width: "20px" },
+              markerEnd: DEFAULT_MARKER,
             },
             get().edges
           ),

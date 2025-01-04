@@ -1,13 +1,11 @@
 import { XCircle } from "lucide-react";
 import { useStore } from "./store";
 
-const EdgeWithDelete = ({ id, sourceX, sourceY, targetX, targetY }) => {
-  // Calculate the middle point for the step
+const EdgeWithDelete = ({ id, sourceX, sourceY, targetX, targetY, markerEnd }) => {
   const midX = (sourceX + targetX) / 2;
-  const radius = 8; // Corner radius
+  const radius = 16; // Increased from 8 to match BaseEdge borderRadius
+  const offset = 16; // Added to match BaseEdge offset
 
-  // Create path with rounded corners using quadratic bezier curves
-  // Move to start -> Line to first corner -> Curve -> Vertical -> Curve -> Line to end
   const path = `
     M${sourceX},${sourceY}
     H${midX - radius}
@@ -31,13 +29,11 @@ const EdgeWithDelete = ({ id, sourceX, sourceY, targetX, targetY }) => {
     <>
       <path
         id={id}
-        className="react-flow__edge-path"
+        className="react-flow__edge-path !stroke-[2]"
         d={path}
-        strokeWidth={2}
         stroke="#b1b1b7"
-        style={{
-          pointerEvents: "all",
-        }}
+        markerEnd={markerEnd}
+        style={{ pointerEvents: "all" }}
       />
       <foreignObject
         width={20}
@@ -50,8 +46,8 @@ const EdgeWithDelete = ({ id, sourceX, sourceY, targetX, targetY }) => {
           removeEdge(id);
         }}
       >
-        <div className="bg-white rounded-full p-[2px]">
-          <XCircle className="h-4 w-4 bg-white text-muted-foreground hover:text-destructive" />
+        <div className="!bg-white rounded-full p-[2px]">
+          <XCircle className="h-4 w-4 !bg-white !text-muted-foreground hover:!text-destructive" />
         </div>
       </foreignObject>
     </>

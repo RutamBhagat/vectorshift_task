@@ -154,6 +154,13 @@ export const PipelineUI = () => {
           deletable: isCustomEdge,
           style: { 
             strokeWidth: 2,
+            stroke: '#b1b1b7',
+          },
+          markerEnd: {
+            type: 'arrowclosed',
+            width: 12,
+            height: 12,
+            color: '#b1b1b7',
           },
           animated: true
         }}
