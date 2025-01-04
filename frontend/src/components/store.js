@@ -62,29 +62,12 @@ export const useStore = create((set, get) => ({
 
   // Edge operations
   onEdgesChange: (changes) => {
-    if (Array.isArray(changes) && changes[0]?.type === 'replace') {
-      set({ edges: changes[0].items });
-    } else {
-      set({
-        edges: applyEdgeChanges(changes, get().edges),
-      });
-    }
-  },
-  replaceEdge: (oldEdge, newConnection) => {
     set({
-      edges: get().edges.map(e => {
-        if (e.id === oldEdge.id) {
-          return {
-            ...e,
-            source: newConnection.source || e.source,
-            target: newConnection.target || e.target,
-            sourceHandle: newConnection.sourceHandle,
-            targetHandle: newConnection.targetHandle
-          };
-        }
-        return e;
-      })
+      edges: applyEdgeChanges(changes, get().edges),
     });
+  },
+  setEdges: (updater) => {
+    set({ edges: typeof updater === 'function' ? updater(get().edges) : updater });
   },
   onConnect: (connection) => {
     set({

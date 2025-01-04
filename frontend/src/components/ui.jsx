@@ -38,7 +38,7 @@ const selector = (state) => ({
   onNodesChange: state.onNodesChange,
   onEdgesChange: state.onEdgesChange,
   onConnect: state.onConnect,
-  replaceEdge: state.replaceEdge,
+  setEdges: state.setEdges,
 });
 
 const edgeTypes = {
@@ -57,7 +57,7 @@ export const PipelineUI = () => {
     onNodesChange,
     onEdgesChange,
     onConnect,
-    replaceEdge,
+    setEdges,
   } = useStore(selector, shallow);
 
   const getInitNodeData = (nodeID, type) => {
@@ -111,18 +111,15 @@ export const PipelineUI = () => {
 
   const onReconnect = useCallback((oldEdge, newConnection) => {
     edgeReconnectSuccessful.current = true;
-    replaceEdge(oldEdge, newConnection);
-  }, [replaceEdge]);
+    setEdges(els => reconnectEdge(oldEdge, newConnection, els));
+  }, [setEdges]);
 
   const onReconnectEnd = useCallback((_, edge) => {
     if (!edgeReconnectSuccessful.current) {
-      onEdgesChange([{
-        type: 'remove',
-        id: edge.id
-      }]);
+      setEdges(eds => eds.filter(e => e.id !== edge.id));
     }
     edgeReconnectSuccessful.current = true;
-  }, [onEdgesChange]);
+  }, [setEdges]);
 
   return (
     <Card ref={reactFlowWrapper} className="flex-1 rounded-none">
