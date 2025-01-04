@@ -1,10 +1,10 @@
 import PipelineStats from "./components/pipeline/pipeline-stats";
-import { PipelineToolbar } from "./components/navbar/toolbar";
+import { PipelineToolbar } from "./components/toolbar/toolbar";
 import { PipelineUI } from "./components/ui";
 import { Card } from "./components/ui/card";
 import { Toaster } from "./components/ui/sonner";
 import { useStore } from "./components/store";
-import { HamburgerMenu } from "./components/navbar/hamburger-menu";
+import { HamburgerMenu } from "./components/toolbar/hamburger-menu";
 
 function App() {
   const isMenuOpen = useStore((state) => state.isMenuOpen);
