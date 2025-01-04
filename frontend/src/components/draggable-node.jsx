@@ -20,11 +20,14 @@ export const DraggableNode = ({ type, label, icon: Icon, className }) => {
       draggable
       onDragStart={(e) => onDragStart(e, type)}
       onDragEnd={onDragEnd}
-      className={cn("cursor-grab active:cursor-grabbing", className)}
+      className="cursor-grab active:cursor-grabbing"
     >
       <Button
         variant="secondary"
-        className="flex flex-col items-center bg-gray-100 h-16 w-16 justify-center gap-2 aspect-square p-2 border pointer-events-none"
+        className={cn(
+          "flex flex-col items-center bg-gray-100 h-16 w-16 justify-center gap-2 aspect-square p-2 border pointer-events-none",
+          className
+        )}
       >
         <Icon className="h-6 w-6" />
         <span className="text-xs">{label}</span>

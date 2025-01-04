@@ -1,5 +1,5 @@
 import PipelineStats from './components/pipeline/pipeline-stats';
-import { PipelineToolbar } from './components/toolbar';
+import { PipelineToolbar } from './components/navbar/toolbar';
 import { PipelineUI } from './components/ui';
 import { Card } from './components/ui/card';
 import { Toaster } from "./components/ui/sonner";
