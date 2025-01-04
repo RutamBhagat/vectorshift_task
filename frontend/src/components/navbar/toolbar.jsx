@@ -4,11 +4,11 @@ import { useStore } from "../store";
 import { shallow } from "zustand/shallow";
 import { DraggableNode } from "../draggable-node";
 import { SubmitButton } from "../submit";
-import { HamburgerMenu } from "./hamburger-menu";
 import { nodes } from "./nodes-nav";
 import { Card } from "../ui/card";
 import { Switch } from "../ui/switch";
 import { Label } from "../ui/label";
+import { HamburgerButton } from "./hamburger-button";
 
 const selector = (state) => ({
   isCustomEdge: state.isCustomEdge,
@@ -28,12 +28,7 @@ export const PipelineToolbar = () => {
           <span>VS</span>
         </div>
 
-        <HamburgerMenu
-          isCustomEdge={isCustomEdge}
-          isAnimated={isAnimated}
-          toggleEdgeType={toggleEdgeType}
-          toggleAnimation={toggleAnimation}
-        />
+        <HamburgerButton/>
 
         <div className="hidden lg:flex items-center justify-between gap-6 min-w-[768px]">
           <div className="grid grid-flow-col auto-cols-[minmax(60px,1fr)] gap-2 items-center">
