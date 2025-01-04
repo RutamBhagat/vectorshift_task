@@ -1,22 +1,3 @@
----
-title: "VectorShift: Frontend Technical Assessment"
-publishedAt: "2024-01-04"
-summary: "Developed a simplified version of VectorShift's main application, implementing a node-based workflow builder using React, ReactFlow, and FastAPI. Features include dynamic node abstraction, styling improvements, and backend integration for pipeline validation."
-images:
-- "https://github.com/user-attachments/assets/ea8464d2-580f-4a19-a263-504f148d93c7"
-- https://github.com/user-attachments/assets/30c1533d-6029-462b-a80f-4c679a640d2c"
-- https://github.com/user-attachments/assets/3de071a6-b1f6-4d14-8a10-9bc084b62e23"
-- https://github.com/user-attachments/assets/2239d747-ece2-453c-b696-68f283cc4551"
-- https://github.com/user-attachments/assets/ca0cf29d-9c7c-48f0-82f2-832eba6c31e1"
-- https://github.com/user-attachments/assets/5430c311-e2b7-46fb-8271-8167ce05db25"
-
-team:
-- name: "Rutam Bhagat"
-  role: "Frontend Developer"
-  avatar: "/images/avatar.jpg"
-  linkedIn: "https://github.com/RutamBhagat"
----
-
 # VectorShift: Frontend Technical Assessment
 
 ## Overview
