@@ -21,6 +21,7 @@ def read_root():
 
 @app.post('/pipelines/parse', response_model=PipelineResponse)
 async def parse_pipeline(request: PipelineRequest) -> PipelineResponse:
+    print(f"Received request with {len(request.nodes)} nodes and {len(request.edges)} edges")
     is_dag, is_pipeline, dag_messages, pipeline_messages = validate_graph(request.nodes, request.edges)
     response = PipelineResponse(
         num_nodes=len(request.nodes),

@@ -1,32 +1,48 @@
+from typing import List, Optional
 from pydantic import BaseModel
-from typing import List, Dict, Any, Optional
+
+class Position(BaseModel):
+    x: float
+    y: float
+
+class Style(BaseModel):
+    strokeWidth: int
+    stroke: str
+
+class MarkerEnd(BaseModel):
+    type: str
+    width: int
+    height: int
+    color: str
 
 class NodeData(BaseModel):
     id: str
-    type: str
-    position: Dict[str, float]
-    data: Dict[str, Any]
-    width: int
-    height: int
+    nodeType: str
 
-class EdgeStyle(BaseModel):
-    strokeWidth: int
-    animation: str
-
-class Edge(BaseModel):
+class Node(BaseModel):
     id: str
     type: str
-    source: str
-    target: str
-    sourceHandle: str
-    targetHandle: str
-    animated: bool
-    style: EdgeStyle
+    position: Position
+    data: NodeData
+    width: int
+    height: int
+    selected: Optional[bool] = False
+    dragging: Optional[bool] = False
+
+class Edge(BaseModel):
+    type: str
     deletable: bool
-    markerEnd: Optional[Dict[str, str]] = None
+    style: Style
+    markerEnd: MarkerEnd
+    animated: bool
+    source: str
+    sourceHandle: str
+    target: str
+    targetHandle: str
+    id: str
 
 class PipelineRequest(BaseModel):
-    nodes: List[NodeData]
+    nodes: List[Node]
     edges: List[Edge]
 
 class PipelineResponse(BaseModel):
