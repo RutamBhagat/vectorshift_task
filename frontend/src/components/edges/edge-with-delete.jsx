@@ -1,17 +1,17 @@
-import { BaseEdge, EdgeLabelRenderer, getSmoothStepPath } from 'reactflow';
+import { BaseEdge, EdgeLabelRenderer, getSmoothStepPath } from "reactflow";
 import { XCircle } from "lucide-react";
 import { useStore } from "../store";
 
-const EdgeWithDelete = ({ 
-  id, 
-  sourceX, 
-  sourceY, 
-  targetX, 
+const EdgeWithDelete = ({
+  id,
+  sourceX,
+  sourceY,
+  targetX,
   targetY,
   sourcePosition,
-  targetPosition, 
+  targetPosition,
   markerEnd,
-  style = {} 
+  style = {},
 }) => {
   const [edgePath, labelX, labelY] = getSmoothStepPath({
     sourceX,
@@ -34,15 +34,18 @@ const EdgeWithDelete = ({
       <EdgeLabelRenderer>
         <div
           style={{
-            position: 'absolute',
+            position: "absolute",
             transform: `translate(-50%, -50%) translate(${labelX}px,${labelY}px)`,
-            pointerEvents: 'all',
+            pointerEvents: "all",
           }}
         >
-          <div className="bg-white rounded-full p-[2px] cursor-pointer" onClick={(e) => {
-            e.stopPropagation();
-            setEdges(eds => eds.filter(e => e.id !== id));
-          }}>
+          <div
+            className="bg-white rounded-full p-[2px] cursor-pointer"
+            onClick={(e) => {
+              e.stopPropagation();
+              setEdges((eds) => eds.filter((e) => e.id !== id));
+            }}
+          >
             <XCircle className="h-4 w-4 text-muted-foreground hover:text-destructive" />
           </div>
         </div>

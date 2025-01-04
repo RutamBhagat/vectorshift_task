@@ -1,4 +1,4 @@
-import { BaseEdge, getSmoothStepPath } from 'reactflow';
+import { BaseEdge, getSmoothStepPath } from "reactflow";
 
 export const CustomBaseEdge = ({
   sourceX,
@@ -22,11 +22,11 @@ export const CustomBaseEdge = ({
   });
 
   return (
-    <BaseEdge 
-      path={edgePath} 
+    <BaseEdge
+      path={edgePath}
       markerEnd={markerEnd}
       className="react-flow__edge-path"
-      style={{ stroke: '#b1b1b7', strokeWidth: 2 }}
+      style={{ stroke: "#b1b1b7", strokeWidth: 2 }}
       {...props}
     />
   );

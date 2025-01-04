@@ -8,9 +8,24 @@ export const FilterNode = ({ id }) => {
   const [condition, setCondition] = useState("");
 
   const handles = [
-    { type: "target", position: Position.Left, id: `${id}-input`, label: "Input" },
-    { type: "source", position: Position.Right, id: `${id}-true`, label: "True" },
-    { type: "source", position: Position.Bottom, id: `${id}-false`, label: "False" }
+    {
+      type: "target",
+      position: Position.Left,
+      id: `${id}-input`,
+      label: "Input",
+    },
+    {
+      type: "source",
+      position: Position.Right,
+      id: `${id}-true`,
+      label: "True",
+    },
+    {
+      type: "source",
+      position: Position.Bottom,
+      id: `${id}-false`,
+      label: "False",
+    },
   ];
 
   return (

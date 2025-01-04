@@ -11,7 +11,7 @@ const DEFAULT_MARKER = {
   type: MarkerType.ArrowClosed,
   width: 12,
   height: 12,
-  color: '#b1b1b7',
+  color: "#b1b1b7",
 };
 
 export const useStore = create(
@@ -67,7 +67,7 @@ export const useStore = create(
         set({
           nodes: get().nodes.filter((node) => node.id !== nodeId),
           edges: get().edges.filter(
-            (edge) => edge.source !== nodeId && edge.target !== nodeId
+            (edge) => edge.source !== nodeId && edge.target !== nodeId,
           ),
         });
       },
@@ -79,7 +79,9 @@ export const useStore = create(
         });
       },
       setEdges: (updater) => {
-        set({ edges: typeof updater === 'function' ? updater(get().edges) : updater });
+        set({
+          edges: typeof updater === "function" ? updater(get().edges) : updater,
+        });
       },
       onConnect: (connection) => {
         set({
@@ -90,45 +92,49 @@ export const useStore = create(
               animated: get().isAnimated,
               markerEnd: DEFAULT_MARKER,
             },
-            get().edges
+            get().edges,
           ),
         });
       },
-      setPipelineStats: (stats) => set({ 
-        pipelineStats: stats,
-        showConfetti: stats?.is_dag && stats?.is_pipeline,
-      }),
-      setStatsDialogOpen: (isOpen) => set(state => ({ 
-        isStatsDialogOpen: isOpen,
-        pipelineStats: isOpen ? state.pipelineStats : null,
-        showConfetti: isOpen ? state.showConfetti : false,
-      })),
-      toggleEdgeType: () => set(state => {
-        const newIsCustomEdge = !state.isCustomEdge;
-        return { 
-          isCustomEdge: newIsCustomEdge,
-          edges: state.edges.map(edge => ({
-            ...edge,
-            type: newIsCustomEdge ? 'custom' : 'base',
-            deletable: newIsCustomEdge
-          }))
-        };
-      }),
+      setPipelineStats: (stats) =>
+        set({
+          pipelineStats: stats,
+          showConfetti: stats?.is_dag && stats?.is_pipeline,
+        }),
+      setStatsDialogOpen: (isOpen) =>
+        set((state) => ({
+          isStatsDialogOpen: isOpen,
+          pipelineStats: isOpen ? state.pipelineStats : null,
+          showConfetti: isOpen ? state.showConfetti : false,
+        })),
+      toggleEdgeType: () =>
+        set((state) => {
+          const newIsCustomEdge = !state.isCustomEdge;
+          return {
+            isCustomEdge: newIsCustomEdge,
+            edges: state.edges.map((edge) => ({
+              ...edge,
+              type: newIsCustomEdge ? "custom" : "base",
+              deletable: newIsCustomEdge,
+            })),
+          };
+        }),
 
-      toggleAnimation: () => set(state => {
-        const newIsAnimated = !state.isAnimated;
-        return { 
-          isAnimated: newIsAnimated,
-          edges: state.edges.map(edge => ({
-            ...edge,
-            animated: newIsAnimated
-          }))
-        };
-      }),
+      toggleAnimation: () =>
+        set((state) => {
+          const newIsAnimated = !state.isAnimated;
+          return {
+            isAnimated: newIsAnimated,
+            edges: state.edges.map((edge) => ({
+              ...edge,
+              animated: newIsAnimated,
+            })),
+          };
+        }),
       toggleMenu: () => set((state) => ({ isMenuOpen: !state.isMenuOpen })),
     }),
     {
-      name: 'pipeline-storage',
+      name: "pipeline-storage",
       partialize: (state) => ({
         nodes: state.nodes,
         edges: state.edges,
@@ -136,6 +142,6 @@ export const useStore = create(
         isCustomEdge: state.isCustomEdge,
         isAnimated: state.isAnimated,
       }),
-    }
-  )
+    },
+  ),
 );

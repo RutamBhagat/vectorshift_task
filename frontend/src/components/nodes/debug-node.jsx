@@ -4,8 +4,18 @@ import { Bug } from "lucide-react";
 
 export const DebugNode = ({ id }) => {
   const handles = [
-    { type: "target", position: Position.Left, id: `${id}-input`, label: "Debug In" },
-    { type: "source", position: Position.Right, id: `${id}-output`, label: "Debug Out" }
+    {
+      type: "target",
+      position: Position.Left,
+      id: `${id}-input`,
+      label: "Debug In",
+    },
+    {
+      type: "source",
+      position: Position.Right,
+      id: `${id}-output`,
+      label: "Debug Out",
+    },
   ];
 
   return (

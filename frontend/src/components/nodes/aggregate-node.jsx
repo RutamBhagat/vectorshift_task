@@ -4,9 +4,26 @@ import { Layers } from "lucide-react";
 
 export const AggregateNode = ({ id }) => {
   const handles = [
-    { type: "target", position: Position.Left, id: `${id}-input1`, style: { top: "25%" }, label: "Source 1" },
-    { type: "target", position: Position.Left, id: `${id}-input2`, style: { top: "75%" }, label: "Source 2" },
-    { type: "source", position: Position.Right, id: `${id}-output`, label: "Combined" }
+    {
+      type: "target",
+      position: Position.Left,
+      id: `${id}-input1`,
+      style: { top: "25%" },
+      label: "Source 1",
+    },
+    {
+      type: "target",
+      position: Position.Left,
+      id: `${id}-input2`,
+      style: { top: "75%" },
+      label: "Source 2",
+    },
+    {
+      type: "source",
+      position: Position.Right,
+      id: `${id}-output`,
+      label: "Combined",
+    },
   ];
 
   return (

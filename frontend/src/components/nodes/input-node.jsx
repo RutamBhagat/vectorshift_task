@@ -1,13 +1,19 @@
 import { useState } from "react";
 import { Position } from "reactflow";
 import { Input } from "../ui/input";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../ui/select";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "../ui/select";
 import { NodeWrapper } from "./node-wrapper";
 import { LogIn } from "lucide-react";
 
 export const InputNode = ({ id, data }) => {
   const [currName, setCurrName] = useState(
-    data?.inputName || id.replace("customInput-", "input_")
+    data?.inputName || id.replace("customInput-", "input_"),
   );
   const [inputType, setInputType] = useState(data.inputType || "Text");
 
@@ -16,8 +22,8 @@ export const InputNode = ({ id, data }) => {
       type: "source",
       position: Position.Right,
       id: `${id}-value`,
-      label: "Output"
-    }
+      label: "Output",
+    },
   ];
 
   return (

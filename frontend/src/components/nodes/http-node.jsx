@@ -1,16 +1,32 @@
 import { useState } from "react";
 import { Position } from "reactflow";
 import { Input } from "../ui/input";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../ui/select";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "../ui/select";
 import { NodeWrapper } from "./node-wrapper";
 import { Globe } from "lucide-react";
 
 export const HttpNode = ({ id }) => {
   const [method, setMethod] = useState("GET");
-  
+
   const handles = [
-    { type: "target", position: Position.Left, id: `${id}-input`, label: "Request" },
-    { type: "source", position: Position.Right, id: `${id}-output`, label: "Response" }
+    {
+      type: "target",
+      position: Position.Left,
+      id: `${id}-input`,
+      label: "Request",
+    },
+    {
+      type: "source",
+      position: Position.Right,
+      id: `${id}-output`,
+      label: "Response",
+    },
   ];
 
   return (

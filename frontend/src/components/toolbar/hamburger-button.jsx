@@ -7,11 +7,11 @@ import { shallow } from "zustand/shallow";
 
 export const HamburgerButton = () => {
   const { isMenuOpen, toggleMenu } = useStore(
-    (state) => ({ 
-      isMenuOpen: state.isMenuOpen, 
-      toggleMenu: state.toggleMenu 
+    (state) => ({
+      isMenuOpen: state.isMenuOpen,
+      toggleMenu: state.toggleMenu,
     }),
-    shallow
+    shallow,
   );
 
   return (

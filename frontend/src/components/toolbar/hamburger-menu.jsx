@@ -1,24 +1,25 @@
 "use client";
 
 import { shallow } from "zustand/shallow";
-import { useStore } from '../store';
-import { Label } from '../ui/label';
-import { Switch } from '../ui/switch';
-import { SubmitButton } from '../submit';
-import { DraggableNode } from '../draggable-node';
-import { nodes } from './nodes-nav';
+import { useStore } from "../store";
+import { Label } from "../ui/label";
+import { Switch } from "../ui/switch";
+import { SubmitButton } from "../submit";
+import { DraggableNode } from "../draggable-node";
+import { nodes } from "./nodes-nav";
 
 export const HamburgerMenu = () => {
-  const { isCustomEdge, isAnimated, toggleEdgeType, toggleAnimation } = useStore(
-    (state) => ({ 
-      isCustomEdge: state.isCustomEdge,
-      isAnimated: state.isAnimated,
-      toggleEdgeType: state.toggleEdgeType,
-      toggleAnimation: state.toggleAnimation,
-      toggleMenu: state.toggleMenu
-    }),
-    shallow
-  );
+  const { isCustomEdge, isAnimated, toggleEdgeType, toggleAnimation } =
+    useStore(
+      (state) => ({
+        isCustomEdge: state.isCustomEdge,
+        isAnimated: state.isAnimated,
+        toggleEdgeType: state.toggleEdgeType,
+        toggleAnimation: state.toggleAnimation,
+        toggleMenu: state.toggleMenu,
+      }),
+      shallow,
+    );
 
   return (
     <div className="absolute top-0 right-0 bottom-0 w-48 md:w-80 bg-background border-l border-t lg:hidden z-10">
@@ -50,7 +51,7 @@ export const HamburgerMenu = () => {
               Deletable Edges
             </Label>
             <Switch
-            size={"sm"}
+              size={"sm"}
               id="edge-type-mobile"
               checked={isCustomEdge}
               onCheckedChange={toggleEdgeType}
@@ -65,7 +66,7 @@ export const HamburgerMenu = () => {
               Animated Edges
             </Label>
             <Switch
-            size={"sm"}
+              size={"sm"}
               id="edge-animation-mobile"
               checked={isAnimated}
               onCheckedChange={toggleAnimation}

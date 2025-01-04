@@ -5,18 +5,18 @@ import { Wand2 } from "lucide-react";
 
 export const TransformNode = ({ id }) => {
   const handles = [
-    { 
-      type: "target", 
-      position: Position.Left, 
+    {
+      type: "target",
+      position: Position.Left,
       id: `${id}-input`,
-      label: "Input"
+      label: "Input",
     },
-    { 
-      type: "source", 
-      position: Position.Right, 
+    {
+      type: "source",
+      position: Position.Right,
       id: `${id}-output`,
-      label: "Transformed"
-    }
+      label: "Transformed",
+    },
   ];
 
   return (

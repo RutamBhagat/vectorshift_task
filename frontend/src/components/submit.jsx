@@ -18,10 +18,9 @@ export const SubmitButton = ({ className }) => {
     try {
       const url = `${process.env.REACT_APP_BACKEND_URL}/pipelines/parse`;
       const response = await axios.post(url, { nodes, edges });
-      
+
       setPipelineStats(response.data);
       setStatsDialogOpen(true);
-      
     } catch (error) {
       toast.error("Pipeline Validation Failed", {
         description: error.message,

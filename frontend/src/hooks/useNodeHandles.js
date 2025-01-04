@@ -18,7 +18,7 @@ export const useNodeHandles = (id, variables) => {
         position: Position.Right,
         id: `${id}-output`,
         label: "Text",
-      }
+      },
     ];
   }, [id, variables]);
 };

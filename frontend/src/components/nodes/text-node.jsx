@@ -8,14 +8,14 @@ import { useNodeHandles } from "../../hooks/useNodeHandles";
 const extractVariables = (text) => {
   const variableRegex = /{{(.*?)}}/g;
   return Array.from(text.matchAll(variableRegex))
-    .map(match => match[1].trim())
+    .map((match) => match[1].trim())
     .filter(Boolean);
 };
 
 export const TextNode = ({ id, data }) => {
   const [text, setText] = useState(data?.text || "{{input}}");
   const updateNodeInternals = useUpdateNodeInternals();
-  
+
   const variables = useMemo(() => extractVariables(text), [text]);
   const handles = useNodeHandles(id, variables);
 

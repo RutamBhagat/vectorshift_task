@@ -28,7 +28,7 @@ export const PipelineToolbar = () => {
           <div className="flex-shrink-0 w-16 h-16 text-white flex justify-center items-center font-semibold bg-indigo-800 text-4xl rounded-lg">
             <span>VS</span>
           </div>
-          
+
           <div className="hidden lg:grid grid-flow-col auto-cols-[minmax(60px,1fr)] gap-2 items-center">
             {nodes.map((node) => (
               <DraggableNode

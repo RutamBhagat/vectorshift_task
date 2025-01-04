@@ -1,4 +1,14 @@
-import { ArrowRight, Bug, FileText, Filter, Globe, Layers, LogIn, MessageSquare, Wand2 } from "lucide-react";
+import {
+  ArrowRight,
+  Bug,
+  FileText,
+  Filter,
+  Globe,
+  Layers,
+  LogIn,
+  MessageSquare,
+  Wand2,
+} from "lucide-react";
 
 export const nodes = [
   { type: "customInput", label: "Input", icon: LogIn },

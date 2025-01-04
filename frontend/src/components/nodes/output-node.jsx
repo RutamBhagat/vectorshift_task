@@ -1,13 +1,19 @@
 import { useState } from "react";
 import { Position } from "reactflow";
 import { Input } from "../ui/input";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../ui/select";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "../ui/select";
 import { NodeWrapper } from "./node-wrapper";
 import { ArrowRight } from "lucide-react";
 
 export const OutputNode = ({ id, data }) => {
   const [currName, setCurrName] = useState(
-    data?.outputName || id.replace("customOutput-", "output_")
+    data?.outputName || id.replace("customOutput-", "output_"),
   );
   const [outputType, setOutputType] = useState(data.outputType || "Text");
 
@@ -16,12 +22,17 @@ export const OutputNode = ({ id, data }) => {
       type: "target",
       position: Position.Left,
       id: `${id}-value`,
-      label: "Input"
-    }
+      label: "Input",
+    },
   ];
 
   return (
-    <NodeWrapper id={id} title="Output Node" handles={handles} icon={ArrowRight}>
+    <NodeWrapper
+      id={id}
+      title="Output Node"
+      handles={handles}
+      icon={ArrowRight}
+    >
       <div className="space-y-3">
         <Input
           type="text"

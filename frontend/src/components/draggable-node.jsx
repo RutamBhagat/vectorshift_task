@@ -4,9 +4,12 @@ import { Button } from "./ui/button";
 export const DraggableNode = ({ type, label, icon: Icon, className }) => {
   const onDragStart = (event, nodeType) => {
     event.stopPropagation();
-    event.dataTransfer.setData("application/reactflow", JSON.stringify({ nodeType }));
+    event.dataTransfer.setData(
+      "application/reactflow",
+      JSON.stringify({ nodeType }),
+    );
     event.dataTransfer.effectAllowed = "move";
-    
+
     // Add dragging cursor to body to maintain during drag
     document.body.style.cursor = "grabbing";
   };
@@ -26,7 +29,7 @@ export const DraggableNode = ({ type, label, icon: Icon, className }) => {
         variant="secondary"
         className={cn(
           "flex flex-col items-center bg-gray-100 h-16 w-16 justify-center gap-2 aspect-square p-2 border pointer-events-none",
-          className
+          className,
         )}
       >
         <Icon className="h-6 w-6" />
@@ -35,4 +38,3 @@ export const DraggableNode = ({ type, label, icon: Icon, className }) => {
     </div>
   );
 };
-

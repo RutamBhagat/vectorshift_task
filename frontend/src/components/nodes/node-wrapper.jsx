@@ -3,14 +3,7 @@ import { XCircle } from "lucide-react";
 import { useStore } from "../store";
 import { Card } from "../ui/card";
 
-
-export const NodeWrapper = ({
-  title,
-  children,
-  handles,
-  id,
-  icon: Icon,
-}) => {
+export const NodeWrapper = ({ title, children, handles, id, icon: Icon }) => {
   const removeNode = useStore((state) => state.removeNode);
 
   const getLabelStyle = (position) => {
@@ -48,7 +41,7 @@ export const NodeWrapper = ({
           {handle.label && (
             <span
               className={`${getLabelStyle(
-                handle.position
+                handle.position,
               )} text-xs text-gray-500 whitespace-nowrap pointer-events-none`}
             >
               {handle.label}

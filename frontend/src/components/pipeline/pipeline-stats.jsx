@@ -7,17 +7,11 @@ import {
   AlertDialogTitle,
 } from "../ui/alert-dialog";
 import { Button } from "../ui/button";
-import {
-  GitCommit,
-  Link,
-  X,
-} from "lucide-react";
+import { GitCommit, Link, X } from "lucide-react";
 import { fireSuccessConfetti } from "./fire-success-confetti";
 import { StatCard } from "./stat-card";
 import { ValidationStatus } from "./validation-status";
 import { ValidationMessages } from "./validation-messages";
-
-
 
 export default function PipelineStats() {
   const pipelineStats = useStore((state) => state.pipelineStats);
@@ -84,7 +78,3 @@ export default function PipelineStats() {
     </AlertDialog>
   );
 }
-
-
-
-

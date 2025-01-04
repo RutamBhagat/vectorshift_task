@@ -1,6 +1,11 @@
 import { useState, useRef, useCallback } from "react";
-import ReactFlow, { Controls, Background, MiniMap, reconnectEdge } from "reactflow";
-import { CustomBaseEdge } from './edges/base-edge';
+import ReactFlow, {
+  Controls,
+  Background,
+  MiniMap,
+  reconnectEdge,
+} from "reactflow";
+import { CustomBaseEdge } from "./edges/base-edge";
 import { useStore } from "./store";
 import { shallow } from "zustand/shallow";
 import { InputNode } from "./nodes/input-node";
@@ -78,7 +83,7 @@ export const PipelineUI = () => {
       const reactFlowBounds = reactFlowWrapper.current.getBoundingClientRect();
       if (event?.dataTransfer?.getData("application/reactflow")) {
         const appData = JSON.parse(
-          event.dataTransfer.getData("application/reactflow")
+          event.dataTransfer.getData("application/reactflow"),
         );
         const type = appData?.nodeType;
 
@@ -102,7 +107,7 @@ export const PipelineUI = () => {
         addNode(newNode);
       }
     },
-    [reactFlowInstance, addNode, getNodeID]
+    [reactFlowInstance, addNode, getNodeID],
   );
 
   const onDragOver = useCallback((event) => {
@@ -114,24 +119,30 @@ export const PipelineUI = () => {
     edgeReconnectSuccessful.current = false;
   }, []);
 
-  const onReconnect = useCallback((oldEdge, newConnection) => {
-    edgeReconnectSuccessful.current = true;
-    setEdges(els => {
-      const reconnected = reconnectEdge(oldEdge, newConnection, els);
-      return reconnected.map(edge => ({
-        ...edge,
-        type: isCustomEdge ? 'custom' : 'base',
-        deletable: isCustomEdge
-      }));
-    });
-  }, [setEdges, isCustomEdge]);
+  const onReconnect = useCallback(
+    (oldEdge, newConnection) => {
+      edgeReconnectSuccessful.current = true;
+      setEdges((els) => {
+        const reconnected = reconnectEdge(oldEdge, newConnection, els);
+        return reconnected.map((edge) => ({
+          ...edge,
+          type: isCustomEdge ? "custom" : "base",
+          deletable: isCustomEdge,
+        }));
+      });
+    },
+    [setEdges, isCustomEdge],
+  );
 
-  const onReconnectEnd = useCallback((event, edge) => {
-    if (!edgeReconnectSuccessful.current) {
-      setEdges(eds => eds.filter(e => e.id !== edge.id));
-    }
-    edgeReconnectSuccessful.current = true;
-  }, [setEdges]);
+  const onReconnectEnd = useCallback(
+    (event, edge) => {
+      if (!edgeReconnectSuccessful.current) {
+        setEdges((eds) => eds.filter((e) => e.id !== edge.id));
+      }
+      edgeReconnectSuccessful.current = true;
+    },
+    [setEdges],
+  );
 
   return (
     <Card ref={reactFlowWrapper} className="absolute inset-0 rounded-none">
@@ -149,20 +160,20 @@ export const PipelineUI = () => {
         snapGrid={[gridSize, gridSize]}
         connectionLineType="smoothstep"
         edgeTypes={edgeTypes}
-        defaultEdgeOptions={{ 
-          type: isCustomEdge ? 'custom' : 'base',
+        defaultEdgeOptions={{
+          type: isCustomEdge ? "custom" : "base",
           deletable: isCustomEdge,
-          style: { 
+          style: {
             strokeWidth: 2,
-            stroke: '#b1b1b7',
+            stroke: "#b1b1b7",
           },
           markerEnd: {
-            type: 'arrowclosed',
+            type: "arrowclosed",
             width: 12,
             height: 12,
-            color: '#b1b1b7',
+            color: "#b1b1b7",
           },
-          animated: isAnimated
+          animated: isAnimated,
         }}
         fitView
         minZoom={0.2}
