@@ -83,3 +83,8 @@ code {
   -webkit-animation: none !important;
   animation: none !important;
 }
+
+.react-flow__edge-path {
+  stroke-width: 2;
+  stroke: #b1b1b7;
+}

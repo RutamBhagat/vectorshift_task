@@ -1,23 +1,28 @@
+import { BaseEdge, EdgeLabelRenderer, getSmoothStepPath } from 'reactflow';
 import { XCircle } from "lucide-react";
 import { useStore } from "./store";
 
-const EdgeWithDelete = ({ id, sourceX, sourceY, targetX, targetY, markerEnd }) => {
-  const midX = (sourceX + targetX) / 2;
-  const radius = 16;
-
-  const path = `
-    M${sourceX},${sourceY}
-    H${midX - radius}
-    Q${midX},${sourceY} ${midX},${
-    sourceY + Math.sign(targetY - sourceY) * radius
-  }
-    V${targetY - Math.sign(targetY - sourceY) * radius}
-    Q${midX},${targetY} ${midX + radius},${targetY}
-    H${targetX}
-  `.trim();
-
-  const labelX = midX;
-  const labelY = (sourceY + targetY) / 2;
+const EdgeWithDelete = ({ 
+  id, 
+  sourceX, 
+  sourceY, 
+  targetX, 
+  targetY,
+  sourcePosition,
+  targetPosition, 
+  markerEnd,
+  style = {} 
+}) => {
+  const [edgePath, labelX, labelY] = getSmoothStepPath({
+    sourceX,
+    sourceY,
+    sourcePosition,
+    targetX,
+    targetY,
+    targetPosition,
+    borderRadius: 8,
+    offset: 8,
+  });
 
   const { setEdges } = useStore((state) => ({
     setEdges: state.setEdges,
@@ -25,29 +30,23 @@ const EdgeWithDelete = ({ id, sourceX, sourceY, targetX, targetY, markerEnd }) =
 
   return (
     <>
-      <path
-        id={id}
-        className="react-flow__edge-path !stroke-[2]"
-        d={path}
-        stroke="#b1b1b7"
-        markerEnd={markerEnd}
-        style={{ pointerEvents: "all" }}
-      />
-      <foreignObject
-        width={20}
-        height={20}
-        x={labelX - 10}
-        y={labelY - 10}
-        className="cursor-pointer flex items-center justify-center no-edge-animation"
-        onClick={(e) => {
-          e.stopPropagation();
-          setEdges(eds => eds.filter(e => e.id !== id));
-        }}
-      >
-        <div className="bg-white rounded-full p-[2px]">
-          <XCircle className="h-4 w-4 bg-white text-muted-foreground hover:text-destructive" />
+      <BaseEdge path={edgePath} markerEnd={markerEnd} style={style} />
+      <EdgeLabelRenderer>
+        <div
+          style={{
+            position: 'absolute',
+            transform: `translate(-50%, -50%) translate(${labelX}px,${labelY}px)`,
+            pointerEvents: 'all',
+          }}
+        >
+          <div className="bg-white rounded-full p-[2px] cursor-pointer" onClick={(e) => {
+            e.stopPropagation();
+            setEdges(eds => eds.filter(e => e.id !== id));
+          }}>
+            <XCircle className="h-4 w-4 text-muted-foreground hover:text-destructive" />
+          </div>
         </div>
-      </foreignObject>
+      </EdgeLabelRenderer>
     </>
   );
 };
