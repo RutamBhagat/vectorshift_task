@@ -11,14 +11,16 @@ app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
     allow_credentials=True,
-    allow_methods=["*"],
+    allow_methods=["POST", "GET", "OPTIONS"],
     allow_headers=["*"],
+    max_age=86400,
 )
 
 @app.get('/')
 def read_root():
     return {'Ping': 'Pong'}
 
+@app.options('/pipelines/parse')
 @app.post('/pipelines/parse', response_model=PipelineResponse)
 async def parse_pipeline(request: PipelineRequest) -> PipelineResponse:
     print(f"Received request with {len(request.nodes)} nodes and {len(request.edges)} edges")
