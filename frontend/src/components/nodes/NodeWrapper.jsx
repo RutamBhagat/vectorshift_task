@@ -1,6 +1,7 @@
 import { Handle, Position } from "reactflow";
 import { XCircle } from "lucide-react";
 import { useStore } from "../store";
+import { Card } from "../ui/card";
 
 
 export const NodeWrapper = ({
@@ -28,7 +29,7 @@ export const NodeWrapper = ({
   };
 
   return (
-    <div className="group relative w-[250px] p-5 rounded-xl border-2 border-[#a2aaf8] bg-white transition-all hover:shadow-[0_0_0_2px_#818CF8]">
+    <Card className="group relative w-[250px] p-5 rounded-xl border-2 border-[#a2aaf8] bg-white transition-all hover:shadow-[0_0_0_2px_#818CF8]">
       <button
         onClick={() => removeNode(id)}
         className="absolute top-2 right-2 text-gray-400 hover:text-gray-600 transition-colors"
@@ -62,6 +63,6 @@ export const NodeWrapper = ({
         {title}
       </div>
       {children}
-    </div>
+    </Card>
   );
 };
