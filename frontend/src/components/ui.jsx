@@ -1,5 +1,5 @@
 import { useState, useRef, useCallback } from "react";
-import ReactFlow, { Controls, Background, MiniMap } from "reactflow";
+import ReactFlow, { Controls, Background, MiniMap, reconnectEdge } from "reactflow";
 import EdgeWithDelete from "./EdgeWithDelete"
 import { useStore } from "./store";
 import { shallow } from "zustand/shallow";
@@ -38,9 +38,8 @@ const selector = (state) => ({
   onNodesChange: state.onNodesChange,
   onEdgesChange: state.onEdgesChange,
   onConnect: state.onConnect,
+  replaceEdge: state.replaceEdge,
 });
-
-
 
 const edgeTypes = {
   custom: EdgeWithDelete,
@@ -48,6 +47,7 @@ const edgeTypes = {
 
 export const PipelineUI = () => {
   const reactFlowWrapper = useRef(null);
+  const edgeReconnectSuccessful = useRef(true);
   const [reactFlowInstance, setReactFlowInstance] = useState(null);
   const {
     nodes,
@@ -57,6 +57,7 @@ export const PipelineUI = () => {
     onNodesChange,
     onEdgesChange,
     onConnect,
+    replaceEdge,
   } = useStore(selector, shallow);
 
   const getInitNodeData = (nodeID, type) => {
@@ -104,6 +105,25 @@ export const PipelineUI = () => {
     event.dataTransfer.dropEffect = "move";
   }, []);
 
+  const onReconnectStart = useCallback(() => {
+    edgeReconnectSuccessful.current = false;
+  }, []);
+
+  const onReconnect = useCallback((oldEdge, newConnection) => {
+    edgeReconnectSuccessful.current = true;
+    replaceEdge(oldEdge, newConnection);
+  }, [replaceEdge]);
+
+  const onReconnectEnd = useCallback((_, edge) => {
+    if (!edgeReconnectSuccessful.current) {
+      onEdgesChange([{
+        type: 'remove',
+        id: edge.id
+      }]);
+    }
+    edgeReconnectSuccessful.current = true;
+  }, [onEdgesChange]);
+
   return (
     <Card ref={reactFlowWrapper} className="flex-1 rounded-none">
       <ReactFlow
@@ -133,6 +153,9 @@ export const PipelineUI = () => {
         minZoom={0.2}
         maxZoom={4}
         defaultViewport={{ x: 0, y: 0, zoom: 1 }}
+        onReconnect={onReconnect}
+        onReconnectStart={onReconnectStart}
+        onReconnectEnd={onReconnectEnd}
       >
         <Background color="#aaa" gap={gridSize} />
         <Controls />
