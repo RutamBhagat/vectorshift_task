@@ -19,8 +19,8 @@ const EdgeWithDelete = ({ id, sourceX, sourceY, targetX, targetY, markerEnd }) =
   const labelX = midX;
   const labelY = (sourceY + targetY) / 2;
 
-  const { removeEdge } = useStore((state) => ({
-    removeEdge: state.removeEdge,
+  const { setEdges } = useStore((state) => ({
+    setEdges: state.setEdges,
   }));
 
   return (
@@ -41,7 +41,7 @@ const EdgeWithDelete = ({ id, sourceX, sourceY, targetX, targetY, markerEnd }) =
         className="cursor-pointer flex items-center justify-center no-edge-animation"
         onClick={(e) => {
           e.stopPropagation();
-          removeEdge(id);
+          setEdges(eds => eds.filter(e => e.id !== id));
         }}
       >
         <div className="bg-white rounded-full p-[2px]">

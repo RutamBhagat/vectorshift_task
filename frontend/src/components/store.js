@@ -92,11 +92,6 @@ export const useStore = create(
           ),
         });
       },
-      removeEdge: (edgeId) => {
-        set({
-          edges: get().edges.filter((edge) => edge.id !== edgeId),
-        });
-      },
       setPipelineStats: (stats) => set({ 
         pipelineStats: stats,
         showConfetti: stats?.is_dag && stats?.is_pipeline,

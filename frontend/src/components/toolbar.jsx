@@ -48,13 +48,16 @@ export const PipelineToolbar = () => {
       </div>
 
       <div className="flex items-center gap-4">
-        <div className="flex items-center space-x-2">
+        <div className="flex flex-col items-center space-y-2 w-16">
           <Switch
             id="edge-type"
             checked={isCustomEdge}
             onCheckedChange={toggleEdgeType}
+            className="data-[state=checked]:bg-indigo-800"
           />
-          <Label htmlFor="edge-type">Deletable Edges</Label>
+          <Label htmlFor="edge-type" className="text-xs text-gray-500 text-center w-full px-1">
+            Deletable Edges
+          </Label>
         </div>
         <SubmitButton className="w-full aspect-square" />
       </div>

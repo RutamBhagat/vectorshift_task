@@ -1927,3 +1927,961 @@
 ```
 
 ---
+
+## Request at 2025-01-04 14:15:04
+
+### Pipeline Request
+```json
+{
+  "nodes": [
+    {
+      "id": "customInput-1",
+      "type": "customInput",
+      "position": {
+        "x": 272.19999980926514,
+        "y": 255.1999969482422
+      },
+      "data": {
+        "id": "customInput-1",
+        "nodeType": "customInput"
+      },
+      "width": 250,
+      "height": 171,
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "text-2",
+      "type": "text",
+      "position": {
+        "x": 830.2233584497354,
+        "y": 283.9075960595608
+      },
+      "data": {
+        "id": "text-2",
+        "nodeType": "text"
+      },
+      "width": 250,
+      "height": 149,
+      "selected": false,
+      "dragging": false
+    }
+  ],
+  "edges": [
+    {
+      "type": "custom",
+      "deletable": true,
+      "style": {
+        "strokeWidth": 2,
+        "stroke": "#b1b1b7"
+      },
+      "markerEnd": {
+        "type": "arrowclosed",
+        "width": 12,
+        "height": 12,
+        "color": "#b1b1b7"
+      },
+      "animated": true,
+      "source": "customInput-1",
+      "sourceHandle": "customInput-1-value",
+      "target": "text-2",
+      "targetHandle": "text-2-input-char",
+      "id": "reactflow__edge-customInput-1customInput-1-value-text-2text-2-input-char"
+    },
+    {
+      "type": "base",
+      "deletable": false,
+      "style": {
+        "strokeWidth": 2,
+        "stroke": "#b1b1b7"
+      },
+      "markerEnd": {
+        "type": "arrowclosed",
+        "width": 12,
+        "height": 12,
+        "color": "#b1b1b7"
+      },
+      "animated": true,
+      "source": "customInput-1",
+      "sourceHandle": "customInput-1-value",
+      "target": "text-2",
+      "targetHandle": "text-2-input-input",
+      "id": "reactflow__edge-customInput-1customInput-1-value-text-2text-2-input-input"
+    }
+  ]
+}
+```
+
+### Pipeline Response
+```json
+{
+  "num_nodes": 2,
+  "num_edges": 2,
+  "is_dag": true,
+  "is_pipeline": true,
+  "dag_validation_messages": [],
+  "pipeline_validation_messages": []
+}
+```
+
+---
+
+## Request at 2025-01-04 14:15:11
+
+### Pipeline Request
+```json
+{
+  "nodes": [
+    {
+      "id": "customInput-1",
+      "type": "customInput",
+      "position": {
+        "x": 272.19999980926514,
+        "y": 255.1999969482422
+      },
+      "data": {
+        "id": "customInput-1",
+        "nodeType": "customInput"
+      },
+      "width": 250,
+      "height": 171,
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "text-2",
+      "type": "text",
+      "position": {
+        "x": 830.2233584497354,
+        "y": 283.9075960595608
+      },
+      "data": {
+        "id": "text-2",
+        "nodeType": "text"
+      },
+      "width": 250,
+      "height": 149,
+      "selected": false,
+      "dragging": false
+    }
+  ],
+  "edges": [
+    {
+      "type": "custom",
+      "deletable": true,
+      "style": {
+        "strokeWidth": 2,
+        "stroke": "#b1b1b7"
+      },
+      "markerEnd": {
+        "type": "arrowclosed",
+        "width": 12,
+        "height": 12,
+        "color": "#b1b1b7"
+      },
+      "animated": true,
+      "source": "customInput-1",
+      "sourceHandle": "customInput-1-value",
+      "target": "text-2",
+      "targetHandle": "text-2-input-char",
+      "id": "reactflow__edge-customInput-1customInput-1-value-text-2text-2-input-char"
+    }
+  ]
+}
+```
+
+### Pipeline Response
+```json
+{
+  "num_nodes": 2,
+  "num_edges": 1,
+  "is_dag": true,
+  "is_pipeline": true,
+  "dag_validation_messages": [],
+  "pipeline_validation_messages": []
+}
+```
+
+---
+
+## Request at 2025-01-04 14:15:19
+
+### Pipeline Request
+```json
+{
+  "nodes": [
+    {
+      "id": "customInput-1",
+      "type": "customInput",
+      "position": {
+        "x": 272.19999980926514,
+        "y": 255.1999969482422
+      },
+      "data": {
+        "id": "customInput-1",
+        "nodeType": "customInput"
+      },
+      "width": 250,
+      "height": 171,
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "text-2",
+      "type": "text",
+      "position": {
+        "x": 830.2233584497354,
+        "y": 283.9075960595608
+      },
+      "data": {
+        "id": "text-2",
+        "nodeType": "text"
+      },
+      "width": 250,
+      "height": 149,
+      "selected": false,
+      "dragging": false
+    }
+  ],
+  "edges": [
+    {
+      "type": "custom",
+      "deletable": true,
+      "style": {
+        "strokeWidth": 2,
+        "stroke": "#b1b1b7"
+      },
+      "markerEnd": {
+        "type": "arrowclosed",
+        "width": 12,
+        "height": 12,
+        "color": "#b1b1b7"
+      },
+      "animated": true,
+      "source": "customInput-1",
+      "sourceHandle": "customInput-1-value",
+      "target": "text-2",
+      "targetHandle": "text-2-input-char",
+      "id": "reactflow__edge-customInput-1customInput-1-value-text-2text-2-input-char"
+    }
+  ]
+}
+```
+
+### Pipeline Response
+```json
+{
+  "num_nodes": 2,
+  "num_edges": 1,
+  "is_dag": true,
+  "is_pipeline": true,
+  "dag_validation_messages": [],
+  "pipeline_validation_messages": []
+}
+```
+
+---
+
+## Request at 2025-01-04 14:19:12
+
+### Pipeline Request
+```json
+{
+  "nodes": [
+    {
+      "id": "customInput-1",
+      "type": "customInput",
+      "position": {
+        "x": 272.19999980926514,
+        "y": 255.1999969482422
+      },
+      "data": {
+        "id": "customInput-1",
+        "nodeType": "customInput"
+      },
+      "width": 250,
+      "height": 171,
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "text-2",
+      "type": "text",
+      "position": {
+        "x": 830.2233584497354,
+        "y": 283.9075960595608
+      },
+      "data": {
+        "id": "text-2",
+        "nodeType": "text"
+      },
+      "width": 250,
+      "height": 149,
+      "selected": false,
+      "dragging": false
+    }
+  ],
+  "edges": []
+}
+```
+
+### Pipeline Response
+```json
+{
+  "num_nodes": 2,
+  "num_edges": 0,
+  "is_dag": true,
+  "is_pipeline": false,
+  "dag_validation_messages": [],
+  "pipeline_validation_messages": [
+    "Invalid pipeline: nodes exist but no connections between them"
+  ]
+}
+```
+
+---
+
+## Request at 2025-01-04 14:19:16
+
+### Pipeline Request
+```json
+{
+  "nodes": [
+    {
+      "id": "customInput-1",
+      "type": "customInput",
+      "position": {
+        "x": 272.19999980926514,
+        "y": 255.1999969482422
+      },
+      "data": {
+        "id": "customInput-1",
+        "nodeType": "customInput"
+      },
+      "width": 250,
+      "height": 171,
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "text-2",
+      "type": "text",
+      "position": {
+        "x": 830.2233584497354,
+        "y": 283.9075960595608
+      },
+      "data": {
+        "id": "text-2",
+        "nodeType": "text"
+      },
+      "width": 250,
+      "height": 149,
+      "selected": false,
+      "dragging": false
+    }
+  ],
+  "edges": [
+    {
+      "type": "base",
+      "deletable": false,
+      "style": {
+        "strokeWidth": 2,
+        "stroke": "#b1b1b7"
+      },
+      "markerEnd": {
+        "type": "arrowclosed",
+        "width": 12,
+        "height": 12,
+        "color": "#b1b1b7"
+      },
+      "animated": true,
+      "source": "customInput-1",
+      "sourceHandle": "customInput-1-value",
+      "target": "text-2",
+      "targetHandle": "text-2-input-input",
+      "id": "reactflow__edge-customInput-1customInput-1-value-text-2text-2-input-input"
+    }
+  ]
+}
+```
+
+### Pipeline Response
+```json
+{
+  "num_nodes": 2,
+  "num_edges": 1,
+  "is_dag": true,
+  "is_pipeline": true,
+  "dag_validation_messages": [],
+  "pipeline_validation_messages": []
+}
+```
+
+---
+
+## Request at 2025-01-04 14:20:48
+
+### Pipeline Request
+```json
+{
+  "nodes": [
+    {
+      "id": "customInput-1",
+      "type": "customInput",
+      "position": {
+        "x": 272.19999980926514,
+        "y": 255.1999969482422
+      },
+      "data": {
+        "id": "customInput-1",
+        "nodeType": "customInput"
+      },
+      "width": 250,
+      "height": 171,
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "text-2",
+      "type": "text",
+      "position": {
+        "x": 830.2233584497354,
+        "y": 283.9075960595608
+      },
+      "data": {
+        "id": "text-2",
+        "nodeType": "text"
+      },
+      "width": 250,
+      "height": 169,
+      "selected": false,
+      "dragging": false
+    }
+  ],
+  "edges": [
+    {
+      "type": "base",
+      "deletable": false,
+      "style": {
+        "strokeWidth": 2,
+        "stroke": "#b1b1b7"
+      },
+      "markerEnd": {
+        "type": "arrowclosed",
+        "width": 12,
+        "height": 12,
+        "color": "#b1b1b7"
+      },
+      "animated": true,
+      "source": "customInput-1",
+      "sourceHandle": "customInput-1-value",
+      "target": "text-2",
+      "targetHandle": "text-2-input-char",
+      "id": "reactflow__edge-customInput-1customInput-1-value-text-2text-2-input-char"
+    }
+  ]
+}
+```
+
+### Pipeline Response
+```json
+{
+  "num_nodes": 2,
+  "num_edges": 1,
+  "is_dag": true,
+  "is_pipeline": true,
+  "dag_validation_messages": [],
+  "pipeline_validation_messages": []
+}
+```
+
+---
+
+## Request at 2025-01-04 14:20:55
+
+### Pipeline Request
+```json
+{
+  "nodes": [
+    {
+      "id": "customInput-1",
+      "type": "customInput",
+      "position": {
+        "x": 272.19999980926514,
+        "y": 255.1999969482422
+      },
+      "data": {
+        "id": "customInput-1",
+        "nodeType": "customInput"
+      },
+      "width": 250,
+      "height": 171,
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "text-2",
+      "type": "text",
+      "position": {
+        "x": 830.2233584497354,
+        "y": 283.9075960595608
+      },
+      "data": {
+        "id": "text-2",
+        "nodeType": "text"
+      },
+      "width": 250,
+      "height": 169,
+      "selected": false,
+      "dragging": false
+    }
+  ],
+  "edges": []
+}
+```
+
+### Pipeline Response
+```json
+{
+  "num_nodes": 2,
+  "num_edges": 0,
+  "is_dag": true,
+  "is_pipeline": false,
+  "dag_validation_messages": [],
+  "pipeline_validation_messages": [
+    "Invalid pipeline: nodes exist but no connections between them"
+  ]
+}
+```
+
+---
+
+## Request at 2025-01-04 14:21:50
+
+### Pipeline Request
+```json
+{
+  "nodes": [
+    {
+      "id": "customInput-1",
+      "type": "customInput",
+      "position": {
+        "x": 272.19999980926514,
+        "y": 255.1999969482422
+      },
+      "data": {
+        "id": "customInput-1",
+        "nodeType": "customInput"
+      },
+      "width": 250,
+      "height": 171,
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "text-2",
+      "type": "text",
+      "position": {
+        "x": 830.2233584497354,
+        "y": 283.9075960595608
+      },
+      "data": {
+        "id": "text-2",
+        "nodeType": "text"
+      },
+      "width": 250,
+      "height": 149,
+      "selected": false,
+      "dragging": false
+    }
+  ],
+  "edges": [
+    {
+      "type": "base",
+      "deletable": false,
+      "style": {
+        "strokeWidth": 2,
+        "stroke": "#b1b1b7"
+      },
+      "markerEnd": {
+        "type": "arrowclosed",
+        "width": 12,
+        "height": 12,
+        "color": "#b1b1b7"
+      },
+      "animated": true,
+      "source": "customInput-1",
+      "sourceHandle": "customInput-1-value",
+      "target": "text-2",
+      "targetHandle": "text-2-input-input",
+      "id": "reactflow__edge-customInput-1customInput-1-value-text-2text-2-input-input"
+    }
+  ]
+}
+```
+
+### Pipeline Response
+```json
+{
+  "num_nodes": 2,
+  "num_edges": 1,
+  "is_dag": true,
+  "is_pipeline": true,
+  "dag_validation_messages": [],
+  "pipeline_validation_messages": []
+}
+```
+
+---
+
+## Request at 2025-01-04 14:21:53
+
+### Pipeline Request
+```json
+{
+  "nodes": [
+    {
+      "id": "customInput-1",
+      "type": "customInput",
+      "position": {
+        "x": 272.19999980926514,
+        "y": 255.1999969482422
+      },
+      "data": {
+        "id": "customInput-1",
+        "nodeType": "customInput"
+      },
+      "width": 250,
+      "height": 171,
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "text-2",
+      "type": "text",
+      "position": {
+        "x": 830.2233584497354,
+        "y": 283.9075960595608
+      },
+      "data": {
+        "id": "text-2",
+        "nodeType": "text"
+      },
+      "width": 250,
+      "height": 149,
+      "selected": false,
+      "dragging": false
+    }
+  ],
+  "edges": []
+}
+```
+
+### Pipeline Response
+```json
+{
+  "num_nodes": 2,
+  "num_edges": 0,
+  "is_dag": true,
+  "is_pipeline": false,
+  "dag_validation_messages": [],
+  "pipeline_validation_messages": [
+    "Invalid pipeline: nodes exist but no connections between them"
+  ]
+}
+```
+
+---
+
+## Request at 2025-01-04 14:22:21
+
+### Pipeline Request
+```json
+{
+  "nodes": [
+    {
+      "id": "customInput-1",
+      "type": "customInput",
+      "position": {
+        "x": 272.19999980926514,
+        "y": 255.1999969482422
+      },
+      "data": {
+        "id": "customInput-1",
+        "nodeType": "customInput"
+      },
+      "width": 250,
+      "height": 171,
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "text-2",
+      "type": "text",
+      "position": {
+        "x": 830.2233584497354,
+        "y": 283.9075960595608
+      },
+      "data": {
+        "id": "text-2",
+        "nodeType": "text"
+      },
+      "width": 250,
+      "height": 149,
+      "selected": false,
+      "dragging": false
+    }
+  ],
+  "edges": [
+    {
+      "type": "base",
+      "deletable": false,
+      "style": {
+        "strokeWidth": 2,
+        "stroke": "#b1b1b7"
+      },
+      "markerEnd": {
+        "type": "arrowclosed",
+        "width": 12,
+        "height": 12,
+        "color": "#b1b1b7"
+      },
+      "animated": true,
+      "source": "customInput-1",
+      "sourceHandle": "customInput-1-value",
+      "target": "text-2",
+      "targetHandle": "text-2-input-input",
+      "id": "reactflow__edge-customInput-1customInput-1-value-text-2text-2-input-input"
+    }
+  ]
+}
+```
+
+### Pipeline Response
+```json
+{
+  "num_nodes": 2,
+  "num_edges": 1,
+  "is_dag": true,
+  "is_pipeline": true,
+  "dag_validation_messages": [],
+  "pipeline_validation_messages": []
+}
+```
+
+---
+
+## Request at 2025-01-04 14:22:25
+
+### Pipeline Request
+```json
+{
+  "nodes": [
+    {
+      "id": "customInput-1",
+      "type": "customInput",
+      "position": {
+        "x": 272.19999980926514,
+        "y": 255.1999969482422
+      },
+      "data": {
+        "id": "customInput-1",
+        "nodeType": "customInput"
+      },
+      "width": 250,
+      "height": 171,
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "text-2",
+      "type": "text",
+      "position": {
+        "x": 830.2233584497354,
+        "y": 283.9075960595608
+      },
+      "data": {
+        "id": "text-2",
+        "nodeType": "text"
+      },
+      "width": 250,
+      "height": 149,
+      "selected": false,
+      "dragging": false
+    }
+  ],
+  "edges": []
+}
+```
+
+### Pipeline Response
+```json
+{
+  "num_nodes": 2,
+  "num_edges": 0,
+  "is_dag": true,
+  "is_pipeline": false,
+  "dag_validation_messages": [],
+  "pipeline_validation_messages": [
+    "Invalid pipeline: nodes exist but no connections between them"
+  ]
+}
+```
+
+---
+
+## Request at 2025-01-04 14:22:36
+
+### Pipeline Request
+```json
+{
+  "nodes": [
+    {
+      "id": "customInput-1",
+      "type": "customInput",
+      "position": {
+        "x": 272.19999980926514,
+        "y": 255.1999969482422
+      },
+      "data": {
+        "id": "customInput-1",
+        "nodeType": "customInput"
+      },
+      "width": 250,
+      "height": 171,
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "text-2",
+      "type": "text",
+      "position": {
+        "x": 830.2233584497354,
+        "y": 283.9075960595608
+      },
+      "data": {
+        "id": "text-2",
+        "nodeType": "text"
+      },
+      "width": 250,
+      "height": 149,
+      "selected": false,
+      "dragging": false
+    }
+  ],
+  "edges": [
+    {
+      "type": "base",
+      "deletable": false,
+      "style": {
+        "strokeWidth": 2,
+        "stroke": "#b1b1b7"
+      },
+      "markerEnd": {
+        "type": "arrowclosed",
+        "width": 12,
+        "height": 12,
+        "color": "#b1b1b7"
+      },
+      "animated": true,
+      "source": "customInput-1",
+      "sourceHandle": "customInput-1-value",
+      "target": "text-2",
+      "targetHandle": "text-2-input-input",
+      "id": "reactflow__edge-customInput-1customInput-1-value-text-2text-2-input-input"
+    }
+  ]
+}
+```
+
+### Pipeline Response
+```json
+{
+  "num_nodes": 2,
+  "num_edges": 1,
+  "is_dag": true,
+  "is_pipeline": true,
+  "dag_validation_messages": [],
+  "pipeline_validation_messages": []
+}
+```
+
+---
+
+## Request at 2025-01-04 14:22:44
+
+### Pipeline Request
+```json
+{
+  "nodes": [
+    {
+      "id": "customInput-1",
+      "type": "customInput",
+      "position": {
+        "x": 272.19999980926514,
+        "y": 255.1999969482422
+      },
+      "data": {
+        "id": "customInput-1",
+        "nodeType": "customInput"
+      },
+      "width": 250,
+      "height": 171,
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "text-2",
+      "type": "text",
+      "position": {
+        "x": 830.2233584497354,
+        "y": 283.9075960595608
+      },
+      "data": {
+        "id": "text-2",
+        "nodeType": "text"
+      },
+      "width": 250,
+      "height": 149,
+      "selected": false,
+      "dragging": false
+    }
+  ],
+  "edges": [
+    {
+      "type": "base",
+      "deletable": false,
+      "style": {
+        "strokeWidth": 2,
+        "stroke": "#b1b1b7"
+      },
+      "markerEnd": {
+        "type": "arrowclosed",
+        "width": 12,
+        "height": 12,
+        "color": "#b1b1b7"
+      },
+      "animated": true,
+      "source": "customInput-1",
+      "sourceHandle": "customInput-1-value",
+      "target": "text-2",
+      "targetHandle": "text-2-input-user",
+      "id": "reactflow__edge-customInput-1customInput-1-value-text-2text-2-input-user"
+    }
+  ]
+}
+```
+
+### Pipeline Response
+```json
+{
+  "num_nodes": 2,
+  "num_edges": 1,
+  "is_dag": true,
+  "is_pipeline": true,
+  "dag_validation_messages": [],
+  "pipeline_validation_messages": []
+}
+```
+
+---

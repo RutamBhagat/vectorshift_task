@@ -117,16 +117,15 @@ export const PipelineUI = () => {
     edgeReconnectSuccessful.current = true;
     setEdges(els => {
       const reconnected = reconnectEdge(oldEdge, newConnection, els);
-      // Update edge type after reconnection
       return reconnected.map(edge => ({
         ...edge,
-        type: isCustomEdge ? 'custom' : 'default',
+        type: isCustomEdge ? 'custom' : 'base',
         deletable: isCustomEdge
       }));
     });
   }, [setEdges, isCustomEdge]);
 
-  const onReconnectEnd = useCallback((_, edge) => {
+  const onReconnectEnd = useCallback((event, edge) => {
     if (!edgeReconnectSuccessful.current) {
       setEdges(eds => eds.filter(e => e.id !== edge.id));
     }
