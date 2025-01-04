@@ -3,12 +3,12 @@ title: "VectorShift: Frontend Technical Assessment"
 publishedAt: "2024-01-04"
 summary: "Developed a simplified version of VectorShift's main application, implementing a node-based workflow builder using React, ReactFlow, and FastAPI. Features include dynamic node abstraction, styling improvements, and backend integration for pipeline validation."
 images:
-- "https://github.com/user-attachments/assets/edfc6496-c85a-4dcc-850e-c8b98d6e89d2"
-- "https://github.com/user-attachments/assets/405af6a4-b871-4810-87a6-1e54b745132c"
-- "https://github.com/user-attachments/assets/368f268e-b02f-406a-9462-633479695f0e"
-- "https://github.com/user-attachments/assets/50eee055-3bbb-469e-a87f-d88279bb6bca"
-- "https://github.com/user-attachments/assets/40eb5b20-ff7e-4ffd-b6e4-95a3094e344f"
-- "https://github.com/user-attachments/assets/2b04e77c-cd4f-40a5-9fa5-8401b882965e"
+- "https://github.com/user-attachments/assets/ea8464d2-580f-4a19-a263-504f148d93c7"
+- https://github.com/user-attachments/assets/30c1533d-6029-462b-a80f-4c679a640d2c"
+- https://github.com/user-attachments/assets/3de071a6-b1f6-4d14-8a10-9bc084b62e23"
+- https://github.com/user-attachments/assets/2239d747-ece2-453c-b696-68f283cc4551"
+- https://github.com/user-attachments/assets/ca0cf29d-9c7c-48f0-82f2-832eba6c31e1"
+- https://github.com/user-attachments/assets/5430c311-e2b7-46fb-8271-8167ce05db25"
 
 team:
 - name: "Rutam Bhagat"
@@ -23,9 +23,9 @@ team:
 
 This project is a technical assessment implementation that recreates core functionalities of VectorShift's main application. The focus was on building a node-based workflow builder with features like node abstraction, dynamic styling, and backend integration for pipeline validation. The implementation showcases modern web development practices and attention to user experience.
 
-**Frontend:** [Live Site URL](https://code-ant-two.vercel.app/login)
+**Frontend:** [Live Site URL](https://vectorshift-task.vercel.app/)
 
-**Frontend Repo:** [Repository URL](https://github.com/RutamBhagat/code-ant)
+**Code Repo:** [Repository URL](https://github.com/RutamBhagat/vectorshift_task)
 
 ## Key Features
 
@@ -149,9 +149,9 @@ The implementation successfully meets all assessment requirements while maintain
 
 # Screenshots
 
-![1](https://github.com/user-attachments/assets/edfc6496-c85a-4dcc-850e-c8b98d6e89d2)
-![2](https://github.com/user-attachments/assets/405af6a4-b871-4810-87a6-1e54b745132c)
-![3](https://github.com/user-attachments/assets/368f268e-b02f-406a-9462-633479695f0e)
-![4](https://github.com/user-attachments/assets/50eee055-3bbb-469e-a87f-d88279bb6bca)
-![5](https://github.com/user-attachments/assets/40eb5b20-ff7e-4ffd-b6e4-95a3094e344f)
-![6](https://github.com/user-attachments/assets/2b04e77c-cd4f-40a5-9fa5-8401b882965e)
+![0](https://github.com/user-attachments/assets/ea8464d2-580f-4a19-a263-504f148d93c7)
+![1](https://github.com/user-attachments/assets/30c1533d-6029-462b-a80f-4c679a640d2c)
+![2](https://github.com/user-attachments/assets/3de071a6-b1f6-4d14-8a10-9bc084b62e23)
+![3](https://github.com/user-attachments/assets/2239d747-ece2-453c-b696-68f283cc4551)
+![4](https://github.com/user-attachments/assets/ca0cf29d-9c7c-48f0-82f2-832eba6c31e1)
+![5](https://github.com/user-attachments/assets/5430c311-e2b7-46fb-8271-8167ce05db25)
