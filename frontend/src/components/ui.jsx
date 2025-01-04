@@ -1,7 +1,7 @@
 import { useState, useRef, useCallback } from "react";
 import ReactFlow, { Controls, Background, MiniMap, reconnectEdge } from "reactflow";
 import EdgeWithDelete from "./edge-with-delete"
-import { CustomBaseEdge } from './base-edge';
+import { CustomBaseEdge } from './edges/base-edge';
 import { useStore } from "./store";
 import { shallow } from "zustand/shallow";
 import { InputNode } from "./nodes/input-node";
@@ -41,7 +41,7 @@ const selector = (state) => ({
   onConnect: state.onConnect,
   setEdges: state.setEdges,
   isCustomEdge: state.isCustomEdge,
-  isAnimated: state.isAnimated,  // Add this
+  isAnimated: state.isAnimated,
 });
 
 const edgeTypes = {
@@ -63,7 +63,7 @@ export const PipelineUI = () => {
     onConnect,
     setEdges,
     isCustomEdge,
-    isAnimated,  // Add this
+    isAnimated,
   } = useStore(selector, shallow);
 
   const getInitNodeData = (nodeID, type) => {
@@ -82,7 +82,6 @@ export const PipelineUI = () => {
         );
         const type = appData?.nodeType;
 
-        // check if the dropped element is valid
         if (typeof type === "undefined" || !type) {
           return;
         }
@@ -163,7 +162,7 @@ export const PipelineUI = () => {
             height: 12,
             color: '#b1b1b7',
           },
-          animated: isAnimated  // Use the state here
+          animated: isAnimated
         }}
         fitView
         minZoom={0.2}
