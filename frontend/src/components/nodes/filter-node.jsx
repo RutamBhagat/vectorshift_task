@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Position } from "reactflow";
 import { Input } from "../ui/input";
-import { NodeWrapper } from "./NodeWrapper";
+import { NodeWrapper } from "./node-wrapper";
 import { Filter } from "lucide-react";
 
 export const FilterNode = ({ id }) => {

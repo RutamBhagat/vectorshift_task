@@ -1,20 +1,20 @@
 import { useState, useRef, useCallback } from "react";
 import ReactFlow, { Controls, Background, MiniMap, reconnectEdge } from "reactflow";
-import EdgeWithDelete from "./EdgeWithDelete"
-import { CustomBaseEdge } from './BaseEdge';
+import EdgeWithDelete from "./edge-with-delete"
+import { CustomBaseEdge } from './base-edge';
 import { useStore } from "./store";
 import { shallow } from "zustand/shallow";
-import { InputNode } from "./nodes/inputNode";
-import { LLMNode } from "./nodes/llmNode";
-import { OutputNode } from "./nodes/outputNode";
-import { TextNode } from "./nodes/textNode";
+import { InputNode } from "./nodes/input-node";
+import { LLMNode } from "./nodes/llm-node";
+import { OutputNode } from "./nodes/output-node";
+import { TextNode } from "./nodes/text-node";
 
 import "reactflow/dist/style.css";
-import { AggregateNode } from "./nodes/aggregateNode";
-import { DebugNode } from "./nodes/debugNode";
-import { FilterNode } from "./nodes/filterNode";
-import { HttpNode } from "./nodes/httpNode";
-import { TransformNode } from "./nodes/transformNode";
+import { AggregateNode } from "./nodes/aggregate-node";
+import { DebugNode } from "./nodes/debug-node";
+import { FilterNode } from "./nodes/filter-node";
+import { HttpNode } from "./nodes/http-node";
+import { TransformNode } from "./nodes/transform-node";
 import { Card } from "./ui/card";
 
 const gridSize = 20;

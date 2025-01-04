@@ -1,7 +1,7 @@
 import { useState, useEffect, useMemo } from "react";
 import { FileText } from "lucide-react";
 import { useUpdateNodeInternals } from "reactflow";
-import { NodeWrapper } from "./NodeWrapper";
+import { NodeWrapper } from "./node-wrapper";
 import { AutosizeTextarea } from "../ui/autosize-textarea";
 import { useNodeHandles } from "../../hooks/useNodeHandles";
 

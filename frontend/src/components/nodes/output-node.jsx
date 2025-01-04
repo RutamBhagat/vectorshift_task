@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Position } from "reactflow";
 import { Input } from "../ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../ui/select";
-import { NodeWrapper } from "./NodeWrapper";
+import { NodeWrapper } from "./node-wrapper";
 import { ArrowRight } from "lucide-react";
 
 export const OutputNode = ({ id, data }) => {

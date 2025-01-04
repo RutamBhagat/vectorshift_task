@@ -1,5 +1,5 @@
 import { Position } from "reactflow";
-import { NodeWrapper } from "./NodeWrapper";
+import { NodeWrapper } from "./node-wrapper";
 import { Textarea } from "../ui/textarea";
 import { Wand2 } from "lucide-react";
 

@@ -1,4 +1,4 @@
-import PipelineStats from './components/PipelineStats';
+import PipelineStats from './components/pipeline-stats';
 import { PipelineToolbar } from './components/toolbar';
 import { PipelineUI } from './components/ui';
 import { Card } from './components/ui/card';

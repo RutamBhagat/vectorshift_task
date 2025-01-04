@@ -1,7 +1,7 @@
 import { ArrowRight, Bug, FileText, Filter, Globe, Layers, LogIn, MessageSquare, Wand2 } from "lucide-react";
 import { useStore } from "./store";
 import { shallow } from "zustand/shallow";
-import { DraggableNode } from "./draggableNode";
+import { DraggableNode } from "./draggable-node";
 import { Card } from "./ui/card";
 import { SubmitButton } from "./submit";
 import { Label } from "./ui/label";

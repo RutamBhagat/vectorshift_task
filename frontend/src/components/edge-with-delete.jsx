@@ -3,8 +3,7 @@ import { useStore } from "./store";
 
 const EdgeWithDelete = ({ id, sourceX, sourceY, targetX, targetY, markerEnd }) => {
   const midX = (sourceX + targetX) / 2;
-  const radius = 16; // Increased from 8 to match BaseEdge borderRadius
-  const offset = 16; // Added to match BaseEdge offset
+  const radius = 16;
 
   const path = `
     M${sourceX},${sourceY}
@@ -17,7 +16,6 @@ const EdgeWithDelete = ({ id, sourceX, sourceY, targetX, targetY, markerEnd }) =
     H${targetX}
   `.trim();
 
-  // Calculate label position at the middle of the path
   const labelX = midX;
   const labelY = (sourceY + targetY) / 2;
 

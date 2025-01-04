@@ -1,5 +1,5 @@
 import { Position } from "reactflow";
-import { NodeWrapper } from "./NodeWrapper";
+import { NodeWrapper } from "./node-wrapper";
 import { Layers } from "lucide-react";
 
 export const AggregateNode = ({ id }) => {
