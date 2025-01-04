@@ -39,6 +39,7 @@ const selector = (state) => ({
   onEdgesChange: state.onEdgesChange,
   onConnect: state.onConnect,
   setEdges: state.setEdges,
+  isCustomEdge: state.isCustomEdge,
 });
 
 const edgeTypes = {
@@ -58,6 +59,7 @@ export const PipelineUI = () => {
     onEdgesChange,
     onConnect,
     setEdges,
+    isCustomEdge,
   } = useStore(selector, shallow);
 
   const getInitNodeData = (nodeID, type) => {
@@ -138,13 +140,13 @@ export const PipelineUI = () => {
         connectionLineType="smoothstep"
         edgeTypes={edgeTypes}
         defaultEdgeOptions={{ 
-          type: 'custom',
-          deletable: true,
+          type: isCustomEdge ? 'custom' : 'default',
+          deletable: isCustomEdge,
           style: { 
             strokeWidth: 2,
             animation: 'none'
           },
-          animated: false
+          animated: true
         }}
         fitView
         minZoom={0.2}
