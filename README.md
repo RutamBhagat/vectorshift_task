@@ -59,13 +59,16 @@ Follow these steps to run the project locally.
 - Node.js 18 or higher
 - Python 3.8 or higher
 - npm or yarn package manager
+- pip
+- uvicorn
 
 ### Frontend Setup
 
 1. **Clone and Install**
 ```bash
-git clone https://github.com/RutamBhagat/code-ant
+git clone https://github.com/RutamBhagat/vectorshift_task
 cd frontend
+cp .env.example .env
 npm install
 ```
 
