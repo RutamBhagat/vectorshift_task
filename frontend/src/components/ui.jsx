@@ -1,6 +1,5 @@
 import { useState, useRef, useCallback } from "react";
 import ReactFlow, { Controls, Background, MiniMap, reconnectEdge } from "reactflow";
-import EdgeWithDelete from "./edge-with-delete"
 import { CustomBaseEdge } from './edges/base-edge';
 import { useStore } from "./store";
 import { shallow } from "zustand/shallow";
@@ -16,6 +15,7 @@ import { FilterNode } from "./nodes/filter-node";
 import { HttpNode } from "./nodes/http-node";
 import { TransformNode } from "./nodes/transform-node";
 import { Card } from "./ui/card";
+import EdgeWithDelete from "./edges/edge-with-delete";
 
 const gridSize = 20;
 const proOptions = { hideAttribution: true };

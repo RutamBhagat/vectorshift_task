@@ -1,6 +1,6 @@
 import { BaseEdge, EdgeLabelRenderer, getSmoothStepPath } from 'reactflow';
 import { XCircle } from "lucide-react";
-import { useStore } from "./store";
+import { useStore } from "../store";
 
 const EdgeWithDelete = ({ 
   id, 
