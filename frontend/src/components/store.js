@@ -77,7 +77,7 @@ export const useStore = create(
           edges: addEdge(
             {
               ...connection,
-              type: "custom",
+              type: get().isCustomEdge ? "custom" : "base",
               animated: true,
               markerEnd: { type: MarkerType.Arrow, height: "20px", width: "20px" },
             },

@@ -1,6 +1,7 @@
 import { useState, useRef, useCallback } from "react";
 import ReactFlow, { Controls, Background, MiniMap, reconnectEdge } from "reactflow";
 import EdgeWithDelete from "./EdgeWithDelete"
+import { CustomBaseEdge } from './BaseEdge';
 import { useStore } from "./store";
 import { shallow } from "zustand/shallow";
 import { InputNode } from "./nodes/inputNode";
@@ -44,6 +45,7 @@ const selector = (state) => ({
 
 const edgeTypes = {
   custom: EdgeWithDelete,
+  base: CustomBaseEdge,
 };
 
 export const PipelineUI = () => {
@@ -113,8 +115,16 @@ export const PipelineUI = () => {
 
   const onReconnect = useCallback((oldEdge, newConnection) => {
     edgeReconnectSuccessful.current = true;
-    setEdges(els => reconnectEdge(oldEdge, newConnection, els));
-  }, [setEdges]);
+    setEdges(els => {
+      const reconnected = reconnectEdge(oldEdge, newConnection, els);
+      // Update edge type after reconnection
+      return reconnected.map(edge => ({
+        ...edge,
+        type: isCustomEdge ? 'custom' : 'default',
+        deletable: isCustomEdge
+      }));
+    });
+  }, [setEdges, isCustomEdge]);
 
   const onReconnectEnd = useCallback((_, edge) => {
     if (!edgeReconnectSuccessful.current) {
@@ -140,11 +150,10 @@ export const PipelineUI = () => {
         connectionLineType="smoothstep"
         edgeTypes={edgeTypes}
         defaultEdgeOptions={{ 
-          type: isCustomEdge ? 'custom' : 'default',
+          type: isCustomEdge ? 'custom' : 'base',
           deletable: isCustomEdge,
           style: { 
             strokeWidth: 2,
-            animation: 'none'
           },
           animated: true
         }}
